@@ -7,6 +7,7 @@ public class CameraManger : MonoBehaviour
 {
     public Camera cam;
     PlayerController player;
+    public float lerpTime = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class CameraManger : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
+        cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(player.transform.position.x, player.transform.position.y, -10), lerpTime * Time.deltaTime);
+        //cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
     }
 }

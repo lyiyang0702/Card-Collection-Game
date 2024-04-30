@@ -8,6 +8,7 @@ public class PlayerController : UnitySingleton<PlayerController>
     [SerializeField]
     float speed = 1f;
     [SerializeField]
+    int steps = 5;
     Vector3 moveDirection;
     public List<Collider2D> _colliders;
     public Interactable targetInteractable;
@@ -17,7 +18,7 @@ public class PlayerController : UnitySingleton<PlayerController>
     public bool canInteract = true;
     public Inventory inventory;
     Rigidbody2D rb;
-
+    public LayerMask wallLayer;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,16 +26,24 @@ public class PlayerController : UnitySingleton<PlayerController>
 
     private void FixedUpdate()
     {
-        ApplyMovement();
+        //ApplyMovement();
 
         DetectInteractables();
     }
 
     public void Move(InputAction.CallbackContext context)
     {
+        
         var direction = context.ReadValue<Vector2>();
         moveDirection = new Vector2(direction.x, direction.y);
-
+        RaycastHit2D hit = Physics2D.Raycast(transform.position,moveDirection,0.5f,wallLayer);
+        if (hit.collider != null) return;
+        if (steps <= 0) return;
+        transform.position = transform.position + moveDirection * 0.5f;
+        if (context.canceled)
+        {
+            steps--;
+        }
     }
 
     void DetectInteractables()
@@ -128,6 +137,7 @@ public class PlayerController : UnitySingleton<PlayerController>
 
     public void ApplyMovement()
     {
-        rb.velocity = moveDirection * speed;
+        //rb.velocity = moveDirection * speed;
+        
     }
 }
