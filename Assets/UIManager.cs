@@ -5,8 +5,10 @@ using UnityEngine;
 public class UIManager : UnitySingleton<UIManager>
 {
     public GameObject cameraCanvas;
+    public GameObject BattleHUD;
     public GameObject inventoryUI;
     public GameObject selectedCardParent;
+    
     // Start is called before the first frame update
 
     private void OnEnable()
@@ -20,5 +22,5 @@ public class UIManager : UnitySingleton<UIManager>
         
     }
 
-    
+
 }

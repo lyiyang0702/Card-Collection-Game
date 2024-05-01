@@ -27,4 +27,6 @@ public class CardScriptableObject: ScriptableObject
     public ColorTier colorTier;
 
     public int attack = 0;
+
+    public Sprite cardSprite;
 }

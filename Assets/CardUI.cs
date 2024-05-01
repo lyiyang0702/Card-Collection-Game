@@ -33,4 +33,28 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     {
         
     }
+
+    public void UpdateCardUI(CardScriptableObject cardInfo)
+    {
+        switch (cardInfo.colorTier)
+        {
+            case CardScriptableObject.ColorTier.Green:
+                border.color = Color.green;
+                atkValueText.text = "1";
+                break;
+            case CardScriptableObject.ColorTier.Blue:
+                border.color = Color.blue;
+                atkValueText.text = "2";
+                break;
+            case CardScriptableObject.ColorTier.Purple:
+                border.color = new Color(238, 130, 238, 1);
+                atkValueText.text = "3";
+                break;
+            default:
+                break;
+        }
+
+        elementalTypeText.text = cardInfo.elementalType.ToString();
+        cardSprite.sprite = cardInfo.cardSprite;
+    }
 }

@@ -266,13 +266,14 @@ GameObject:
   - component: {fileID: 4112585074479128815}
   - component: {fileID: 8626065579982232682}
   - component: {fileID: 2278614994527534791}
+  - component: {fileID: 6569961122909879878}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4112585074479128815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -333,6 +334,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6569961122909879878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4145241651346012285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f0d3ed34404274aad979580e42c9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardOrganizer: {fileID: 8261900522009458595}
 --- !u!1 &5108564312051809479
 GameObject:
   m_ObjectHideFlags: 0
