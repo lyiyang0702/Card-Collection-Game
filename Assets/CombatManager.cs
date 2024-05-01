@@ -33,10 +33,11 @@ public class CombatManager : UnitySingleton<CombatManager>
     {
         playerPrefab.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         enemy.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        playerPrefab.GetComponent<PlayerController>().cam.SetActive(false);
+        playerPrefab.GetComponent<PlayerController>().cam.transform.position = new Vector3(0,0,-10);
         battleState = BattleState.Start;
-        playerSpot = GameObject.Find("PlayerSpot");
-        enemySpot = GameObject.Find("EnemySpot");
+        UIManager.Instance.cameraCanvas.SetActive(true);
+        //playerSpot = GameObject.Find("PlayerSpot");
+        //enemySpot = GameObject.Find("EnemySpot");
         //var playerSpotPos = Camera.main.ScreenToWorldPoint(playerSpot.transform.position);
         //playerPrefab.transform.position = new Vector3(playerSpotPos.x, playerSpotPos.y + 0.5f, 0);
         playerPrefab.transform.position = new Vector3(playerSpot.transform.position.x, playerSpot.transform.position.y + 0.5f, 0);
@@ -50,6 +51,10 @@ public class CombatManager : UnitySingleton<CombatManager>
         {
             InitializeCombatScene();
             DecideTurn();
+            if (battleState == BattleState.PlayerTurn)
+            {
+                UIManager.Instance.selectedCardParent.SetActive(true);
+            }
         }
     }
 
