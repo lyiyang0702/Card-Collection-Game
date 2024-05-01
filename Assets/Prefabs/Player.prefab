@@ -106,6 +106,113 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &3398316915937393880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3614177139079710792}
+  - component: {fileID: 8365759395237762943}
+  - component: {fileID: 6252182317545228649}
+  - component: {fileID: 128876903420104949}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3614177139079710792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3398316915937393880}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6267113768469115983}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &8365759395237762943
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3398316915937393880}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 6.44
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &6252182317545228649
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3398316915937393880}
+  m_Enabled: 1
+--- !u!114 &128876903420104949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3398316915937393880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49f8f991bf053b49b41727338cac717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 8365759395237762943}
+  lerpTime: 1
 --- !u!1 &5535157251525667703
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +227,7 @@ GameObject:
   - component: {fileID: 2855316712723982548}
   - component: {fileID: 3397142081033938710}
   - component: {fileID: 3951973881166865794}
+  - component: {fileID: 2985717671615271795}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -141,6 +249,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4776333924661330544}
+  - {fileID: 3614177139079710792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &6499973214033155537
@@ -218,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  moveDirection: {x: 0, y: 0, z: 0}
+  maxSteps: 5
   _colliders: []
   targetInteractable: {fileID: 0}
   currentHeldInteractable: {fileID: 0}
@@ -241,7 +350,8 @@ MonoBehaviour:
   inventory: {fileID: 3951973881166865794}
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  cam: {fileID: 3398316915937393880}
 --- !u!114 &3397142081033938710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,4 +474,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db246f5ab616aac45b2ca5cbc94db34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactables: []
+  cards: []
+--- !u!114 &2985717671615271795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535157251525667703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1f6a297af79584f9a86320446a5281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Pyoro
+  healthPoints: 0
+  OnDamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthUpdatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  rb: {fileID: 0}
+  stats:
+    atk: 0
+    spd: 10
+    def: 10
+  attackBuff: 0
+  defenseBuff: 0
+  agilityBuff: 0
+  cards: []

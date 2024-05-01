@@ -8,8 +8,10 @@ public class PlayerController : UnitySingleton<PlayerController>
     [SerializeField]
     float speed = 1f;
     [SerializeField]
-    int steps = 5;
+    int maxSteps = 5;
+    int steps;
     Vector3 moveDirection;
+    PlayerInput input;
     public List<Collider2D> _colliders;
     public Interactable targetInteractable;
     public Interactable currentHeldInteractable;
@@ -19,9 +21,13 @@ public class PlayerController : UnitySingleton<PlayerController>
     public Inventory inventory;
     Rigidbody2D rb;
     public LayerMask wallLayer;
+    public GameObject cam;
     private void Start()
     {
+        DontDestroyOnLoad(this);
         rb = GetComponent<Rigidbody2D>();
+        steps = maxSteps;
+        input = GetComponent<PlayerInput>();    
     }
 
     private void FixedUpdate()
@@ -33,7 +39,7 @@ public class PlayerController : UnitySingleton<PlayerController>
 
     public void Move(InputAction.CallbackContext context)
     {
-        
+        if (CombatManager.Instance.battleState != BattleState.None) return;
         var direction = context.ReadValue<Vector2>();
         moveDirection = new Vector2(direction.x, direction.y);
         RaycastHit2D hit = Physics2D.Raycast(transform.position,moveDirection,0.5f,wallLayer);
@@ -138,6 +144,16 @@ public class PlayerController : UnitySingleton<PlayerController>
     public void ApplyMovement()
     {
         //rb.velocity = moveDirection * speed;
+        
+    }
+
+    public void ResetMove()
+    {
+        steps = maxSteps;
+    }
+
+    void AfterEnterBattle()
+    {
         
     }
 }

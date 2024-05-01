@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: TestCard
   m_EditorClassIdentifier: 
   id: 
-  displayName: 
+  displayName: TestCard
+  elementalType: 0
+  colorTier: 0
+  attack: 0

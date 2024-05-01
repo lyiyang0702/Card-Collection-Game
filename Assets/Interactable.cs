@@ -23,7 +23,6 @@ public class Interactable : MonoBehaviour
 
     public GameObject validInteractIndicator;
 
-    public CardScriptableObject cardObj;
 
     public virtual void OnInteract()
     {
@@ -57,8 +56,8 @@ public class Interactable : MonoBehaviour
     {
         currentInteractState = InteractState.NoInteract;
         actionEvent.Invoke();
-        PlayerController.Instance.inventory.AddInteractableToInventory(this);
-        Destroy(gameObject);
+        PlayerController.Instance.ResetMove();
+
     }
 
     public virtual void OnTargetInteractable()

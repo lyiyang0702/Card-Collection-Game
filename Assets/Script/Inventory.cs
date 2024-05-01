@@ -5,7 +5,8 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
-    List<CardScriptableObject> interactables = new List<CardScriptableObject>();
+    public List<CardScriptableObject> cards = new List<CardScriptableObject>();
+    //public List<GameObject> cards = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,18 @@ public class Inventory : MonoBehaviour
         
     }
 
-    public void AddInteractableToInventory(Interactable interactable)
+    public void AddCardToInventory(CardInteractable cardInteractable)
     {
-        interactables.Add(interactable.cardObj);
+        cards.Add(cardInteractable.cardInfo);
     }
+
+    //public void AddCardToInventory(CardInteractable cardInteractable)
+    //{
+    //    GameObject cardObj = new GameObject("card");
+    //    var card = cardObj.AddComponent<CardDamageSource>();
+    //     var cardInfo = cardInteractable.cardInfo;
+    //    var owner = gameObject.GetComponent<PlayerCombatantController>();
+    //    card.InitializeCard(cardInfo, owner);
+    //    cards.Add(cardObj);
+    //}
 }
