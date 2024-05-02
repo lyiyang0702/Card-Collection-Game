@@ -9,6 +9,7 @@ public class UIManager : UnitySingleton<UIManager>
     public GameObject inventoryUI;
     public GameObject selectedCardParent;
     public List<CardScriptableObject> tempSelectedCards = new List<CardScriptableObject>();
+    public bool isSelecting = false;
     // Start is called before the first frame update
 
     private void OnEnable()

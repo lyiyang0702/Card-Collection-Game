@@ -47,11 +47,12 @@ public class CombatManager : UnitySingleton<CombatManager>
     {
         if (scene.name == "BattleScene")
         {
+            if (enemy == null) return;
             InitializeCombatScene();
             DecideTurn();
             if (battleState == BattleState.PlayerTurn)
             {
-                UIManager.Instance.selectedCardParent.SetActive(true);
+                UIManager.Instance.selectedCardParent.transform.parent.gameObject.SetActive(true);
             }
         }
     }

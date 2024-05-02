@@ -14,12 +14,12 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public TextMeshProUGUI elementalTypeText;
     public Image cardSprite;
     public Image overlay;
-    [SerializeField]
     CardScriptableObject _cardInfo;
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!UIManager.Instance.isSelecting) return;
         overlay.gameObject.SetActive(!overlay.gameObject.activeSelf);
-        if (_cardInfo == null) return;
+        if (!_cardInfo) return;
         if (UIManager.Instance.tempSelectedCards.Contains(_cardInfo))
         {
             UIManager.Instance.tempSelectedCards.Remove(_cardInfo);

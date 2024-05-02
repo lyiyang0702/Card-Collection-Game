@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.80576205, y: 0.81939757}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.699997, y: -4.9680023}
+  m_AnchoredPosition: {x: -7.700012, y: -4.9680176}
   m_SizeDelta: {x: 72.9315, y: -7.5261993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8623975135877870915
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 33.75
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -247,7 +247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00074768066, y: -0.00061035156}
+  m_AnchoredPosition: {x: -0.0007324219, y: -0.00061035156}
   m_SizeDelta: {x: -2, y: 0.7000122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2111007002753903663
@@ -284,7 +284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0016784668, y: -0.008575439}
+  m_AnchoredPosition: {x: 0.0017089844, y: -0.008544922}
   m_SizeDelta: {x: 0.00013685226, y: -0.008812785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &579917864573333059
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 39.65
   m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -620,6 +620,7 @@ GameObject:
   - component: {fileID: 7269529621052908072}
   - component: {fileID: 2557680283115270008}
   - component: {fileID: 5088469307360303268}
+  - component: {fileID: 4066732066480492976}
   m_Layer: 5
   m_Name: CardUI
   m_TagString: Untagged
@@ -642,10 +643,10 @@ RectTransform:
   - {fileID: 2050355248173306060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.39080864, y: 0.2571948}
-  m_AnchorMax: {x: 0.6095391, y: 0.74870133}
-  m_AnchoredPosition: {x: 0.5, y: -2}
-  m_SizeDelta: {x: 2.9505005, y: 4.4233093}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.5, y: 1.5}
+  m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2557680283115270008
 CanvasRenderer:
@@ -673,4 +674,19 @@ MonoBehaviour:
   elementalTypeText: {fileID: 5139471735472010595}
   cardSprite: {fileID: 6048117225513821011}
   overlay: {fileID: 343364480715319856}
-  _cardInfo: {fileID: 0}
+--- !u!114 &4066732066480492976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8565220101848944112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56bf58b898e6ab44ba2880fd33cd04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  baseDamage: 0
+  damage: 0
+  cardInfo: {fileID: 0}

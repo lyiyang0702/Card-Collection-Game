@@ -333,6 +333,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 931319032}
     m_Modifications:
+    - target: {fileID: 2197557592019529398, guid: bea14b1078af6b348957afcf713adcab, type: 3}
+      propertyPath: elementalType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3429346861814901672, guid: bea14b1078af6b348957afcf713adcab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.5
@@ -118761,6 +118765,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1668052523400053649, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4204310004153892152, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -118801,6 +118809,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4961070135282857652, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.480011
+      objectReference: {fileID: 0}
     - target: {fileID: 6145676398290121059, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_Name
       value: CanvasParent
@@ -118809,6 +118821,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2006825149}
+    - target: {fileID: 8456556979463793193, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

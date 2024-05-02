@@ -18,9 +18,9 @@ public class CardScriptableObject: ScriptableObject
 
     public enum ColorTier
     {
-        Green,
-        Blue,
-        Purple
+        Green = 1,
+        Blue = 2,
+        Purple = 3
     }
 
     public ElementalType elementalType;
