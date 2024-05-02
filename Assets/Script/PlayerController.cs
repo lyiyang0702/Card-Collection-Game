@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : UnitySingleton<PlayerController>
 {
+    public PlayerCombatantController playerCombatant; 
     [SerializeField]
     float speed = 1f;
     [SerializeField]
     int maxSteps = 5;
     int steps;
     Vector3 moveDirection;
-    PlayerInput input;
+    public PlayerInput input;
     public List<Collider2D> _colliders;
     public Interactable targetInteractable;
     public Interactable currentHeldInteractable;
@@ -28,6 +29,7 @@ public class PlayerController : UnitySingleton<PlayerController>
         rb = GetComponent<Rigidbody2D>();
         steps = maxSteps;
         input = GetComponent<PlayerInput>();    
+        playerCombatant = GetComponent<PlayerCombatantController>();
     }
 
     private void FixedUpdate()

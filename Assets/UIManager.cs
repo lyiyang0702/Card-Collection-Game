@@ -8,7 +8,7 @@ public class UIManager : UnitySingleton<UIManager>
     public GameObject BattleHUD;
     public GameObject inventoryUI;
     public GameObject selectedCardParent;
-    
+    public List<CardScriptableObject> tempSelectedCards = new List<CardScriptableObject>();
     // Start is called before the first frame update
 
     private void OnEnable()

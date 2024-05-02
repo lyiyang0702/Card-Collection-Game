@@ -8,11 +8,10 @@ public class EnemyInteractable : Interactable
     public override void InteractAction()
     {
         base.InteractAction();
-        DontDestroyOnLoad(gameObject);
+        gameObject.transform.SetParent(CombatManager.Instance.transform);
         CombatManager.Instance.enemy = gameObject;
         SceneManager.LoadScene("BattleScene");
 
-        
     }
 
 

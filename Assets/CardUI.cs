@@ -14,18 +14,27 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public TextMeshProUGUI elementalTypeText;
     public Image cardSprite;
     public Image overlay;
-
+    [SerializeField]
+    CardScriptableObject _cardInfo;
     public void OnPointerClick(PointerEventData eventData)
     {
-        overlay.gameObject.SetActive(true);
-
+        overlay.gameObject.SetActive(!overlay.gameObject.activeSelf);
+        if (_cardInfo == null) return;
+        if (UIManager.Instance.tempSelectedCards.Contains(_cardInfo))
+        {
+            UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
+        }
+        else
+        {
+            UIManager.Instance.tempSelectedCards.Add(_cardInfo);
+        }
     }
 
 
-    // Start is called before the first frame update
-    void Start()
+// Start is called before the first frame update
+void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -36,6 +45,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
 
     public void UpdateCardUI(CardScriptableObject cardInfo)
     {
+        _cardInfo = cardInfo;
         switch (cardInfo.colorTier)
         {
             case CardScriptableObject.ColorTier.Green:

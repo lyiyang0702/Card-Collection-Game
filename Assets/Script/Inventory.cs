@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField]
-    public List<CardScriptableObject> cards = new List<CardScriptableObject>();
+    public List<CardScriptableObject> cards =  new List<CardScriptableObject>();
+
     //public List<GameObject> cards = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

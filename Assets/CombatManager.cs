@@ -35,6 +35,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         enemy.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         playerPrefab.GetComponent<PlayerController>().cam.transform.position = new Vector3(0,0,-10);
         battleState = BattleState.Start;
+        PlayerController.Instance.input.SwitchCurrentActionMap("UI");
         UIManager.Instance.cameraCanvas.SetActive(true);
         UIManager.Instance.BattleHUD.SetActive(true);
         playerPrefab.transform.position = new Vector3(playerSpot.transform.position.x, playerSpot.transform.position.y + 0.5f, 0);

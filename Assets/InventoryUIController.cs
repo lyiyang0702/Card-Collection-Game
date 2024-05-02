@@ -5,35 +5,36 @@ using UnityEngine;
 
 public class InventoryUIController : MonoBehaviour
 {
-    public GameObject cardOrganizer;
+    public GameObject inventoryGrid;
+    public GameObject CardUIPrefab;
 
     private void OnEnable()
     {
         PopulateCardUI();
+
     }
 
     private void OnDisable()
     {
         ClearCards();
+
     }
 
     private void ClearCards()
     {
-        for (int i = 0; i < cardOrganizer.transform.childCount; i++)
+        for (int i = 0; i < inventoryGrid.transform.childCount; i++)
         {
-            var cardSlot = cardOrganizer.transform.GetChild(i);
-            for (int j = 0; j < cardSlot.transform.childCount; j++)
-            {
-                Destroy(cardSlot.transform.GetChild(j));
-            }
+            Destroy(inventoryGrid.transform.GetChild(i));
         }
     }
 
     void PopulateCardUI()
     {
-        for(int i = 0; i< PlayerController.Instance.inventory.cards.Count; i++)
+        foreach (var card in PlayerController.Instance.inventory.cards)
         {
-           // int cardSlotIndex = 
+            GameObject cardObj = Instantiate(CardUIPrefab);
+            cardObj.GetComponent<CardUI>().UpdateCardUI(card);
+            cardObj.transform.SetParent(inventoryGrid.transform);
         }
 
     }
