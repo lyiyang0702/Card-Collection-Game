@@ -17,6 +17,7 @@ public class PlayerCombatantController : Damageable
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
+            if (CombatManager.Instance.enemy == null) return;
             var enemyCombatant = CombatManager.Instance.enemy.GetComponent<EnemyCombatantController>();
             if(enemyCombatant != null)
             {
@@ -28,6 +29,7 @@ public class PlayerCombatantController : Damageable
     public void Attack()
     {
         CalculateDamage(CheckIfHasComboEffect());
+        if (CombatManager.Instance.enemy == null) return;
         var enemyCombatant = CombatManager.Instance.enemy.GetComponent<EnemyCombatantController>();
         enemyCombatant.ApplyDamage(stats.atk);
         foreach (var card in cardCombo)

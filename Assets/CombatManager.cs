@@ -64,6 +64,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     {
         if (scene.name == "BattleScene")
         {
+            if (enemy == null) return;
             playerPrefab.transform.position = playerPosBeforeCombat;
             playerPrefab.transform.localScale = Vector3.one;
             enemy.transform.localScale = Vector3.one;

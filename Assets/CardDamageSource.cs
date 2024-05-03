@@ -33,6 +33,9 @@ public class CardDamageSource : MonoBehaviour,IPointerClickHandler
         damage = baseDamage;
     }
 
+
+    // remove this and change it to temp selected
+    // remove combo selected
     public void OnPointerClick(PointerEventData eventData)
     {
         if (UIManager.Instance.isSelecting) return;
