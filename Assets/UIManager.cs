@@ -49,6 +49,11 @@ public class UIManager : UnitySingleton<UIManager>
     public void OnBattleSceneUnLoaded()
     {
         PlayerController.Instance.input.SwitchCurrentActionMap("Player");
+        //temp fix
+        for(int i = 0; i < selectedCardParent.transform.childCount; i++)
+        {
+            Destroy(selectedCardParent.transform.GetChild(i).gameObject);
+        }
         cameraCanvas.SetActive(false);
         levelMap.SetActive(true);
     }
