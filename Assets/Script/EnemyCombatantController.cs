@@ -11,6 +11,7 @@ public class EnemyCombatantController : Damageable
     override public void Start()
     {
         base.Start();
+        isEnemy = true;
         switch (difficulty)
         {
             case Difficulty.Easy:
@@ -28,7 +29,13 @@ public class EnemyCombatantController : Damageable
             default:
                 break;
         }
+        CombatManager.Instance.SwicthTurnEevent.AddListener(Attack);
     }
 
+    public void Attack()
+    {
+        if (CombatManager.Instance.battleState != BattleState.EnemyTurn) return;
+        PlayerController.Instance.playerCombatant.ApplyDamage(stats.atk);
+    }
 
 }

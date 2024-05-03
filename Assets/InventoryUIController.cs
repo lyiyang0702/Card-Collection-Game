@@ -21,6 +21,7 @@ public class InventoryUIController : MonoBehaviour
     {
         ClearCards();
         ConfirmButton.onClick.RemoveListener(OnConfirm);
+        UIManager.Instance.tempSelectedCards.Clear();
         UIManager.Instance.isSelecting = false;
     }
 

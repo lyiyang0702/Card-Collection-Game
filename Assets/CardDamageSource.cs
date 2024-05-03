@@ -6,16 +6,16 @@ using UnityEngine.EventSystems;
 
 public class CardDamageSource : MonoBehaviour,IPointerClickHandler
 {
-    public Damageable owner;
+    public PlayerCombatantController owner;
     public int baseDamage;
     public int damage;  
     public CardScriptableObject cardInfo;
-    EnemyCombatantController enemyCombatant;
+    int click = 0;
     // Start is called before the first frame update
 
     void Start()
     {
-        enemyCombatant = CombatManager.Instance.enemy.GetComponent<EnemyCombatantController>();
+       
 
     }
 
@@ -36,11 +36,21 @@ public class CardDamageSource : MonoBehaviour,IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if (UIManager.Instance.isSelecting) return;
-        Attack();
+        click++;
+        if (click >1)
+        {
+            owner.cardCombo.Remove(this);
+            click = 0;
+        }
+        else
+        {
+            owner.cardCombo.Add(this);
+        }
+    }
+    public void DestroyCard()
+    {
+        PlayerController.Instance.inventory.RemveCard(cardInfo);
+        Destroy(gameObject);
     }
 
-    private void Attack()
-    {
-        enemyCombatant.ApplyDamage(damage);
-    }
 }

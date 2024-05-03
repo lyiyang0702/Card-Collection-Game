@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 2985717671615271795}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,8 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea40a1d253044e48aa7200b69abbb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCombatant: {fileID: 2985717671615271795}
   speed: 3
   maxSteps: 5
+  input: {fileID: 3397142081033938710}
   _colliders: []
   targetInteractable: {fileID: 0}
   currentHeldInteractable: {fileID: 0}
@@ -379,7 +381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1f6a297af79584f9a86320446a5281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Pyoro
+  displayName: Player
+  baseHealthPoints: 10
   healthPoints: 0
   OnDamageEvent:
     m_PersistentCalls:
@@ -391,6 +394,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rb: {fileID: 0}
+  isPlayer: 0
+  isEnemy: 0
   stats:
     atk: 0
     spd: 10
@@ -398,5 +403,4 @@ MonoBehaviour:
   attackBuff: 0
   defenseBuff: 0
   agilityBuff: 0
-  cards: []
-  selectedCars: []
+  cardCombo: []

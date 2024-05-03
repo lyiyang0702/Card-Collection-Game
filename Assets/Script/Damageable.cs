@@ -14,14 +14,14 @@ public struct Stats
 public class Damageable : MonoBehaviour
 {
     public string displayName = "Pyoro";
-    public float baseHealthPoints {  get; private set; }
+    public float baseHealthPoints;
     public float healthPoints;
     public UnityEvent<float> OnDamageEvent;
-    public UnityEvent<float, float, float> OnHealthUpdatedEvent;
+    public UnityEvent<float> OnHealthUpdatedEvent;
     public UnityEvent<Damageable> OnDeathEvent;
-
     public Rigidbody2D rb;
-
+    public bool isPlayer;
+    public bool isEnemy;
     public Stats stats = new Stats();
 
     public int attackBuff;
@@ -30,7 +30,7 @@ public class Damageable : MonoBehaviour
 
     private void Awake()
     {
-        
+        healthPoints = baseHealthPoints;
     }
     // Start is called before the first frame update
     public virtual void Start()
@@ -47,18 +47,24 @@ public class Damageable : MonoBehaviour
     public void InitializeStats(float hp, float atk, float def, float spd = 0)
     {
         baseHealthPoints = hp;
-        healthPoints = hp;
+        healthPoints = baseHealthPoints;
         stats.atk = atk;
         stats.spd = spd;
         stats.def = def;
     }
 
-    public void ApplyDamage(float dmg)
+    public void ApplyDamage(float atk)
     {
+        float dmg = atk * (100 / (100 + stats.def));
+        Debug.Log("Cause dmg:" + dmg);
         healthPoints -= dmg;
-        if (healthPoints < 0)
+        OnHealthUpdatedEvent.Invoke(healthPoints);
+        if (healthPoints <= 0)
         {
             OnDeathEvent.Invoke(this);
         }
     }
+
+
+
 }

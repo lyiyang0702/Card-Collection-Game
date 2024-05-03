@@ -5,7 +5,7 @@ public enum ElementalType
 {
     Steel,
     Titanium,
-    Plastic,
+    Rubber,
     Gold
 }
 [CreateAssetMenu(menuName = "Card")]
@@ -26,7 +26,7 @@ public class CardScriptableObject: ScriptableObject
     public ElementalType elementalType;
     public ColorTier colorTier;
 
-    public int attack = 0;
+    //public int attack = 0;
 
     public Sprite cardSprite;
 }

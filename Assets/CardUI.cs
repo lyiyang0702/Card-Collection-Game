@@ -14,15 +14,19 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public TextMeshProUGUI elementalTypeText;
     public Image cardSprite;
     public Image overlay;
+
     CardScriptableObject _cardInfo;
+    int clickCount;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!UIManager.Instance.isSelecting) return;
+        clickCount++;
         overlay.gameObject.SetActive(!overlay.gameObject.activeSelf);
+        if (!UIManager.Instance.isSelecting) return;
         if (!_cardInfo) return;
-        if (UIManager.Instance.tempSelectedCards.Contains(_cardInfo))
+        if (clickCount >1)
         {
             UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
+            clickCount = 0;
         }
         else
         {
@@ -67,4 +71,6 @@ void Start()
         elementalTypeText.text = cardInfo.elementalType.ToString();
         cardSprite.sprite = cardInfo.cardSprite;
     }
+
+
 }

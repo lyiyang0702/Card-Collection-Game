@@ -24,6 +24,11 @@ public class Inventory : MonoBehaviour
         cards.Add(cardInteractable.cardInfo);
     }
 
+    public void RemveCard(CardScriptableObject card)
+    {
+        cards.Remove(card);
+    }
+
     //public void AddCardToInventory(CardInteractable cardInteractable)
     //{
     //    GameObject cardObj = new GameObject("card");
