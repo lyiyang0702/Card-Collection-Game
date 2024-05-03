@@ -68,8 +68,8 @@ public class CombatManager : UnitySingleton<CombatManager>
             playerPrefab.transform.localScale = Vector3.one;
             enemy.transform.localScale = Vector3.one;
             battleState = BattleState.None;
-            Destroy(enemy);
             UIManager.Instance.OnBattleSceneUnLoaded();
+            Destroy(enemy);
         }
     }
     private void DecideTurn()
