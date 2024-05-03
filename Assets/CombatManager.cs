@@ -79,7 +79,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         player.OnDeathEvent.AddListener(OnEndBattle);
         enemy.OnDeathEvent.AddListener(OnEndBattle);
 
-        if (enemy.elementalType == ElementalType.Steel || enemy.elementalType == ElementalType.Rubber)
+        if (enemy.elementalType == ElementalType.Rubber || enemy.elementalType == ElementalType.Rubber)
         {
             battleState = BattleState.EnemyTurn;
         }

@@ -7,6 +7,11 @@ public class CardInteractable : Interactable
 
     public CardScriptableObject cardInfo;
 
+    private void Start()
+    {
+
+         
+    }
     public override void InteractAction()
     {
         base.InteractAction();
