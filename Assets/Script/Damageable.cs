@@ -10,6 +10,11 @@ public struct Stats
     public float atk;
     public float spd;
     public float def;
+
+    public void ResetStat()
+    {
+        atk = 0; spd = 0; def = 0;
+    }
 }
 public class Damageable : MonoBehaviour
 {
@@ -36,6 +41,7 @@ public class Damageable : MonoBehaviour
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //CombatManager.Instance.SwicthTurnEevent.AddListener(OnSwitchTurn);
     }
 
     // Update is called once per frame
@@ -56,15 +62,38 @@ public class Damageable : MonoBehaviour
     public void ApplyDamage(float atk)
     {
         float dmg = atk * (100 / (100 + stats.def));
-        Debug.Log("Cause dmg:" + dmg);
+
         healthPoints -= dmg;
-        OnHealthUpdatedEvent.Invoke(healthPoints);
-        if (healthPoints <= 0)
+        Mathf.Clamp(healthPoints, 0, 100);
+        OnDamageEvent?.Invoke(dmg);
+        OnHealthUpdatedEvent?.Invoke(healthPoints);
+        Debug.Log("Cause dmg:" + dmg);
+        if (Mathf.RoundToInt(healthPoints) < 1)
         {
-            OnDeathEvent.Invoke(this);
+            StartCoroutine(DeathRoutine());
         }
     }
 
+    
+    IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(3f);
+        OnDeathEvent?.Invoke(this);
+    }
 
+    virtual public void OnSwitchTurn(BattleState state)
+    {
+        if (CombatManager.Instance.battleState == BattleState.Lost || CombatManager.Instance.battleState == BattleState.Won) return;
+        CombatManager.Instance.battleState = state;
+        CombatManager.Instance.SwicthTurnEevent.Invoke(state);
+    }
 
+    public void ResetStat()
+    {
+        attackBuff = 0;
+        defenseBuff = 0;
+        agilityBuff = 0;
+        stats.ResetStat();
+
+    }
 }

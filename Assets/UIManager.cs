@@ -16,7 +16,7 @@ public class UIManager : UnitySingleton<UIManager>
     public Button attackButton;
     public GameObject playerSpot;
     public GameObject enemySpot;
-    public bool isSelecting = false;
+    public bool canSelectCards = false;
     // Start is called before the first frame update
 
     private void Start()
@@ -41,8 +41,8 @@ public class UIManager : UnitySingleton<UIManager>
         PlayerController.Instance.input.SwitchCurrentActionMap("UI");
         cameraCanvas.SetActive(true);
         levelMap.SetActive(false);
-        enemyStatsBar.GetComponent<StatsBarUI>().UpdateStatsBar(CombatManager.Instance.enemy.GetComponent<EnemyCombatantController>());
-        playerStatsBar.GetComponent<StatsBarUI>().UpdateStatsBar(PlayerController.Instance.playerCombatant);
+        enemyStatsBar.GetComponent<StatsBarUI>().UpdateStatsBar(CombatManager.Instance.enemyCombatant);
+        playerStatsBar.GetComponent<StatsBarUI>().UpdateStatsBar(CombatManager.Instance.playerCombatant);
         UpdateBattleUI(CombatManager.Instance.battleState);
     }
 

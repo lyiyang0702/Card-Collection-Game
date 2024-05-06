@@ -220,7 +220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCombatant: {fileID: 2985717671615271795}
   speed: 3
-  maxSteps: 5
   input: {fileID: 3397142081033938710}
   _colliders: []
   targetInteractable: {fileID: 0}
@@ -382,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Player
-  baseHealthPoints: 10
+  baseHealthPoints: 100
   healthPoints: 0
   OnDamageEvent:
     m_PersistentCalls:

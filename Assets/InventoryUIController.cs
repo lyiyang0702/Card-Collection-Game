@@ -14,7 +14,7 @@ public class InventoryUIController : MonoBehaviour
     {
         PopulateCardUI();
         ConfirmButton.onClick.AddListener(OnConfirm);
-        UIManager.Instance.isSelecting = true;
+        UIManager.Instance.canSelectCards = true;
     }
 
     private void OnDisable()
@@ -22,7 +22,7 @@ public class InventoryUIController : MonoBehaviour
         ClearCards();
         ConfirmButton.onClick.RemoveListener(OnConfirm);
         UIManager.Instance.tempSelectedCards.Clear();
-        UIManager.Instance.isSelecting = false;
+        UIManager.Instance.canSelectCards = false;
     }
 
     private void ClearCards()
@@ -48,7 +48,7 @@ public class InventoryUIController : MonoBehaviour
         foreach (var card in UIManager.Instance.tempSelectedCards)
         {
             GameObject cardUI = CreateCardUI(card);
-
+            PlayerController.Instance.playerCombatant.cardCombo.Add(cardUI.GetComponent<CardDamageSource>());
             cardUI.transform.SetParent(cardParent);
             cardUI.GetComponent<RectTransform>().localScale = Vector3.one;
         }
@@ -65,6 +65,7 @@ public class InventoryUIController : MonoBehaviour
         GameObject cardObj = Instantiate(CardUIPrefab);
         cardObj.GetComponent<CardUI>().UpdateCardUI(cardInfo);
         cardObj.GetComponent<CardDamageSource>().InitializeCard(cardInfo, PlayerController.Instance.playerCombatant);
+        
         return cardObj;
     }
 }

@@ -56,7 +56,6 @@ public class Interactable : MonoBehaviour
     {
         currentInteractState = InteractState.NoInteract;
         actionEvent.Invoke();
-        PlayerController.Instance.ResetMove();
 
     }
 

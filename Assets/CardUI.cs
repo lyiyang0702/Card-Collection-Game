@@ -16,22 +16,30 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public Image overlay;
 
     CardScriptableObject _cardInfo;
-    int clickCount;
+    int clickCount = 0;
     public void OnPointerClick(PointerEventData eventData)
     {
-        clickCount++;
-        overlay.gameObject.SetActive(!overlay.gameObject.activeSelf);
-        if (!UIManager.Instance.isSelecting) return;
+
+        if (!UIManager.Instance.canSelectCards) return;
         if (!_cardInfo) return;
+        if (UIManager.Instance.tempSelectedCards.Count >= 5) return;
+        clickCount++;
+        
         if (clickCount >1)
         {
-            UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
             clickCount = 0;
+            if (!UIManager.Instance.tempSelectedCards.Contains(_cardInfo)) return;
+            UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
+            overlay.gameObject.SetActive(false);
         }
         else
         {
+            if(UIManager.Instance.tempSelectedCards.Contains(_cardInfo)) return;
             UIManager.Instance.tempSelectedCards.Add(_cardInfo);
+            overlay.gameObject.SetActive(true);
         }
+        
+
     }
 
 

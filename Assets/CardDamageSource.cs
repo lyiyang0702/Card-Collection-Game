@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardDamageSource : MonoBehaviour,IPointerClickHandler
+public class CardDamageSource : MonoBehaviour
 {
     public PlayerCombatantController owner;
     public int baseDamage;
     public int damage;  
     public CardScriptableObject cardInfo;
-    int click = 0;
     // Start is called before the first frame update
 
     void Start()
@@ -36,20 +35,20 @@ public class CardDamageSource : MonoBehaviour,IPointerClickHandler
 
     // remove this and change it to temp selected
     // remove combo selected
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (UIManager.Instance.isSelecting) return;
-        click++;
-        if (click >1)
-        {
-            owner.cardCombo.Remove(this);
-            click = 0;
-        }
-        else
-        {
-            owner.cardCombo.Add(this);
-        }
-    }
+    //public void OnPointerClick(PointerEventData eventData)
+    //{
+    //    if (UIManager.Instance.isSelecting) return;
+    //    click++;
+    //    if (click >1)
+    //    {
+    //        owner.cardCombo.Remove(this);
+    //        click = 0;
+    //    }
+    //    else
+    //    {
+    //        owner.cardCombo.Add(this);
+    //    }
+    //}
     public void DestroyCard()
     {
         PlayerController.Instance.inventory.RemveCard(cardInfo);

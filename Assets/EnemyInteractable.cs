@@ -9,7 +9,7 @@ public class EnemyInteractable : Interactable
     {
         base.InteractAction();
         gameObject.transform.SetParent(CombatManager.Instance.transform);
-        CombatManager.Instance.enemy = gameObject;
+        CombatManager.Instance.enemyCombatant = gameObject.GetComponent<EnemyCombatantController>();
         SceneManager.LoadScene("BattleScene",LoadSceneMode.Additive);
 
     }

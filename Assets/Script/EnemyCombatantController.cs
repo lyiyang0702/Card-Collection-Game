@@ -7,7 +7,7 @@ public class EnemyCombatantController : Damageable
 {
     public ElementalType elementalType;
     public Difficulty difficulty;
-
+    
     override public void Start()
     {
         base.Start();
@@ -15,27 +15,39 @@ public class EnemyCombatantController : Damageable
         switch (difficulty)
         {
             case Difficulty.Easy:
-                InitializeStats(6, 2, 0);
+                InitializeStats(8, 2, 0);
                 break;
             case Difficulty.Mid:
-                InitializeStats(10, 2, 1);
+                InitializeStats(6, 3, 1);
                 break;
             case Difficulty.Hard:
-                InitializeStats(15, 5, 2);
+                InitializeStats(20, 3, 0);
                 break;
             case Difficulty.Boss:
-                InitializeStats(30, 10, 5);
+                InitializeStats(100, 10, 3);
                 break;
             default:
                 break;
         }
-        CombatManager.Instance.SwicthTurnEevent.AddListener(Attack);
+
+
     }
 
     public void Attack()
     {
-        if (CombatManager.Instance.battleState != BattleState.EnemyTurn) return;
+        Debug.Log("Enemy Attack");
         PlayerController.Instance.playerCombatant.ApplyDamage(stats.atk);
+        //CombatManager.Instance.SwicthTurnEevent.Invoke(BattleState.PlayerTurn);
+
+        OnSwitchTurn(BattleState.PlayerTurn);
     }
+
+    public override void OnSwitchTurn(BattleState state)
+    {
+        base.OnSwitchTurn(state);
+        Debug.Log("Switch to player turn");
+
+    }
+
 
 }

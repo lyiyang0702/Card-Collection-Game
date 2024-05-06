@@ -364,7 +364,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -387,3 +387,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: {fileID: 1005993988570062723}
   Hp: {fileID: 8621160876864827015}
+  owner: {fileID: 0}

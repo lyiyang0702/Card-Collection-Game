@@ -597,6 +597,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1796055347407422311}
     m_Modifications:
+    - target: {fileID: 1005993988570062723, guid: 5e1f985b3270edf4dad4b6dacf75540c, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2953648945177697316, guid: 5e1f985b3270edf4dad4b6dacf75540c, type: 3}
       propertyPath: m_Name
       value: StatsBar (1)

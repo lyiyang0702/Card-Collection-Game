@@ -9,26 +9,22 @@ using System;
 public enum BattleState {None, Start, PlayerTurn, EnemyTurn, Won, Lost}
 public class CombatManager : UnitySingleton<CombatManager>
 {
-    public GameObject playerPrefab;
-    public GameObject enemy;
+    //public GameObject player;
+    //public GameObject enemy;
     public BattleState battleState = BattleState.None;
-    public UnityEvent SwicthTurnEevent;
-    Vector3 playerPosBeforeCombat;
+    public UnityEvent<BattleState> SwicthTurnEevent;
+    [SerializeField] Vector3 playerPosBeforeCombat;
+    public PlayerCombatantController playerCombatant;
+    public EnemyCombatantController enemyCombatant;
     // Start is called before the first frame update
-    override public void Awake()
-    {
-        base.Awake();
 
-        DontDestroyOnLoad(this);
-        SceneManager.sceneLoaded += OnBattleSceneLoaded;
-        SceneManager.sceneUnloaded += OnBattleSceneUnloaded;
-    }
-
-  
 
     private void Start()
     {
-
+        playerCombatant = PlayerController.Instance.playerCombatant;
+        SceneManager.sceneLoaded += OnBattleSceneLoaded;
+        SceneManager.sceneUnloaded += OnBattleSceneUnloaded;
+        SwicthTurnEevent.AddListener(OnSwitchTurn);
     }
     // Update is called once per frame
     void Update()
@@ -36,24 +32,16 @@ public class CombatManager : UnitySingleton<CombatManager>
         
     }
 
-    public void InitializeCombatScene()
-    {
-        playerPosBeforeCombat = playerPrefab.transform.position;
-        playerPrefab.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        enemy.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        Camera.main.transform.position = new Vector3(0,0,-10);
-        UIManager.Instance.OnBattleSceneLoaded();
-        playerPrefab.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y + 0.5f, 0);
-        enemy.transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
-
-    }
 
     private void OnBattleSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "BattleScene")
         {
-            if (enemy == null) return;
-            if(playerPrefab == null) return;
+            if (!SetUpCombatants())
+            {
+                Debug.Log("NO ENEMY COMBATANT OR PLAYER COMBATANT");
+                return;
+            }
             DecideTurn();
             InitializeCombatScene();
 
@@ -64,23 +52,13 @@ public class CombatManager : UnitySingleton<CombatManager>
     {
         if (scene.name == "BattleScene")
         {
-            if (enemy == null) return;
-            playerPrefab.transform.position = playerPosBeforeCombat;
-            playerPrefab.transform.localScale = Vector3.one;
-            enemy.transform.localScale = Vector3.one;
-            battleState = BattleState.None;
-            UIManager.Instance.OnBattleSceneUnLoaded();
-            Destroy(enemy);
+            ResetExplorationScene();
         }
     }
     private void DecideTurn()
     {
-        PlayerCombatantController player = playerPrefab.GetComponent<PlayerCombatantController>();
-        EnemyCombatantController enemy = this.enemy.GetComponent<EnemyCombatantController>();
-        player.OnDeathEvent.AddListener(OnEndBattle);
-        enemy.OnDeathEvent.AddListener(OnEndBattle);
-
-        if (enemy.elementalType == ElementalType.Rubber || enemy.elementalType == ElementalType.Rubber)
+        
+        if (enemyCombatant.difficulty == Difficulty.Hard || enemyCombatant.difficulty == Difficulty.Boss)
         {
             battleState = BattleState.EnemyTurn;
         }
@@ -89,24 +67,85 @@ public class CombatManager : UnitySingleton<CombatManager>
             battleState = BattleState.PlayerTurn;
         }
 
-        SwicthTurnEevent.Invoke();
+        SwicthTurnEevent?.Invoke(battleState);
     }
 
     void OnSwitchTurn(BattleState state)
     {
-
+        UIManager.Instance.UpdateBattleUI(state);
+        StartCoroutine(SwicthTurnRoutine());
     }
 
     void OnEndBattle(Damageable damageable)
     {
+        
         if (damageable.isEnemy)
         {
+            Debug.Log("Enemy: " + damageable.name + " is dead");
             battleState = BattleState.Won;
-            SceneManager.UnloadSceneAsync("BattleScene");
+            Destroy(damageable.gameObject);
+            enemyCombatant = null;
         }
         else if (damageable.isPlayer)
         {
+            Debug.Log(damageable.name + " is dead");
             battleState = BattleState.Lost;
+            enemyCombatant.OnDeathEvent.RemoveListener(OnEndBattle);
+            // Restart Game?
+        }
+
+        playerCombatant.OnDeathEvent.RemoveListener(OnEndBattle);
+        
+        SceneManager.UnloadSceneAsync("BattleScene");
+
+    }
+
+    bool SetUpCombatants()
+    {
+        Debug.Log("Set up combatants");
+        playerCombatant.OnDeathEvent.AddListener(OnEndBattle);
+        enemyCombatant.OnDeathEvent.AddListener(OnEndBattle);
+
+        return playerCombatant != null && enemyCombatant != null;
+    }
+
+    public void InitializeCombatScene()
+    {
+        var player = playerCombatant.gameObject;
+        var enemy = enemyCombatant.gameObject;
+        playerPosBeforeCombat = player.transform.position;
+        player.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        enemy.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        Camera.main.transform.position = new Vector3(0, 0, -10);
+        UIManager.Instance.OnBattleSceneLoaded();
+        player.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y + 0.5f, 0);
+        enemy.transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
+
+    }
+
+    public void ResetExplorationScene()
+    {
+        var player = playerCombatant.gameObject;
+
+        // reset enemy as well when lose
+        if (battleState== BattleState.Lost)
+        {
+            var enemy = enemyCombatant.gameObject;
+            enemy.transform.localScale = Vector3.one;
+            enemy.GetComponent<EnemyInteractable>().currentInteractState = Interactable.InteractState.CanInteract;
+        }
+        player.transform.position = playerPosBeforeCombat;
+        player.transform.localScale = Vector3.one;
+        battleState = BattleState.None;
+        UIManager.Instance.OnBattleSceneUnLoaded();
+    }
+
+    IEnumerator SwicthTurnRoutine()
+    {
+        yield return new WaitForSeconds(3);
+        if (battleState == BattleState.EnemyTurn)
+        {
+            enemyCombatant.Attack();
         }
     }
 }

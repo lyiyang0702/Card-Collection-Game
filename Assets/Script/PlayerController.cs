@@ -8,9 +8,7 @@ public class PlayerController : UnitySingleton<PlayerController>
     public PlayerCombatantController playerCombatant; 
     [SerializeField]
     float speed = 1f;
-    [SerializeField]
-    int maxSteps = 5;
-    int steps;
+
     Vector3 moveDirection;
     public PlayerInput input;
     public List<Collider2D> _colliders;
@@ -23,13 +21,17 @@ public class PlayerController : UnitySingleton<PlayerController>
     Rigidbody2D rb;
     public LayerMask wallLayer;
     public GameObject cam;
+
+    override public void Awake()
+    {
+        base.Awake();
+        playerCombatant = GetComponent<PlayerCombatantController>();
+    }
     private void Start()
     {
-        DontDestroyOnLoad(this);
         rb = GetComponent<Rigidbody2D>();
-        steps = maxSteps;
         input = GetComponent<PlayerInput>();    
-        playerCombatant = GetComponent<PlayerCombatantController>();
+        
     }
 
     private void FixedUpdate()
@@ -46,12 +48,7 @@ public class PlayerController : UnitySingleton<PlayerController>
         moveDirection = new Vector2(direction.x, direction.y);
         RaycastHit2D hit = Physics2D.Raycast(transform.position,moveDirection,0.5f,wallLayer);
         if (hit.collider != null) return;
-        if (steps <= 0) return;
         transform.position = transform.position + moveDirection * 0.5f;
-        if (context.canceled)
-        {
-            steps--;
-        }
     }
 
     void DetectInteractables()
@@ -149,10 +146,6 @@ public class PlayerController : UnitySingleton<PlayerController>
         
     }
 
-    public void ResetMove()
-    {
-        steps = maxSteps;
-    }
 
     void AfterEnterBattle()
     {

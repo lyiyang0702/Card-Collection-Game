@@ -11,7 +11,6 @@ public class CameraManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
         player = PlayerController.Instance;
         transform.position = player.transform.position;
     }

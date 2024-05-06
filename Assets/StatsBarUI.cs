@@ -12,11 +12,12 @@ public class StatsBarUI:MonoBehaviour
 
     private void Start()
     {
-        owner.OnHealthUpdatedEvent.AddListener(UpdateHealthBar);
+        
     }
     public void UpdateStatsBar(Damageable combatant)
     {
         owner = combatant;
+        owner.OnHealthUpdatedEvent.AddListener(UpdateHealthBar);
         displayName .text = owner.displayName;
         Hp.text = "HP: " + Mathf.FloorToInt(owner.healthPoints) + "/" + owner.baseHealthPoints.ToString();
     }
@@ -27,4 +28,5 @@ public class StatsBarUI:MonoBehaviour
         Hp.text = "HP: " + Mathf.FloorToInt(health) + "/" + owner.baseHealthPoints.ToString();
         
     }
+
 }

@@ -693,6 +693,10 @@ PrefabInstance:
       value: CombatManaegr
       objectReference: {fileID: 0}
     - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 272271030}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 272271030}
@@ -116477,6 +116481,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1142456723}
     m_Modifications:
+    - target: {fileID: 2197557592019529398, guid: 525d542e8eabb6b45999e0d03d52970b, type: 3}
+      propertyPath: elementalType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3429346861814901672, guid: 525d542e8eabb6b45999e0d03d52970b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5
@@ -116962,6 +116970,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5535157251525667703, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: m_Name
       value: Player

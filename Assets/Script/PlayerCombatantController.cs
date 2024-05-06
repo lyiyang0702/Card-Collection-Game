@@ -15,22 +15,34 @@ public class PlayerCombatantController : Damageable
 
     private void FixedUpdate()
     {
+        // Debug
         if (Input.GetKeyDown(KeyCode.K))
         {
-            if (CombatManager.Instance.enemy == null) return;
-            var enemyCombatant = CombatManager.Instance.enemy.GetComponent<EnemyCombatantController>();
+            var enemyCombatant = CombatManager.Instance.enemyCombatant;
             if(enemyCombatant != null)
             {
                 enemyCombatant.ApplyDamage(300);
             }
-
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (CombatManager.Instance.playerCombatant != null)
+            {
+                CombatManager.Instance.playerCombatant.ApplyDamage(300);
+            }
+        }
+
     }
     public void Attack()
     {
+        var enemyCombatant = CombatManager.Instance.enemyCombatant;
+        if(enemyCombatant == null)
+        {
+            Debug.Log("No available enemy to attack");
+            return;
+        }
         CalculateDamage(CheckIfHasComboEffect());
-        if (CombatManager.Instance.enemy == null) return;
-        var enemyCombatant = CombatManager.Instance.enemy.GetComponent<EnemyCombatantController>();
         enemyCombatant.ApplyDamage(stats.atk);
         foreach (var card in cardCombo)
         {
@@ -38,11 +50,14 @@ public class PlayerCombatantController : Damageable
         }
         cardCombo.Clear();
         stats.atk = 0;
+        Debug.Log("Player Attack");
+        OnSwitchTurn(BattleState.EnemyTurn);
+        //CombatManager.Instance.SwicthTurnEevent?.Invoke(BattleState.EnemyTurn);
     }
 
     public bool CheckIfHasComboEffect()
     {
-        var enemyCombatant = CombatManager.Instance.enemy.GetComponent<EnemyCombatantController>();
+        var enemyCombatant = CombatManager.Instance.enemyCombatant;
         var duplicateElements = cardCombo
             .GroupBy(x => x.cardInfo.elementalType)
             .Where(g => g.Count() >=3)
@@ -91,5 +106,8 @@ public class PlayerCombatantController : Damageable
         }
         stats.atk += attackBuff;
     }
+
+
+
 
 }
