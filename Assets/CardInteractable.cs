@@ -29,6 +29,7 @@ public class CardInteractable : Interactable
         base.OnTargetInteractable();
         if (cardSprite.activeSelf) return;
         cardSprite.SetActive(true);
-        cardInfos = ResourceManager.Instance.ReturnRandomCardByTier(1,rng);
+        var rngTier = Random.Range(1, 3);
+        cardInfos = ResourceManager.Instance.ReturnRandomCardByTier(rngTier, rng);
     }
 }

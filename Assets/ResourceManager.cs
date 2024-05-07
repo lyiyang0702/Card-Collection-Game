@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 public class ResourceManager : UnitySingleton<ResourceManager>
 {
+    
     public List<CardScriptableObject> cardList = new List<CardScriptableObject>();
     // Start is called before the first frame update
     void Start()
@@ -46,11 +47,6 @@ public class ResourceManager : UnitySingleton<ResourceManager>
             where (int)card.elementalType == elementalType
             select card
             ).ToList();
-
-        //foreach (var card in tierCard)
-        //{
-        //    Debug.Log(card.name);
-        //}
         for (int i = 0; i < number; i++)
         {
             int rng = Random.Range(0, 5);
