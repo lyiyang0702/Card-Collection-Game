@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : UnitySingleton<UIManager>
 {
+    public List<GameObject> allLevelMaps = new List<GameObject>();
     public GameObject cameraCanvas;
     public GameObject levelMap;
     public GameObject BattleHUD;
@@ -36,6 +37,10 @@ public class UIManager : UnitySingleton<UIManager>
         
     }
 
+    public void ToggleAreaOneLevelMap(bool state)
+    {
+        levelMap.SetActive(state);
+    }
     public void OnBattleSceneLoaded()
     {
         PlayerController.Instance.input.SwitchCurrentActionMap("UI");
