@@ -21,6 +21,7 @@ public class CombatManager : UnitySingleton<CombatManager>
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         playerCombatant = PlayerController.Instance.playerCombatant;
         SceneManager.sceneLoaded += OnBattleSceneLoaded;
         SceneManager.sceneUnloaded += OnBattleSceneUnloaded;
@@ -103,10 +104,12 @@ public class CombatManager : UnitySingleton<CombatManager>
     bool SetUpCombatants()
     {
         Debug.Log("Set up combatants");
+        if (playerCombatant == null) return false;
+        if (enemyCombatant == null) return false;
         playerCombatant.OnDeathEvent.AddListener(OnEndBattle);
         enemyCombatant.OnDeathEvent.AddListener(OnEndBattle);
 
-        return playerCombatant != null && enemyCombatant != null;
+        return true;
     }
 
     public void InitializeCombatScene()
@@ -118,13 +121,14 @@ public class CombatManager : UnitySingleton<CombatManager>
         enemy.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         Camera.main.transform.position = new Vector3(0, 0, -10);
         UIManager.Instance.OnBattleSceneLoaded();
-        player.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y + 0.5f, 0);
+        player.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y, 0);
         enemy.transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
 
     }
 
     public void ResetExplorationScene()
     {
+        if (playerCombatant == null) return;
         var player = playerCombatant.gameObject;
 
         // reset enemy as well when lose

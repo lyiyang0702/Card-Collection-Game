@@ -16,29 +16,42 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public Image overlay;
 
     CardScriptableObject _cardInfo;
-    int clickCount = 0;
+    bool isSelected = false;
+    bool isDeslected = true;
     public void OnPointerClick(PointerEventData eventData)
     {
 
         if (!UIManager.Instance.canSelectCards) return;
         if (!_cardInfo) return;
         if (UIManager.Instance.tempSelectedCards.Count >= 5) return;
-        clickCount++;
-        
-        if (clickCount >1)
+        isSelected = !isSelected;
+        isDeslected = !isDeslected;
+        Debug.Log("Selcted: " +isSelected);
+        Debug.Log("Deselcted: " + isDeslected);
+        if (isSelected)
         {
-            clickCount = 0;
-            if (!UIManager.Instance.tempSelectedCards.Contains(_cardInfo)) return;
-            UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
-            overlay.gameObject.SetActive(false);
+            //isSelected = false;
+            //isDeslected = true;
+            if (!UIManager.Instance.tempSelectedCards.Contains(_cardInfo))
+            {
+                UIManager.Instance.tempSelectedCards.Add(_cardInfo);
+                overlay.gameObject.SetActive(true);
+            }
+
+
         }
-        else
+        else if (isDeslected)
         {
-            if(UIManager.Instance.tempSelectedCards.Contains(_cardInfo)) return;
-            UIManager.Instance.tempSelectedCards.Add(_cardInfo);
-            overlay.gameObject.SetActive(true);
+            //isSelected = true;
+            //isDeslected = false;
+            if (UIManager.Instance.tempSelectedCards.Contains(_cardInfo))
+            {
+                UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
+                overlay.gameObject.SetActive(false);
+            }
+
         }
-        
+
 
     }
 

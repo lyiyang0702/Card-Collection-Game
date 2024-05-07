@@ -91,6 +91,7 @@ MonoBehaviour:
       m_Calls: []
   validInteractIndicator: {fileID: 8671957154401366285}
   cardInfo: {fileID: 11400000, guid: 6f682d2e8054b614fa494a6641b58cb7, type: 2}
+  cardSprite: {fileID: 9106784617627355448}
 --- !u!1 &9106784617627355448
 GameObject:
   m_ObjectHideFlags: 0

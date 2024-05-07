@@ -25,10 +25,12 @@ public class PlayerController : UnitySingleton<PlayerController>
     override public void Awake()
     {
         base.Awake();
+        DontDestroyOnLoad(gameObject);
         playerCombatant = GetComponent<PlayerCombatantController>();
     }
     private void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         input = GetComponent<PlayerInput>();    
         

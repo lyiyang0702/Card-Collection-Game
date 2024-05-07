@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 public class ResourceManager : UnitySingleton<ResourceManager>
 {
     public List<CardScriptableObject> cardList = new List<CardScriptableObject>();
@@ -22,6 +23,21 @@ public class ResourceManager : UnitySingleton<ResourceManager>
         
         List<CardScriptableObject> generatedCards = new List<CardScriptableObject>();
 
-        return cardList;
+        var tierCard = (
+            from card in cardList
+            where (int)card.colorTier == tier
+            select card
+            ).ToList();
+
+        //foreach (var card in tierCard)
+        //{
+        //    Debug.Log(card.name);
+        //}
+        for (int i = 0; i < number; i++)
+        {
+            int rng = Random.Range(0, 5);
+            generatedCards.Add(tierCard[rng]);
+        }
+        return generatedCards;
     }
 }

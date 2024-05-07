@@ -37,12 +37,14 @@ public class PlayerCombatantController : Damageable
     public void Attack()
     {
         var enemyCombatant = CombatManager.Instance.enemyCombatant;
+
         if(enemyCombatant == null)
         {
             Debug.Log("No available enemy to attack");
             return;
         }
         CalculateDamage(CheckIfHasComboEffect());
+        if (stats.atk == 0) return;
         enemyCombatant.ApplyDamage(stats.atk);
         foreach (var card in cardCombo)
         {

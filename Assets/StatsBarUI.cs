@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StatsBarUI:MonoBehaviour
 {
-    public TextMeshProUGUI displayName;
+    //public TextMeshProUGUI displayName;
     public TextMeshProUGUI Hp;
     // Start is called before the first frame update
     public Damageable owner;
@@ -18,7 +18,7 @@ public class StatsBarUI:MonoBehaviour
     {
         owner = combatant;
         owner.OnHealthUpdatedEvent.AddListener(UpdateHealthBar);
-        displayName .text = owner.displayName;
+        //displayName .text = owner.displayName;
         Hp.text = "HP: " + Mathf.FloorToInt(owner.healthPoints) + "/" + owner.baseHealthPoints.ToString();
     }
 
