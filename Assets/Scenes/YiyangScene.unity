@@ -420,7 +420,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339d63393f604ec48b903b060ac96495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardList: []
+  cardList:
+  - {fileID: 11400000, guid: 65d560e38b0c6b94c9e0bf4ddff62ee1, type: 2}
+  - {fileID: 11400000, guid: de280b2a5e8b4b449bdf928948596ece, type: 2}
+  - {fileID: 11400000, guid: b71d984397d0cd543a2041721e67485f, type: 2}
+  - {fileID: 11400000, guid: aac529991114b954daa08948814eb38f, type: 2}
+  - {fileID: 11400000, guid: 1aeabb8e4c561754790ae1608ca3ca6c, type: 2}
+  - {fileID: 11400000, guid: acffe3e8aeff5724eabd8b27c30048e2, type: 2}
+  - {fileID: 11400000, guid: 26e29b0b0eb62874eb2c3c686ca5a42a, type: 2}
+  - {fileID: 11400000, guid: 20334c414a0ad2f41854c2189390c40a, type: 2}
+  - {fileID: 11400000, guid: 5a931f2426d00e3489a850d047cfb4a8, type: 2}
+  - {fileID: 11400000, guid: 83056038eb5a4644ca261d2f8b8a1c03, type: 2}
+  - {fileID: 11400000, guid: 6f682d2e8054b614fa494a6641b58cb7, type: 2}
+  - {fileID: 11400000, guid: 9587396fc99a5dc43a62d5f3e42e32c7, type: 2}
+  - {fileID: 11400000, guid: d647ff29aa8730c469c7c515a6cbf80f, type: 2}
+  - {fileID: 11400000, guid: edf503737d049bf449ef6cdf8065d2fa, type: 2}
+  - {fileID: 11400000, guid: d5c6dde0cee6126498ea10256ac531be, type: 2}
+  - {fileID: 11400000, guid: 690bdd8e007c1fb46896dff8caf09650, type: 2}
+  - {fileID: 11400000, guid: ee323c02d9de07947a54914a7b8ada5b, type: 2}
+  - {fileID: 11400000, guid: ba7cbc6e17d454548912c063269332ae, type: 2}
+  - {fileID: 11400000, guid: 5c0b63c659c92c14ba2fd7ba9d397af7, type: 2}
+  - {fileID: 11400000, guid: a6b291d2625e8c7439f17691eee92be3, type: 2}
 --- !u!4 &470134566
 Transform:
   m_ObjectHideFlags: 0
@@ -117391,11 +117411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a930806645f777b438572b8e71ee3105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 5535157251525667703, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
-  playerSpawner: {fileID: 1412938052}
-  mainCamera: {fileID: 8448508291185177617, guid: 24c5963773a746240adf3d458a7a40f5, type: 3}
-  Canvas: {fileID: 6145676398290121059, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
-  combatManager: {fileID: 7129620030734167759, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+  currentArea: 1
 --- !u!4 &1579019156
 Transform:
   m_ObjectHideFlags: 0
@@ -119508,6 +119524,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 155023809850423566, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 155023809850423566, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4204310004153892152, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -119556,6 +119580,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1394872610}
+    - target: {fileID: 7883197130453777762, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8702208392929201343, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: levelMap
       value: 

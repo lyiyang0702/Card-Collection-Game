@@ -72,6 +72,10 @@ void Start()
                 border.color = new Color(238, 130, 238, 1);
                 atkValueText.text = "3";
                 break;
+            case CardScriptableObject.ColorTier.Golden:
+                border.color = new Color(255, 215, 0, 1);
+                atkValueText.text = "4";
+                break;
             default:
                 break;
         }

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraCanvas: {fileID: 8456556979463793193}
+  levelMap: {fileID: 0}
   BattleHUD: {fileID: 5419041100959970410}
   inventoryUI: {fileID: 7883197130453777762}
   selectedCardParent: {fileID: 8524670641847634478}
@@ -57,7 +58,7 @@ MonoBehaviour:
   attackButton: {fileID: 2603329388065065139}
   playerSpot: {fileID: 5681421498980970547}
   enemySpot: {fileID: 8044123842982657695}
-  isSelecting: 0
+  canSelectCards: 0
 --- !u!1 &8137117368528520548
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,81 +514,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4204310004153892152}
     m_Modifications:
-    - target: {fileID: 1627463445052393916, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.55338705
-      objectReference: {fileID: 0}
-    - target: {fileID: 1627463445052393916, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.051684257
-      objectReference: {fileID: 0}
-    - target: {fileID: 1627463445052393916, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.44500002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1627463445052393916, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1627463445052393916, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1627463445052393916, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.1984253
-      objectReference: {fileID: 0}
-    - target: {fileID: 1627463445052393916, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 7.5
-      objectReference: {fileID: 0}
+    - target: {fileID: 886528052998398003, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
+      propertyPath: m_HandleRect
+      value: 
+      objectReference: {fileID: 155023809850423566}
+    - target: {fileID: 2462759461161322849, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
+      propertyPath: m_Content
+      value: 
+      objectReference: {fileID: 155023809850423566}
     - target: {fileID: 3426677219814360108, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -491
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -241.60138
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -13.80072
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559107985394876951, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: CardUIPrefab
-      value: 
-      objectReference: {fileID: 8565220101848944112, guid: 83517370cd240914d889de692ba021ba, type: 3}
     - target: {fileID: 6538268506658169946, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
       propertyPath: m_Name
       value: UICanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7251060756864060402, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      propertyPath: m_Name
-      value: Grid
       objectReference: {fileID: 0}
     - target: {fileID: 7614197567421510458, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
       propertyPath: m_Pivot.x
@@ -672,40 +613,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7251060756864060402, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7504766072551299420}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
---- !u!1 &2758542270722372284 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7251060756864060402, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
+--- !u!224 &155023809850423566 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4669810146593636416, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
   m_PrefabInstance: {fileID: 4821313146933623118}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7504766072551299420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2758542270722372284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 150, y: 160}
-  m_Spacing: {x: 50, y: 7.88}
-  m_Constraint: 0
-  m_ConstraintCount: 5
 --- !u!224 &3117527351138404980 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7614197567421510458, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}

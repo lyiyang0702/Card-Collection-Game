@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 923da1dd6b70b024bbf6ef9d139e0d9a, type: 3}
-  m_Name: TestCard 2
+  m_Name: Titanium 1
   m_EditorClassIdentifier: 
   id: 
   displayName: TestCard
   elementalType: 1
   colorTier: 1
-  attack: 0
-  cardSprite: {fileID: 21300136, guid: c3a40e1c46727b94e959990527f8e7fa, type: 3}
+  cardSprite: {fileID: 21300000, guid: 115235997e9f21a438c9576714fe36f4, type: 3}
