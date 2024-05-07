@@ -18,14 +18,32 @@ public class ResourceManager : UnitySingleton<ResourceManager>
         
     }
 
-    public List<CardScriptableObject> ReturnRandomCard( int tier, int number  = 1)
+    public List<CardScriptableObject> ReturnRandomCardByTier( int tier, int number  = 1)
     {
-        
+        Debug.Log(number);
         List<CardScriptableObject> generatedCards = new List<CardScriptableObject>();
 
         var tierCard = (
             from card in cardList
             where (int)card.colorTier == tier
+            select card
+            ).ToList();
+
+        for (int i = 0; i < number; i++)
+        {
+            int rng = Random.Range(0, 5);
+            generatedCards.Add(tierCard[rng]);
+        }
+        return generatedCards;
+    }
+
+    public List<CardScriptableObject> ReturnRandomCardByElementalType(int elementalType, int number = 1)
+    {
+        List<CardScriptableObject> generatedCards = new List<CardScriptableObject>();
+
+        var elementalCard = (
+            from card in cardList
+            where (int)card.elementalType == elementalType
             select card
             ).ToList();
 
@@ -36,8 +54,9 @@ public class ResourceManager : UnitySingleton<ResourceManager>
         for (int i = 0; i < number; i++)
         {
             int rng = Random.Range(0, 5);
-            generatedCards.Add(tierCard[rng]);
+            generatedCards.Add(elementalCard[rng]);
         }
         return generatedCards;
     }
+
 }

@@ -6,18 +6,21 @@ public class CardInteractable : Interactable
 {
 
     public CardScriptableObject cardInfo;
+    public List<CardScriptableObject> cardInfos = new List<CardScriptableObject>();
     public GameObject cardSprite;
-
+    int rng;
     private void Start()
     {
         cardSprite.SetActive(false);
-
+        rng = Random.Range(1, 4);
 
     }
     public override void InteractAction()
     {
         base.InteractAction();
+ 
         PlayerController.Instance.inventory.AddCardToInventory(this);
+
         Destroy(gameObject);
     }
 
@@ -26,7 +29,6 @@ public class CardInteractable : Interactable
         base.OnTargetInteractable();
         if (cardSprite.activeSelf) return;
         cardSprite.SetActive(true);
-        cardInfo = ResourceManager.Instance.ReturnRandomCard(1)[0];
-        //Debug.Log(cardInfo.name);
+        cardInfos = ResourceManager.Instance.ReturnRandomCardByTier(1,rng);
     }
 }

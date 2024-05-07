@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public int areaID;
     public DoorInteractable doorToPreviousArea;
     public DoorInteractable doorToNextArea;
-   
+    public Transform playerSpawnPoint;
     private void Start()
     {
         UIManager.Instance.allLevelMaps.Add(gameObject);
@@ -17,12 +17,14 @@ public class LevelManager : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+
+        
     }
     void OnEnable()
     {
         UIManager.Instance.levelMap = gameObject;
-
-        if(doorToPreviousArea != null)
+        PlayerController.Instance.transform.position = playerSpawnPoint.position;
+        if (doorToPreviousArea != null)
         {
             doorToPreviousArea.ToggleDoor(true);
         }
