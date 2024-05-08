@@ -8,7 +8,7 @@ public class PlayerController : UnitySingleton<PlayerController>
     public PlayerCombatantController playerCombatant; 
     [SerializeField]
     float speed = 1f;
-
+    [SerializeField] bool isFreeWalk = true;
     Vector3 moveDirection;
     public PlayerInput input;
     public List<Collider2D> _colliders;
@@ -38,9 +38,10 @@ public class PlayerController : UnitySingleton<PlayerController>
 
     private void FixedUpdate()
     {
-        //ApplyMovement();
+        ApplyMovement();
 
         DetectInteractables();
+        MoveHeldInteractableToPlayer();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -48,10 +49,22 @@ public class PlayerController : UnitySingleton<PlayerController>
         if (CombatManager.Instance.battleState != BattleState.None) return;
         var direction = context.ReadValue<Vector2>();
         moveDirection = new Vector2(direction.x, direction.y);
+        if (isFreeWalk) return;
+        // Grid-Based Movement
         RaycastHit2D hit = Physics2D.Raycast(transform.position,moveDirection,0.5f,wallLayer);
         if (hit.collider != null) return;
         transform.position = transform.position + moveDirection * 0.5f;
     }
+
+    void MoveHeldInteractableToPlayer()
+    {
+        if (currentHeldInteractable == null)
+        {
+            return;
+        }
+        currentHeldInteractable.transform.position = transform.position;
+    }
+
 
     void DetectInteractables()
     {
@@ -80,6 +93,19 @@ public class PlayerController : UnitySingleton<PlayerController>
 
 
                 float newDist = Vector2.Distance(transform.position, _colliders[i].transform.position);
+
+                if (_colliders[i].GetComponent<Interactable>().interactType == Interactable.InteractType.Automatic)
+                {
+
+                    if (newDist <= _colliders[i].GetComponent<Interactable>().autoPickupInteractRange)
+                    {
+                        _colliders[i].GetComponent<Interactable>().OnInteract();
+                    }
+
+                    _colliders.RemoveAt(i);
+
+                    continue;
+                }
 
                 if (closestInteractable == null || newDist < shortestDistance)
                 {
@@ -144,13 +170,10 @@ public class PlayerController : UnitySingleton<PlayerController>
 
     public void ApplyMovement()
     {
-        //rb.velocity = moveDirection * speed;
+        if (!isFreeWalk) return;
+        rb.velocity = moveDirection * speed;
         
     }
 
 
-    void AfterEnterBattle()
-    {
-        
-    }
 }

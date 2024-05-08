@@ -32,26 +32,9 @@ public class CardDamageSource : MonoBehaviour
         damage = baseDamage;
     }
 
-
-    // remove this and change it to temp selected
-    // remove combo selected
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    if (UIManager.Instance.isSelecting) return;
-    //    click++;
-    //    if (click >1)
-    //    {
-    //        owner.cardCombo.Remove(this);
-    //        click = 0;
-    //    }
-    //    else
-    //    {
-    //        owner.cardCombo.Add(this);
-    //    }
-    //}
     public void DestroyCard()
     {
-        PlayerController.Instance.inventory.RemveCard(cardInfo);
+        PlayerController.Instance.inventory.RemoveCard(cardInfo);
         Destroy(gameObject);
     }
 

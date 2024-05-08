@@ -46,10 +46,10 @@ public class PlayerCombatantController : Damageable
         CalculateDamage(CheckIfHasComboEffect());
         if (stats.atk == 0) return;
         enemyCombatant.ApplyDamage(stats.atk);
-        foreach (var card in cardCombo)
-        {
-            card.DestroyCard();
-        }
+        //foreach (var card in cardCombo)
+        //{
+        //    card.DestroyCard();
+        //}
         cardCombo.Clear();
         stats.atk = 0;
         Debug.Log("Player Attack");

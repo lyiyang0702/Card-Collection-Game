@@ -25,17 +25,13 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
 
         if (!UIManager.Instance.canSelectCards) return;
         if (!_cardInfo) return;
-        if (UIManager.Instance.tempSelectedCards.Count >= 5) return;
+
         isSelected = !isSelected;
         isDeslected = !isDeslected;
-        //Debug.Log("Selcted: " +isSelected);
-        //Debug.Log("Deselcted: " + isDeslected);
-
         
         if (isSelected)
         {
-            //isSelected = false;
-            //isDeslected = true;
+            if (UIManager.Instance.tempSelectedCards.Count >= 5) return;
             if (!CheckIfCardIsDuplicated(_cardInfo))
             {
                 UIManager.Instance.tempSelectedCards.Add(_cardInfo);
@@ -46,8 +42,6 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
         }
         else if (isDeslected)
         {
-            //isSelected = true;
-            //isDeslected = false;
             if (CheckIfCardIsDuplicated(_cardInfo))
             {
                 UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
@@ -57,19 +51,6 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
         }
 
 
-    }
-
-
-// Start is called before the first frame update
-void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateCardUI(CardScriptableObject cardInfo)

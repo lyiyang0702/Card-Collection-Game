@@ -85,12 +85,14 @@ MonoBehaviour:
   currentInteractState: 0
   actionType: 0
   delayInteractionTime: 0
-  interactType: 0
+  interactType: 1
   actionEvent:
     m_PersistentCalls:
       m_Calls: []
   validInteractIndicator: {fileID: 8671957154401366285}
+  autoPickupInteractRange: 0.5
   cardInfo: {fileID: 11400000, guid: 6f682d2e8054b614fa494a6641b58cb7, type: 2}
+  cardInfos: []
   cardSprite: {fileID: 9106784617627355448}
 --- !u!1 &9106784617627355448
 GameObject:

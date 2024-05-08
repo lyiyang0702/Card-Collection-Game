@@ -10,14 +10,15 @@ public class CardInteractable : Interactable
     int rng;
     private void Start()
     {
-        cardSprite.SetActive(false);
+        //cardSprite.SetActive(false);
         rng = Random.Range(1, 4);
 
     }
     public override void InteractAction()
     {
         base.InteractAction();
-
+        var rngTier = Random.Range(1, 3);
+        cardInfos = ResourceManager.Instance.ReturnRandomCardByTier(rngTier, rng);
         PlayerController.Instance.inventory.AddCardToInventory(this);
 
         Destroy(gameObject);
@@ -26,9 +27,8 @@ public class CardInteractable : Interactable
     public override void OnTargetInteractable()
     {
         base.OnTargetInteractable();
-        if (cardSprite.activeSelf) return;
-        cardSprite.SetActive(true);
-        var rngTier = Random.Range(1, 3);
-        cardInfos = ResourceManager.Instance.ReturnRandomCardByTier(rngTier, rng);
+        //if (cardSprite.activeSelf) return;
+        //cardSprite.SetActive(true);
+
     }
 }

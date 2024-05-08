@@ -16,4 +16,4 @@ MonoBehaviour:
   displayName: TestCard
   elementalType: 1
   colorTier: 4
-  cardSprite: {fileID: 21300000, guid: 115235997e9f21a438c9576714fe36f4, type: 3}
+  cardSprite: {fileID: 21300168, guid: c3a40e1c46727b94e959990527f8e7fa, type: 3}

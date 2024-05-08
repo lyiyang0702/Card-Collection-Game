@@ -22,7 +22,7 @@ public class Interactable : MonoBehaviour
     public UnityEvent actionEvent;
 
     public GameObject validInteractIndicator;
-
+    public float autoPickupInteractRange = 0.5f;
 
     public virtual void OnInteract()
     {

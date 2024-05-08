@@ -39,9 +39,10 @@ public class Inventory : MonoBehaviour
     {
         cards.Add(cardObj);
     }
-    public void RemveCard(CardScriptableObject card)
+    public void RemoveCard(CardScriptableObject card)
     {
-        cards.Remove(card);
+        if (!cards.Contains(card)) return;
+        Debug.Log(card.name + " is removed from inventory: " + cards.Remove(card));
     }
 
     //public void AddCardToInventory(CardInteractable cardInteractable)

@@ -9,15 +9,11 @@ using System;
 public enum BattleState {None, Start, PlayerTurn, EnemyTurn, Won, Lost}
 public class CombatManager : UnitySingleton<CombatManager>
 {
-    //public GameObject player;
-    //public GameObject enemy;
     public BattleState battleState = BattleState.None;
     public UnityEvent<BattleState> SwicthTurnEevent;
     [SerializeField] Vector3 playerPosBeforeCombat;
     public PlayerCombatantController playerCombatant;
     public EnemyCombatantController enemyCombatant;
-    // Start is called before the first frame update
-
 
     private void Start()
     {

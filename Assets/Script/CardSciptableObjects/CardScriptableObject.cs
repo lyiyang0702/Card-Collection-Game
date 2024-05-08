@@ -36,6 +36,6 @@ public class CardScriptableObject: ScriptableObject,IEquatable<CardScriptableObj
     public bool Equals(CardScriptableObject other)
     {
         if (other == null) return false;
-        return other.colorTier == colorTier && other.elementalType == elementalType;
+        return other.colorTier == colorTier && other.elementalType == elementalType && other.cardSprite == cardSprite;
     }
 }

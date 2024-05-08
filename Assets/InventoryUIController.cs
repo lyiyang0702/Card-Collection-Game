@@ -51,6 +51,7 @@ public class InventoryUIController : MonoBehaviour
             PlayerController.Instance.playerCombatant.cardCombo.Add(cardUI.GetComponent<CardDamageSource>());
             cardUI.transform.SetParent(cardParent);
             cardUI.GetComponent<RectTransform>().localScale = Vector3.one;
+            PlayerController.Instance.inventory.RemoveCard(card);
         }
     }
 
