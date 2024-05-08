@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -26,13 +28,15 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
         if (UIManager.Instance.tempSelectedCards.Count >= 5) return;
         isSelected = !isSelected;
         isDeslected = !isDeslected;
-        Debug.Log("Selcted: " +isSelected);
-        Debug.Log("Deselcted: " + isDeslected);
+        //Debug.Log("Selcted: " +isSelected);
+        //Debug.Log("Deselcted: " + isDeslected);
+
+        
         if (isSelected)
         {
             //isSelected = false;
             //isDeslected = true;
-            if (!UIManager.Instance.tempSelectedCards.Contains(_cardInfo))
+            if (!CheckIfCardIsDuplicated(_cardInfo))
             {
                 UIManager.Instance.tempSelectedCards.Add(_cardInfo);
                 overlay.gameObject.SetActive(true);
@@ -44,7 +48,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
         {
             //isSelected = true;
             //isDeslected = false;
-            if (UIManager.Instance.tempSelectedCards.Contains(_cardInfo))
+            if (CheckIfCardIsDuplicated(_cardInfo))
             {
                 UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
                 overlay.gameObject.SetActive(false);
@@ -98,4 +102,12 @@ void Start()
     }
 
 
+    bool CheckIfCardIsDuplicated(CardScriptableObject cardInfo)
+    {
+        foreach (var card in UIManager.Instance.tempSelectedCards)
+        {
+            if (card.Equals(cardInfo)) return true;
+        }
+        return false;
+    }
 }

@@ -22,6 +22,12 @@ public class Inventory : MonoBehaviour
     public void AddCardToInventory(CardInteractable cardInteractable)
     {
         if (cards.Count > size) return;
+        if (GameManager.Instance.isDebug)
+        {
+            cards.Add(cardInteractable.cardInfo);
+            return;
+        }
+
         foreach (CardScriptableObject card in cardInteractable.cardInfos)
         {
             cards.Add(card);
@@ -29,6 +35,10 @@ public class Inventory : MonoBehaviour
         
     }
 
+    public void AddCardObjToInventory(CardScriptableObject cardObj)
+    {
+        cards.Add(cardObj);
+    }
     public void RemveCard(CardScriptableObject card)
     {
         cards.Remove(card);

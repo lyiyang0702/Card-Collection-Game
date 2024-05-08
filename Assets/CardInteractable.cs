@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CardInteractable : Interactable
 {
-
     public CardScriptableObject cardInfo;
     public List<CardScriptableObject> cardInfos = new List<CardScriptableObject>();
     public GameObject cardSprite;
@@ -18,7 +17,7 @@ public class CardInteractable : Interactable
     public override void InteractAction()
     {
         base.InteractAction();
- 
+
         PlayerController.Instance.inventory.AddCardToInventory(this);
 
         Destroy(gameObject);

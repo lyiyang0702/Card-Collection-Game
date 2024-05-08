@@ -63,10 +63,8 @@ public class Damageable : MonoBehaviour
     {
         float dmg = atk * (100 / (100 + stats.def));
 
-        healthPoints -= dmg;
-        Mathf.Clamp(healthPoints, 0, 100);
+        UpdateHealth(-dmg);
         OnDamageEvent?.Invoke(dmg);
-        OnHealthUpdatedEvent?.Invoke(healthPoints);
         Debug.Log("Cause dmg:" + dmg);
         if (Mathf.RoundToInt(healthPoints) < 1)
         {
@@ -74,8 +72,13 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    
-    IEnumerator DeathRoutine()
+    public void UpdateHealth(float healthChange)
+    {
+        healthPoints += healthChange;
+        healthPoints = Mathf.Clamp(healthPoints, 0, 10000);
+        OnHealthUpdatedEvent?.Invoke(healthPoints);
+    }
+    public virtual IEnumerator DeathRoutine()
     {
         yield return new WaitForSeconds(3f);
         OnDeathEvent?.Invoke(this);

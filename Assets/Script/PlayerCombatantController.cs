@@ -60,19 +60,35 @@ public class PlayerCombatantController : Damageable
     public bool CheckIfHasComboEffect()
     {
         var enemyCombatant = CombatManager.Instance.enemyCombatant;
-        var duplicateElements = cardCombo
-            .GroupBy(x => x.cardInfo.elementalType)
-            .Where(g => g.Count() >=3)
-            .Select(g => g.Key);
-
-        foreach (var element in duplicateElements)
+        bool upgradeCombo = false;
+        Dictionary<ElementalType, int> comboDict = new Dictionary<ElementalType, int>();
+        //var duplicateElements = cardCombo
+        //    .GroupBy(x => x.cardInfo.elementalType)
+        //    .Where(g => g.Count() >=3)
+        //    .Select(g => g.Key).ToList();
+        foreach (var card in cardCombo.GroupBy(x => x.cardInfo.elementalType))
         {
-            comboEffectType = element;
-            switch (element)
+            comboDict[card.Key] = card.Count();
+        }
+        foreach (var element in comboDict) {
+            if (element.Value < 3) return false;
+            comboEffectType = element.Key;
+            upgradeCombo = element.Value == 5;
+
+            Debug.Log("Combo Effect: " + comboEffectType + ", Value: " + element.Value);
+            switch (comboEffectType)
             {
                 case ElementalType.Steel:
-                    healthPoints += 3;
-                    enemyCombatant.healthPoints -= 3;
+                    if (upgradeCombo)
+                    {
+                        UpdateHealth(enemyCombatant.healthPoints);
+                        enemyCombatant.UpdateHealth(-enemyCombatant.healthPoints);
+                    }
+                    else
+                    {
+                        UpdateHealth(enemyCombatant.healthPoints/2);
+                        enemyCombatant.UpdateHealth(-enemyCombatant.healthPoints/2);
+                    }
                     break;
                 case ElementalType.Titanium:
                     attackBuff = 3;
@@ -85,8 +101,8 @@ public class PlayerCombatantController : Damageable
                     break;
             }
         }
-        
-        return duplicateElements.Count() > 0;
+
+        return comboDict.Count > 0;
     }
 
     void CalculateDamage(bool hasComboEffect)
