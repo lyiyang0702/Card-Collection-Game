@@ -76,4 +76,12 @@ public class UIManager : UnitySingleton<UIManager>
         }
     }
 
+    public void ClearCardDeck()
+    {
+        for (int i = 0;i< selectedCardParent.transform.childCount; i++)
+        {
+            Destroy(selectedCardParent.transform.GetChild(i).gameObject) ;
+        }
+    }
+
 }

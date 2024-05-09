@@ -16,7 +16,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public TextMeshProUGUI elementalTypeText;
     public Image cardSprite;
     public Image overlay;
-
+    public bool isClickable = true;
     CardScriptableObject _cardInfo;
     bool isSelected = false;
     bool isDeslected = true;
@@ -25,16 +25,18 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
 
         if (!UIManager.Instance.canSelectCards) return;
         if (!_cardInfo) return;
+        if(!isClickable) return;
 
         isSelected = !isSelected;
         isDeslected = !isDeslected;
-        
+
         if (isSelected)
         {
             if (UIManager.Instance.tempSelectedCards.Count >= 5) return;
             if (!CheckIfCardIsDuplicated(_cardInfo))
             {
                 UIManager.Instance.tempSelectedCards.Add(_cardInfo);
+                ToggleOtherClickableDuplicateCard(false);
                 overlay.gameObject.SetActive(true);
             }
 
@@ -45,6 +47,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
             if (CheckIfCardIsDuplicated(_cardInfo))
             {
                 UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
+                ToggleOtherClickableDuplicateCard(true);
                 overlay.gameObject.SetActive(false);
             }
 
@@ -91,4 +94,17 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
         }
         return false;
     }
+
+    void ToggleOtherClickableDuplicateCard(bool state)
+    {
+        var inventoryUI = UIManager.Instance.inventoryUI.GetComponent<InventoryUIController>();
+
+        for(int i = 0; i < inventoryUI.inventoryGrid.transform.childCount; i++)
+        {
+            var cardUI = inventoryUI.inventoryGrid.transform.GetChild(i).GetComponent<CardUI>();
+            if (cardUI.isSelected || !cardUI._cardInfo.Equals(_cardInfo)) continue;
+            cardUI.isClickable = state;
+        }
+    }
+    
 }

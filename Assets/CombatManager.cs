@@ -110,6 +110,7 @@ public class CombatManager : UnitySingleton<CombatManager>
 
     public void InitializeCombatScene()
     {
+        PlayerController.Instance.StopAllMovement();
         var player = playerCombatant.gameObject;
         var enemy = enemyCombatant.gameObject;
         playerPosBeforeCombat = player.transform.position;
