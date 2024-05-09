@@ -16,6 +16,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public TextMeshProUGUI elementalTypeText;
     public Image cardSprite;
     public Image overlay;
+    // clickable properties
     public bool isClickable = true;
     CardScriptableObject _cardInfo;
     bool isSelected = false;

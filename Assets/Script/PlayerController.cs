@@ -21,7 +21,6 @@ public class PlayerController : UnitySingleton<PlayerController>
     Rigidbody2D rb;
     public LayerMask wallLayer;
     public GameObject cam;
-
     override public void Awake()
     {
         base.Awake();

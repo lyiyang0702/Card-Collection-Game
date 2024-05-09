@@ -61,7 +61,7 @@ public class Damageable : MonoBehaviour
 
     public void ApplyDamage(float atk)
     {
-        float dmg = atk * (100 / (100 + stats.def));
+        float dmg = atk * (100 / (100 + stats.def + defenseBuff));
 
         UpdateHealth(-dmg);
         OnDamageEvent?.Invoke(dmg);

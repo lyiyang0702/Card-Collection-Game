@@ -14,7 +14,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     [SerializeField] Vector3 playerPosBeforeCombat;
     public PlayerCombatantController playerCombatant;
     public EnemyCombatantController enemyCombatant;
-
+    public bool canSwitchTurn = true;
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -137,13 +137,14 @@ public class CombatManager : UnitySingleton<CombatManager>
         }
         player.transform.position = playerPosBeforeCombat;
         player.transform.localScale = Vector3.one;
+        playerCombatant.StopAllCoroutines();
         battleState = BattleState.None;
         UIManager.Instance.OnBattleSceneUnLoaded();
     }
 
     IEnumerator SwicthTurnRoutine()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitUntil(()=> canSwitchTurn == true);
         if (battleState == BattleState.EnemyTurn)
         {
             enemyCombatant.Attack();
