@@ -68,7 +68,8 @@ public class Damageable : MonoBehaviour
         Debug.Log("Cause dmg:" + dmg);
         if (Mathf.RoundToInt(healthPoints) < 1)
         {
-            StartCoroutine(DeathRoutine());
+            //StartCoroutine(DeathRoutine());
+            OnDeathEvent?.Invoke(this);
         }
     }
 

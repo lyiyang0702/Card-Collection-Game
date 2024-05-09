@@ -44,9 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37580318009549d4a9ebf97cd38cd037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
-  enemy: {fileID: 0}
   battleState: 0
   SwicthTurnEevent:
     m_PersistentCalls:
       m_Calls: []
+  playerPosBeforeCombat: {x: 0, y: 0, z: 0}
+  playerCombatant: {fileID: 0}
+  enemyCombatant: {fileID: 0}
+  canSwitchTurn: 1
+  comboEffects:
+  - {fileID: 3137865208441534702, guid: 6370f167e138cc64bb12b366a7740e9e, type: 3}
+  - {fileID: 4086408676280420525, guid: 52e5104740575f743b0ae632f74a471e, type: 3}
+  - {fileID: 3497725497440718498, guid: 03ea19e10aa04de4ebcfb90a4955bc5d, type: 3}
+  - {fileID: 6215922836348029098, guid: d7c88707bf4458848aa0778028aacd71, type: 3}
