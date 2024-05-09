@@ -14,8 +14,19 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public Image background;
     public TextMeshProUGUI atkValueText;
     public TextMeshProUGUI elementalTypeText;
+    public TextMeshProUGUI cardNameText;
     public Image cardSprite;
     public Image overlay;
+
+    //colors
+    [SerializeField] private Color borderGreen;
+    [SerializeField] private Color borderBlue;
+    [SerializeField] private Color borderPurp;
+    [SerializeField] private Color borderGold;
+    [SerializeField] private Color backGreen;
+    [SerializeField] private Color backBlue;
+    [SerializeField] private Color backPurp;
+    [SerializeField] private Color backGold;
 
     CardScriptableObject _cardInfo;
     bool isSelected = false;
@@ -59,25 +70,29 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
         switch (cardInfo.colorTier)
         {
             case CardScriptableObject.ColorTier.Green:
-                border.color = Color.green;
+                border.color = borderGreen;
+                background.color = backGreen;
                 atkValueText.text = "1";
                 break;
             case CardScriptableObject.ColorTier.Blue:
-                border.color = Color.blue;
+                border.color = borderBlue;
+                background.color = backBlue;
                 atkValueText.text = "2";
                 break;
             case CardScriptableObject.ColorTier.Purple:
-                border.color = new Color(238, 130, 238, 1);
+                border.color = borderPurp;
+                background.color = backPurp;
                 atkValueText.text = "3";
                 break;
             case CardScriptableObject.ColorTier.Golden:
-                border.color = new Color(255, 215, 0, 1);
+                border.color = borderGold;
+                background.color = backGold;
                 atkValueText.text = "4";
                 break;
             default:
                 break;
         }
-
+        cardNameText.text = cardInfo.displayName;
         elementalTypeText.text = cardInfo.elementalType.ToString();
         cardSprite.sprite = cardInfo.cardSprite;
     }
