@@ -87,13 +87,13 @@ public class ResourceManager : UnitySingleton<ResourceManager>
         int weightTotal = realWeightTable.Sum();
 
         int randomWeight = Random.Range(0, weightTotal);
-        Debug.Log(randomWeight);
+        //Debug.Log(randomWeight);
         for (int j = 0; j < realWeightTable.Count; j++)
         {
             randomWeight -= realWeightTable[j];
             if (randomWeight < 0)
             {
-                Debug.Log(elementalCard[j]);
+                //Debug.Log(elementalCard[j]);
                 return elementalCard[j];
             }
         }

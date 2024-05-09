@@ -9,7 +9,7 @@ public class PlayerController : UnitySingleton<PlayerController>
     [SerializeField]
     float speed = 1f;
     [SerializeField] bool isFreeWalk = true;
-    Vector3 moveDirection;
+    [SerializeField] Vector3 moveDirection;
     public PlayerInput input;
     public List<Collider2D> _colliders;
     public Interactable targetInteractable;
@@ -21,7 +21,6 @@ public class PlayerController : UnitySingleton<PlayerController>
     Rigidbody2D rb;
     public LayerMask wallLayer;
     public GameObject cam;
-
     override public void Awake()
     {
         base.Awake();
@@ -175,5 +174,10 @@ public class PlayerController : UnitySingleton<PlayerController>
         
     }
 
+    public void StopAllMovement()
+    {
+        rb.velocity = Vector3.zero;
+        moveDirection = Vector3.zero;
+    }
 
 }

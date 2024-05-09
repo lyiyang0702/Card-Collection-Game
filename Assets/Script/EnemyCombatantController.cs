@@ -8,6 +8,7 @@ public class EnemyCombatantController : Damageable
 {
     public ElementalType elementalType;
     public Difficulty difficulty;
+    public int rewardBuff = 0;
     [SerializeField] int[] rewardWeightedTable;
     [SerializeField] int elementalRewardNum = 4;
     [SerializeField] int randomRewardNum = 1;
@@ -15,6 +16,8 @@ public class EnemyCombatantController : Damageable
     override public void Start()
     {
         base.Start();
+        elementalType = (ElementalType)Random.Range(0,4);
+        Debug.Log(elementalType);
         isEnemy = true;
         switch (difficulty)
         {
@@ -47,13 +50,18 @@ public class EnemyCombatantController : Damageable
     }
     public void Attack()
     {
+        StartCoroutine(AttackRoutine());
+    }
+
+    IEnumerator AttackRoutine()
+    {
+        yield return new WaitForSeconds(2);
         Debug.Log("Enemy Attack");
         PlayerController.Instance.playerCombatant.ApplyDamage(stats.atk);
         //CombatManager.Instance.SwicthTurnEevent.Invoke(BattleState.PlayerTurn);
 
         OnSwitchTurn(BattleState.PlayerTurn);
     }
-
     public override void OnSwitchTurn(BattleState state)
     {
         base.OnSwitchTurn(state);
@@ -68,7 +76,8 @@ public class EnemyCombatantController : Damageable
         {
             reward.Add(ResourceManager.Instance.ReturnWeightedRandomCardByElementalType(rewardWeightedTable, (int)elementalType));
         }
-        reward.AddRange(ResourceManager.Instance.ReturnRandomCard(1));
+
+        reward.AddRange(ResourceManager.Instance.ReturnRandomCard(randomRewardNum + rewardBuff));
         
         
         foreach(var card in reward)

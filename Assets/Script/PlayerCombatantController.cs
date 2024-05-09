@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
-    
+    int mouseClickCounter = 0;
+    bool shouldCountClick = false;
     ElementalType comboEffectType;
     override public void Start()
     {
@@ -33,6 +35,12 @@ public class PlayerCombatantController : Damageable
             }
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!shouldCountClick) return;
+            mouseClickCounter++;
+            Debug.Log(mouseClickCounter);
+        }
     }
     public void Attack()
     {
@@ -43,13 +51,14 @@ public class PlayerCombatantController : Damageable
             Debug.Log("No available enemy to attack");
             return;
         }
-        CalculateDamage(CheckIfHasComboEffect());
+        CalculateDamage();
         if (stats.atk == 0) return;
         enemyCombatant.ApplyDamage(stats.atk);
-        //foreach (var card in cardCombo)
-        //{
-        //    card.DestroyCard();
-        //}
+
+        //StartCoroutine(ApplyComboEffect());
+        CheckIfHasComboEffect();
+        //Clear card deck and combo list
+        UIManager.Instance.ClearCardDeck();
         cardCombo.Clear();
         stats.atk = 0;
         Debug.Log("Player Attack");
@@ -57,15 +66,12 @@ public class PlayerCombatantController : Damageable
         //CombatManager.Instance.SwicthTurnEevent?.Invoke(BattleState.EnemyTurn);
     }
 
+
     public bool CheckIfHasComboEffect()
     {
         var enemyCombatant = CombatManager.Instance.enemyCombatant;
         bool upgradeCombo = false;
         Dictionary<ElementalType, int> comboDict = new Dictionary<ElementalType, int>();
-        //var duplicateElements = cardCombo
-        //    .GroupBy(x => x.cardInfo.elementalType)
-        //    .Where(g => g.Count() >=3)
-        //    .Select(g => g.Key).ToList();
         foreach (var card in cardCombo.GroupBy(x => x.cardInfo.elementalType))
         {
             comboDict[card.Key] = card.Count();
@@ -76,6 +82,8 @@ public class PlayerCombatantController : Damageable
             upgradeCombo = element.Value == 5;
 
             Debug.Log("Combo Effect: " + comboEffectType + ", Value: " + element.Value);
+
+            //Apply Combo Effect
             switch (comboEffectType)
             {
                 case ElementalType.Steel:
@@ -91,11 +99,38 @@ public class PlayerCombatantController : Damageable
                     }
                     break;
                 case ElementalType.Titanium:
-                    attackBuff = 3;
+                    if (upgradeCombo)
+                    {
+                        enemyCombatant.defenseBuff = - (int) enemyCombatant.stats.def;
+                    }
+                    else
+                    {
+                        enemyCombatant.defenseBuff = -(int)enemyCombatant.stats.def / 2;
+                    }
                     break;
                 case ElementalType.Rubber:
+                    float effectTime;
+                    
+                    if (upgradeCombo)
+                    {
+                        effectTime = 3f;
+                    }
+                    else
+                    {
+                        effectTime = 2f;
+                    }
+
+                    StartCoroutine(RubberComboEffect(effectTime));
                     break;
                 case ElementalType.Gold:
+                    if (upgradeCombo)
+                    {
+                        enemyCombatant.rewardBuff = 4;
+                    }
+                    else
+                    {
+                        enemyCombatant.rewardBuff = 2;
+                    }
                     break;
                 default:
                     break;
@@ -105,24 +140,39 @@ public class PlayerCombatantController : Damageable
         return comboDict.Count > 0;
     }
 
-    void CalculateDamage(bool hasComboEffect)
+    IEnumerator RubberComboEffect(float waitTime)
     {
-        if (!hasComboEffect)
-        {
-            foreach (var card in cardCombo) {
-                stats.atk += card.damage;
-            }
-        }
-        else
-        {
-            var cards = cardCombo.Where(x => x.cardInfo.elementalType == comboEffectType).ToList();
+        shouldCountClick = true;
+        CombatManager.Instance.canSwitchTurn = false;
+        yield return new WaitForSeconds(waitTime);
+        shouldCountClick = false;
+        stats.atk = mouseClickCounter;
+        Debug.Log("Rubber Combo Effect: " + stats.atk);
+        mouseClickCounter = 0;
+        CombatManager.Instance.enemyCombatant.ApplyDamage(stats.atk);
+        CombatManager.Instance.canSwitchTurn = true;
 
-            foreach (var card in cards)
-            {
-                stats.atk += card.damage;
-            }
+    }
+    void CalculateDamage()
+    {
+        foreach (var card in cardCombo)
+        {
+            stats.atk += card.damage;
         }
-        stats.atk += attackBuff;
+        //if (!hasComboEffect)
+        //{
+
+        //}
+        //else
+        //{
+        //    var cards = cardCombo.Where(x => x.cardInfo.elementalType == comboEffectType).ToList();
+
+        //    foreach (var card in cards)
+        //    {
+        //        stats.atk += card.damage;
+        //    }
+        //}
+        //stats.atk += attackBuff;
     }
 
 
