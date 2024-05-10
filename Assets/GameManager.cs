@@ -34,5 +34,6 @@ public class GameManager : UnitySingleton<GameManager>
         currentArea = areaID;
         UIManager.Instance.levelMap.SetActive(false);
         UIManager.Instance.allLevelMaps[areaID-1].SetActive(true);
+        UIManager.Instance.allLevelMaps[areaID - 1].GetComponent<LevelManager>().SpawnPlayer();
     }
 }

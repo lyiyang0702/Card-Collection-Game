@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
         if(GameManager.Instance.currentArea == areaID)
         {
             gameObject.SetActive(true);
+            SpawnPlayer();
         }
 
         
@@ -23,7 +24,7 @@ public class LevelManager : MonoBehaviour
     void OnEnable()
     {
         UIManager.Instance.levelMap = gameObject;
-        PlayerController.Instance.transform.position = playerSpawnPoint.position;
+        
         if (doorToPreviousArea != null)
         {
             doorToPreviousArea.ToggleDoor(true);
@@ -49,5 +50,10 @@ public class LevelManager : MonoBehaviour
             doorToPreviousArea.currentInteractState = Interactable.InteractState.CanInteract;
         }
 
+    }
+
+    public void SpawnPlayer()
+    {
+        PlayerController.Instance.transform.position = playerSpawnPoint.position;
     }
 }

@@ -108,6 +108,8 @@ public class CombatManager : UnitySingleton<CombatManager>
         Debug.Log("Set up combatants");
         if (playerCombatant == null) return false;
         if (enemyCombatant == null) return false;
+        playerPosBeforeCombat = playerCombatant.transform.position;
+        Debug.Log("Player Pos before Combat: " + playerPosBeforeCombat);
         playerCombatant.OnDeathEvent.AddListener(OnEndBattle);
         enemyCombatant.OnDeathEvent.AddListener(OnEndBattle);
 
@@ -119,32 +121,32 @@ public class CombatManager : UnitySingleton<CombatManager>
         canEndBattle = false;
         PlayerController.Instance.StopAllMovement();
         canSwitchTurn = true;
-        var player = playerCombatant.gameObject;
-        var enemy = enemyCombatant.gameObject;
-        playerPosBeforeCombat = player.transform.position;
-        player.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        enemy.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        //var player = playerCombatant.gameObject;
+        //var enemy = enemyCombatant.gameObject;
+
+        playerCombatant.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        enemyCombatant.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         Camera.main.transform.position = new Vector3(0, 0, -10);
         UIManager.Instance.OnBattleSceneLoaded();
-        player.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y, 0);
-        enemy.transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
+        playerCombatant.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y, 0);
+        enemyCombatant.transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
 
     }
 
     public void ResetExplorationScene()
     {
         if (playerCombatant == null) return;
-        var player = playerCombatant.gameObject;
+        
 
         // reset enemy as well when lose
         if (battleState== BattleState.Lost)
         {
-            var enemy = enemyCombatant.gameObject;
-            enemy.transform.localScale = Vector3.one;
-            enemy.GetComponent<EnemyInteractable>().currentInteractState = Interactable.InteractState.CanInteract;
+            //var enemy = enemyCombatant.gameObject;
+            enemyCombatant.transform.localScale = Vector3.one;
+            enemyCombatant.GetComponent<EnemyInteractable>().currentInteractState = Interactable.InteractState.CanInteract;
         }
-        player.transform.position = playerPosBeforeCombat;
-        player.transform.localScale = Vector3.one;
+        playerCombatant.transform.position = playerPosBeforeCombat;
+        playerCombatant.transform.localScale = Vector3.one;
         playerCombatant.StopAllCoroutines();
         battleState = BattleState.None;
         UIManager.Instance.OnBattleSceneUnLoaded();
