@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Steel 3
   m_EditorClassIdentifier: 
   id: 
-  displayName: TestCard
+  displayName: Cyber Gauntlet
   elementalType: 0
   colorTier: 3
-  cardSprite: {fileID: 21300000, guid: ec47f75fe8aff1644ac73998f4ad31b5, type: 3}
+  cardSprite: {fileID: 21300000, guid: b28a8b6a4e69de1439b478c33747f57b, type: 3}

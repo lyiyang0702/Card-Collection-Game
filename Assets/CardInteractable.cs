@@ -21,7 +21,8 @@ public class CardInteractable : Interactable
         cardInfos = ResourceManager.Instance.ReturnRandomCardByTier(rngTier, rng);
         PlayerController.Instance.inventory.AddCardToInventory(this);
 
-        Destroy(gameObject);
+        setInvisible();
+        StartCoroutine(getRidOf());
     }
 
     public override void OnTargetInteractable()
@@ -30,5 +31,14 @@ public class CardInteractable : Interactable
         //if (cardSprite.activeSelf) return;
         //cardSprite.SetActive(true);
 
+    }
+
+    private void setInvisible(){
+        cardSprite.SetActive(false);
+    }
+
+    IEnumerator getRidOf(){
+        yield return new WaitForSeconds (1.0f);
+        Destroy(gameObject);
     }
 }

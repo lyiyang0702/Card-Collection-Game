@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Golden 2
   m_EditorClassIdentifier: 
   id: 
-  displayName: 
+  displayName: Octo-Pack
   elementalType: 3
-  colorTier: 1
-  cardSprite: {fileID: 21300090, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  colorTier: 2
+  cardSprite: {fileID: 21300000, guid: 5b053c78a48867144bedd114bfeb93df, type: 3}

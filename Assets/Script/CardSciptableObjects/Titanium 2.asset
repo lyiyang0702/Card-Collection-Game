@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Titanium 2
   m_EditorClassIdentifier: 
   id: 
-  displayName: TestCard
+  displayName: Hyper Laser
   elementalType: 1
   colorTier: 2
-  cardSprite: {fileID: 21300174, guid: c3a40e1c46727b94e959990527f8e7fa, type: 3}
+  cardSprite: {fileID: 21300000, guid: b813ca20678b97046a9b4f015ec4b23b, type: 3}
