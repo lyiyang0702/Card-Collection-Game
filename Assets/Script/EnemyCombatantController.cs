@@ -71,7 +71,7 @@ public class EnemyCombatantController : Damageable
 
     void SpawnReward()
     {
-        
+        CombatManager.Instance.canSwitchTurn = false;
         for(int i = 0;i<elementalRewardNum;i++)
         {
             reward.Add(ResourceManager.Instance.ReturnWeightedRandomCardByElementalType(rewardWeightedTable, (int)elementalType));
@@ -84,6 +84,9 @@ public class EnemyCombatantController : Damageable
         {
             PlayerController.Instance.inventory.AddCardObjToInventory(card);
         }
+        
+        UIManager.Instance.rewardPanelUI.gameObject.SetActive(true);
+        UIManager.Instance.rewardPanelUI.PopulateRewardCard(reward);
     }
 
     public override IEnumerator DeathRoutine()

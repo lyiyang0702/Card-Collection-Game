@@ -10,6 +10,7 @@ public class UIManager : UnitySingleton<UIManager>
     public GameObject levelMap;
     public GameObject BattleHUD;
     public GameObject inventoryUI;
+    public RewardPanelController rewardPanelUI;
     public GameObject selectedCardParent;
     public List<CardScriptableObject> tempSelectedCards = new List<CardScriptableObject>();
     public GameObject playerStatsBar;
@@ -18,6 +19,7 @@ public class UIManager : UnitySingleton<UIManager>
     public GameObject playerSpot;
     public GameObject enemySpot;
     public bool canSelectCards = false;
+    public GameObject CardUIPrefab;
     // Start is called before the first frame update
 
     private void Start()
@@ -68,7 +70,7 @@ public class UIManager : UnitySingleton<UIManager>
         if (state == BattleState.PlayerTurn)
         {
             selectedCardParent.transform.parent.gameObject.SetActive(true);
-            
+            Debug.Log("Card Deck: " + selectedCardParent.transform.parent.gameObject.name);
         }
         else
         {
@@ -76,12 +78,28 @@ public class UIManager : UnitySingleton<UIManager>
         }
     }
 
-    public void ClearCardDeck()
+    public void ClearCardChildren(Transform parent)
     {
-        for (int i = 0;i< selectedCardParent.transform.childCount; i++)
+        for (int i = 0; i < parent.childCount; i++)
         {
-            Destroy(selectedCardParent.transform.GetChild(i).gameObject) ;
+            Destroy(parent.GetChild(i).gameObject);
         }
     }
 
+    public GameObject CreateCardUI(CardScriptableObject cardInfo)
+    {
+        GameObject cardObj = Instantiate(CardUIPrefab);
+        cardObj.GetComponent<CardUI>().UpdateCardUI(cardInfo);
+        cardObj.GetComponent<CardDamageSource>().InitializeCard(cardInfo, PlayerController.Instance.playerCombatant);
+
+        return cardObj;
+    }
+
+    public void PopulateCardsToTransform(List<CardScriptableObject> cardList, Transform targetParent)
+    {
+        foreach (var card in cardList)
+        {
+            CreateCardUI(card).transform.SetParent(targetParent);
+        }
+    }
 }

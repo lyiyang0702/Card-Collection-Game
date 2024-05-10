@@ -68,8 +68,8 @@ public class Damageable : MonoBehaviour
         Debug.Log("Cause dmg:" + dmg);
         if (Mathf.RoundToInt(healthPoints) < 1)
         {
-            //StartCoroutine(DeathRoutine());
-            OnDeathEvent?.Invoke(this);
+            StartCoroutine(DeathRoutine());
+            //OnDeathEvent?.Invoke(this);
         }
     }
 
@@ -81,7 +81,8 @@ public class Damageable : MonoBehaviour
     }
     public virtual IEnumerator DeathRoutine()
     {
-        yield return new WaitForSeconds(3f);
+        CombatManager.Instance.canSwitchTurn = false;
+        yield return new WaitUntil(() => CombatManager.Instance.canEndBattle == true);
         OnDeathEvent?.Invoke(this);
     }
 

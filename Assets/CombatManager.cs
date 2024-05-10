@@ -15,6 +15,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     public PlayerCombatantController playerCombatant;
     public EnemyCombatantController enemyCombatant;
     public bool canSwitchTurn = true;
+    public bool canEndBattle = false;
     [SerializeField]List<GameObject> comboEffects;
     public Dictionary <ElementalType, GameObject> comboEffectDict = new Dictionary<ElementalType, GameObject>();
     private void Start()
@@ -81,7 +82,6 @@ public class CombatManager : UnitySingleton<CombatManager>
 
     void OnEndBattle(Damageable damageable)
     {
-        
         if (damageable.isEnemy)
         {
             Debug.Log("Enemy: " + damageable.name + " is dead");
@@ -98,7 +98,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         }
 
         playerCombatant.OnDeathEvent.RemoveListener(OnEndBattle);
-        canSwitchTurn = false;
+
         SceneManager.UnloadSceneAsync("BattleScene");
 
     }

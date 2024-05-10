@@ -62,7 +62,7 @@ public class PlayerCombatantController : Damageable
     void OnAttackEnd()
     {
         //Clear card deck and combo list
-        UIManager.Instance.ClearCardDeck();
+        UIManager.Instance.ClearCardChildren(UIManager.Instance.selectedCardParent.transform);
         cardCombo.Clear();
         stats.atk = 0;
         Debug.Log("Player Attack");
