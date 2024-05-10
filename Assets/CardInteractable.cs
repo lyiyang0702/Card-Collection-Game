@@ -11,7 +11,7 @@ public class CardInteractable : Interactable
     private void Start()
     {
         //cardSprite.SetActive(false);
-        rng = Random.Range(1, 4);
+        rng = Random.Range(4, 8);
 
     }
     public override void InteractAction()

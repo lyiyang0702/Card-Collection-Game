@@ -15,8 +15,15 @@ public class CombatManager : UnitySingleton<CombatManager>
     public PlayerCombatantController playerCombatant;
     public EnemyCombatantController enemyCombatant;
     public bool canSwitchTurn = true;
+    public bool canEndBattle = false;
+    [SerializeField]List<GameObject> comboEffects;
+    public Dictionary <ElementalType, GameObject> comboEffectDict = new Dictionary<ElementalType, GameObject>();
     private void Start()
     {
+        foreach (var effect in comboEffects)
+        {
+            comboEffectDict[effect.GetComponent<BaseComboEffect>().elementalType] = effect;
+        }
         DontDestroyOnLoad(gameObject);
         playerCombatant = PlayerController.Instance.playerCombatant;
         SceneManager.sceneLoaded += OnBattleSceneLoaded;
@@ -75,7 +82,6 @@ public class CombatManager : UnitySingleton<CombatManager>
 
     void OnEndBattle(Damageable damageable)
     {
-        
         if (damageable.isEnemy)
         {
             Debug.Log("Enemy: " + damageable.name + " is dead");
@@ -92,7 +98,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         }
 
         playerCombatant.OnDeathEvent.RemoveListener(OnEndBattle);
-        
+
         SceneManager.UnloadSceneAsync("BattleScene");
 
     }
@@ -111,6 +117,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     public void InitializeCombatScene()
     {
         PlayerController.Instance.StopAllMovement();
+        canSwitchTurn = true;
         var player = playerCombatant.gameObject;
         var enemy = enemyCombatant.gameObject;
         playerPosBeforeCombat = player.transform.position;
@@ -145,6 +152,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     IEnumerator SwicthTurnRoutine()
     {
         yield return new WaitUntil(()=> canSwitchTurn == true);
+        //yield return new WaitForSeconds(10);
         if (battleState == BattleState.EnemyTurn)
         {
             enemyCombatant.Attack();
