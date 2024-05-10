@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Steel 5
   m_EditorClassIdentifier: 
   id: 
-  displayName: TestCard
+  displayName: The Wrong Trousers
   elementalType: 0
   colorTier: 3
-  cardSprite: {fileID: 21300092, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  cardSprite: {fileID: 21300000, guid: a29017aeefe18644a8a900f85652bea4, type: 3}

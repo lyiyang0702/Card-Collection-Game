@@ -17,6 +17,8 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public TextMeshProUGUI cardNameText;
     public Image cardSprite;
     public Image overlay;
+    public AudioSource confirm;
+    public AudioSource deny;
 
     //colors
     [SerializeField] private Color borderGreen;
@@ -51,6 +53,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
                 UIManager.Instance.tempSelectedCards.Add(_cardInfo);
                 ToggleOtherClickableDuplicateCard(false);
                 overlay.gameObject.SetActive(true);
+                confirm.Play();
             }
 
 
@@ -62,6 +65,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
                 UIManager.Instance.tempSelectedCards.Remove(_cardInfo);
                 ToggleOtherClickableDuplicateCard(true);
                 overlay.gameObject.SetActive(false);
+                deny.Play();
             }
 
         }

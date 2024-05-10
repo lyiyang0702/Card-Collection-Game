@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Golden 5
   m_EditorClassIdentifier: 
   id: 
-  displayName: 
+  displayName: Wheelies
   elementalType: 3
   colorTier: 1
-  cardSprite: {fileID: 21300092, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  cardSprite: {fileID: 21300000, guid: f709b33b0f20d2044b054130b2a6cf1f, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Golden 3
   m_EditorClassIdentifier: 
   id: 
-  displayName: TestCard
+  displayName: Sight Visor
   elementalType: 3
   colorTier: 3
-  cardSprite: {fileID: 21300000, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  cardSprite: {fileID: 21300000, guid: 4b9da4dff2b7afb45b4af7357f64233f, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rubber 3
   m_EditorClassIdentifier: 
   id: 
-  displayName: TestCard
+  displayName: Blade Suit
   elementalType: 2
   colorTier: 3
-  cardSprite: {fileID: 21300094, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  cardSprite: {fileID: 21300000, guid: 1f98cde0d8a3f62499d40d94c5071109, type: 3}
