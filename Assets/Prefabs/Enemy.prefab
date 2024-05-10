@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8289666250805712282}
   - component: {fileID: 4279082337833552661}
   - component: {fileID: 2377976365585584091}
+  - component: {fileID: -9213737174882052665}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -84,7 +85,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e018cdbdaa17c04eb609b6dd8fd3c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashEffect: {fileID: 0}
   displayName: Pyoro
+  baseHealthPoints: 0
   healthPoints: 0
   OnDamageEvent:
     m_PersistentCalls:
@@ -96,6 +99,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rb: {fileID: 0}
+  isPlayer: 0
+  isEnemy: 0
   stats:
     atk: 0
     spd: 0
@@ -105,6 +110,11 @@ MonoBehaviour:
   agilityBuff: 0
   elementalType: 0
   difficulty: 0
+  rewardBuff: 0
+  rewardWeightedTable: 
+  elementalRewardNum: 4
+  randomRewardNum: 1
+  reward: []
 --- !u!50 &4279082337833552661
 Rigidbody2D:
   serializedVersion: 4
@@ -152,6 +162,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   validInteractIndicator: {fileID: 7591705494600406158}
+  autoPickupInteractRange: 0.5
+--- !u!114 &-9213737174882052665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311091844718417574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ec3b8d06f064a4b871736ee5cdb360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 925831144964048061}
+  flashMaterial: {fileID: 2100000, guid: 93a2b935768d18840aad62e633ec86be, type: 2}
+  originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  duration: 0.125
 --- !u!1 &3163255901591696218
 GameObject:
   m_ObjectHideFlags: 0

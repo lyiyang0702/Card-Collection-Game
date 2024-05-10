@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c12e7fc700e1469fbb995deb835ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Titanium Combo
+  comboEffectDescription: 'penetration: 50% for 3, 100% for 5 '
   effectType: 1
   elementalType: 1
   shouldUpgradeCombo: 0
   effecTimer: 0
   modEffectType: 1
-  effectTime: 0
   owner: {fileID: 0}

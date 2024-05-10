@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0f72904c523ab41a3cd2135623bf1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Gold Combo
+  comboEffectDescription: ' more cards drop : bonus 2 other type cards for 3, 4 other
+    type cards for 5 '
   effectType: 2
-  shouldUpgradeCombo: 0
   elementalType: 3
+  shouldUpgradeCombo: 0
   effecTimer: 0
   modEffectType: 0
-  effectTime: 0
   owner: {fileID: 0}

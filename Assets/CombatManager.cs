@@ -116,6 +116,7 @@ public class CombatManager : UnitySingleton<CombatManager>
 
     public void InitializeCombatScene()
     {
+        canEndBattle = false;
         PlayerController.Instance.StopAllMovement();
         canSwitchTurn = true;
         var player = playerCombatant.gameObject;

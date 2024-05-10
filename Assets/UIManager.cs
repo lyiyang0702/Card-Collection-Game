@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : UnitySingleton<UIManager>
 {
     public List<GameObject> allLevelMaps = new List<GameObject>();
+    public QuipBannerController quipBannerController;
     public GameObject cameraCanvas;
     public GameObject levelMap;
     public GameObject BattleHUD;

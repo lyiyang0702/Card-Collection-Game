@@ -18,6 +18,7 @@ public struct Stats
 }
 public class Damageable : MonoBehaviour
 {
+    public FlashEffect flashEffect;
     public string displayName = "Pyoro";
     public float baseHealthPoints;
     public float healthPoints;
@@ -36,6 +37,7 @@ public class Damageable : MonoBehaviour
     private void Awake()
     {
         healthPoints = baseHealthPoints;
+        flashEffect = GetComponent<FlashEffect>();
     }
     // Start is called before the first frame update
     public virtual void Start()
@@ -66,6 +68,7 @@ public class Damageable : MonoBehaviour
         UpdateHealth(-dmg);
         OnDamageEvent?.Invoke(dmg);
         Debug.Log("Cause dmg:" + dmg);
+        flashEffect.Flash();
         if (Mathf.RoundToInt(healthPoints) < 1)
         {
             StartCoroutine(DeathRoutine());

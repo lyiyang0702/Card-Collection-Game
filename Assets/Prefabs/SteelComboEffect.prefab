@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2676875a721386b4b9cb19c8624c2279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Steel Combo
+  comboEffectDescription: 'Steal hp : 50% for 3, 100% for 5 '
   effectType: 1
-  shouldUpgradeCombo: 0
   elementalType: 0
+  shouldUpgradeCombo: 0
   effecTimer: 0
   modEffectType: 2
-  effectTime: 0
   owner: {fileID: 0}

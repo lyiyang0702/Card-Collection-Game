@@ -32,7 +32,7 @@ public class ResourceManager : UnitySingleton<ResourceManager>
 
         for (int i = 0; i < number; i++)
         {
-            int rng = Random.Range(0, 5);
+            int rng = Random.Range(0, tierCard.Count);
             generatedCards.Add(tierCard[rng]);
         }
         return generatedCards;

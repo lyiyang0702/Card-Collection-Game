@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BaseComboEffect : MonoBehaviour
 {
+    public string displayName;
+    public string comboEffectDescription;
     public enum EffectType { Timed, StatsMod, Other};
     public enum ModEffectType { Atk, Def, Health};
     public EffectType effectType;
@@ -61,6 +63,7 @@ public class BaseComboEffect : MonoBehaviour
     IEnumerator ComboEffectRoutine(float waitTime,Damageable other, float amount = 0)
     {
         CombatManager.Instance.canSwitchTurn = false;
+        
         yield return new WaitForSeconds(waitTime);
         Debug.Log("Apply Combo Effect");
         switch (effectType)

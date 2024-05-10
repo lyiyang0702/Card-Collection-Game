@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using Unity.VisualScripting;
 public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
@@ -81,11 +82,12 @@ public class PlayerCombatantController : Damageable
             if (element.Value < 3) return false;
             comboEffectType = element.Key;
             upgradeCombo = element.Value == 5;
-
+            
             Debug.Log("Combo Effect: " + comboEffectType + ", Value: " + element.Value);
             comboEffect = Instantiate(CombatManager.Instance.comboEffectDict[comboEffectType]).GetComponent<BaseComboEffect>(); 
             comboEffect.owner = this;
             comboEffect.shouldUpgradeCombo = upgradeCombo;
+            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, 2f, 1f);
             comboEffect.ApplyComboEffect(enemyCombatant);
         }
 

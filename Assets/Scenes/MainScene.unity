@@ -139,6 +139,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea40a1d253044e48aa7200b69abbb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &272271035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272271030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ec3b8d06f064a4b871736ee5cdb360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 407990996}
+  flashMaterial: {fileID: 2100000, guid: 93a2b935768d18840aad62e633ec86be, type: 2}
+  originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  duration: 0.125
+--- !u!212 &407990996 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7724848277833980264, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+  m_PrefabInstance: {fileID: 1303109060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &470134564
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,10 +435,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7724848277833980264, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5535157251525667703, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 272271035}
   m_SourcePrefab: {fileID: 100100000, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
 --- !u!20 &1394872610 stripped
 Camera:

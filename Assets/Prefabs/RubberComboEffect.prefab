@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb92e7fd7e6b6d40b36d99edf673c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Rubber Combo
+  comboEffectDescription: 'click atk (counts how many times player clicked as dmg)
+    :2 seconds for 3, 4 seconds for 5 '
   effectType: 0
   elementalType: 2
   shouldUpgradeCombo: 0
   effecTimer: 0
   modEffectType: 0
-  effectTime: 0
   owner: {fileID: 0}
