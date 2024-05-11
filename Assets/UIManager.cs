@@ -21,6 +21,7 @@ public class UIManager : UnitySingleton<UIManager>
     public GameObject enemySpot;
     public bool canSelectCards = false;
     public GameObject CardUIPrefab;
+    public Button inventoryButton;
     // Start is called before the first frame update
 
     private void Start()
@@ -71,7 +72,8 @@ public class UIManager : UnitySingleton<UIManager>
         if (state == BattleState.PlayerTurn)
         {
             selectedCardParent.transform.parent.gameObject.SetActive(true);
-            Debug.Log("Card Deck: " + selectedCardParent.transform.parent.gameObject.name);
+            inventoryButton.interactable = true;
+           
         }
         else
         {

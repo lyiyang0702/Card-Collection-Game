@@ -37,6 +37,7 @@ public class InventoryUIController : MonoBehaviour
             cardUI.GetComponent<RectTransform>().localScale = Vector3.one;
             PlayerController.Instance.inventory.RemoveCard(card);
         }
+        UIManager.Instance.inventoryButton.interactable = false;
     }
 
     void OnConfirm()
