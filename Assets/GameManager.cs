@@ -36,4 +36,25 @@ public class GameManager : UnitySingleton<GameManager>
         UIManager.Instance.allLevelMaps[areaID-1].SetActive(true);
         UIManager.Instance.allLevelMaps[areaID - 1].GetComponent<LevelManager>().SpawnPlayer();
     }
+
+    //public void UpdateInventorySizeBasedOnArea(int areaID)
+    //{
+    //    switch (areaID)
+    //    {
+    //        case 1:
+    //            PlayerController.Instance.inventory.size = 40;
+    //            break;
+    //        case 2:
+    //            PlayerController.Instance.inventory.size = 50;
+    //            break;
+    //        case 3:
+    //            PlayerController.Instance.inventory.size = 60;
+    //            break;
+    //        case 4:
+    //            PlayerController.Instance.inventory.size = 80;
+    //            break;
+
+    //    }
+
+    //}
 }

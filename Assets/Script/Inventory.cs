@@ -21,7 +21,13 @@ public class Inventory : MonoBehaviour
 
     public void AddCardToInventory(CardInteractable cardInteractable)
     {
-        if (cards.Count > size) return;
+        //if (cards.Count >= size)
+        //{
+        //    Debug.Log("Inventory is full.");
+        //    // drop cards in inventory
+        //    return;
+        //}
+
         if (GameManager.Instance.isDebug)
         {
             cards.Add(cardInteractable.cardInfo);

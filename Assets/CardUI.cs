@@ -17,6 +17,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     public TextMeshProUGUI cardNameText;
     public Image cardSprite;
     public Image overlay;
+    public Image disableOverlay;
     public AudioSource confirm;
     public AudioSource deny;
 
@@ -125,6 +126,8 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
             var cardUI = inventoryUI.inventoryGrid.transform.GetChild(i).GetComponent<CardUI>();
             if (cardUI.isSelected || !cardUI._cardInfo.Equals(_cardInfo)) continue;
             cardUI.isClickable = state;
+            cardUI.disableOverlay.gameObject.SetActive(!state);
+            
         }
     }
     

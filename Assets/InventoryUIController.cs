@@ -14,6 +14,7 @@ public class InventoryUIController : MonoBehaviour
         UIManager.Instance.PopulateCardsToTransform(PlayerController.Instance.inventory.cards, inventoryGrid.transform);
         ConfirmButton.onClick.AddListener(OnConfirm);
         UIManager.Instance.canSelectCards = true;
+        UIManager.Instance.inventoryButton.interactable = false;
     }
 
     private void OnDisable()
@@ -37,7 +38,7 @@ public class InventoryUIController : MonoBehaviour
             cardUI.GetComponent<RectTransform>().localScale = Vector3.one;
             PlayerController.Instance.inventory.RemoveCard(card);
         }
-        UIManager.Instance.inventoryButton.interactable = false;
+
     }
 
     void OnConfirm()
