@@ -7,7 +7,7 @@ public class DoorInteractable : Interactable
     public Sprite open;
     public Sprite close;
     public SpriteRenderer sprite;
-    public int areaNum = 2;
+    public int areaNum;
     public override void InteractAction()
     {
         base.InteractAction();

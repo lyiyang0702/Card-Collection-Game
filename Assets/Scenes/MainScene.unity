@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a930806645f777b438572b8e71ee3105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentArea: 1
+  currentArea: 0
   isDebug: 0
 --- !u!4 &1579019156
 Transform:
