@@ -17,7 +17,7 @@ public class EnemyCombatantController : Damageable
     {
         base.Start();
         elementalType = (ElementalType)Random.Range(0,4);
-        Debug.Log(elementalType);
+        //Debug.Log(elementalType);
         isEnemy = true;
         switch (difficulty)
         {
@@ -69,6 +69,24 @@ public class EnemyCombatantController : Damageable
 
     }
 
+    public override void OnEnterCombat()
+    {
+        base.OnEnterCombat();
+        transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
+        
+    }
+
+    public override void OnExitCombat(bool isGameOver = false)
+    {
+        if (isGameOver)
+        {
+            GetComponent<EnemyInteractable>().currentInteractState = Interactable.InteractState.CanInteract;
+            healthPoints = baseHealthPoints;
+        }
+        base.OnExitCombat();
+
+        
+    }
     void SpawnReward()
     {
         CombatManager.Instance.canSwitchTurn = false;

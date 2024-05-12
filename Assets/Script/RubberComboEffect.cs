@@ -11,7 +11,7 @@ public class RubberComboEffect : BaseComboEffect
     public override void Update()
     {
         base.Update();
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && shouldCountDown)
         {  
             mouseClickCounter++;
             Debug.Log(mouseClickCounter);
@@ -21,15 +21,13 @@ public class RubberComboEffect : BaseComboEffect
     public override void ApplyTimedModEffect(Damageable other)
     {
         base.ApplyTimedModEffect(other);
-        owner.stats.atk = mouseClickCounter;
-        Debug.Log("Rubber Combo Effect: " + owner.stats.atk);
-        mouseClickCounter = 0;
-        CombatManager.Instance.enemyCombatant.ApplyDamage(owner.stats.atk);
+        //Debug.Log("should count down: " + shouldCountDown);
+        countDownEndEvent.AddListener(OnCountDownEnd);
     }
 
     public override void ApplyComboEffect(Damageable other, float amount = 0)
     {
-        shouldCountDown = true;
+       
         if (shouldUpgradeCombo)
         {
             effectTime = 3f;
@@ -39,5 +37,17 @@ public class RubberComboEffect : BaseComboEffect
             effectTime = 2f;
         }
         base.ApplyComboEffect(other, amount);
+
+    }
+
+    void OnCountDownEnd()
+    {
+        shouldCountDown = false;
+        owner.stats.atk = mouseClickCounter;
+        Debug.Log("Rubber Combo Effect: " + owner.stats.atk);
+        CombatManager.Instance.enemyCombatant.ApplyDamage(owner.stats.atk);
+        mouseClickCounter = 0;
+        //CombatManager.Instance.canSwitchTurn = true;
+        Destroy(gameObject);
     }
 }

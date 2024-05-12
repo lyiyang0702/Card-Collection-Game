@@ -24,13 +24,13 @@ public class QuipBannerController : MonoBehaviour
         //GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
 
         //LeanTween.alphaCanvas(GetComponent<CanvasGroup>(), 1, toDuration);
-        //LeanTween.size(GetComponent<RectTransform>(), new Vector2(1, 150), toDuration);
+        //LeanTween.size(GetComponent<RectTransform>(), new Vector2(2000,200), toDuration);
 
 
         yield return new WaitForSeconds(lingerDuration);
 
         GetComponent<CanvasGroup>().alpha = 0.0f;
-        //LeanTween.alphaCanvas(GetComponent<CanvasGroup>(), 0, outDuration);
+        //eanTween.alphaCanvas(GetComponent<CanvasGroup>(), 0, outDuration);
         //LeanTween.size(GetComponent<RectTransform>(), new Vector2(1, 0), outDuration);
     }
 }

@@ -11,22 +11,17 @@ public class CombatManager : UnitySingleton<CombatManager>
 {
     public BattleState battleState = BattleState.None;
     public UnityEvent<BattleState> SwicthTurnEevent;
-    [SerializeField] Vector3 playerPosBeforeCombat;
-    [SerializeField] float playerHPBeforeCombat;
     public PlayerCombatantController playerCombatant;
     public EnemyCombatantController enemyCombatant;
     public bool canSwitchTurn = true;
     public bool canEndBattle = false;
     [SerializeField]List<GameObject> comboEffects;
     public Dictionary <ElementalType, GameObject> comboEffectDict = new Dictionary<ElementalType, GameObject>();
-    public GameObject playerSprite;
-    private Animator playerAnim;
-    private SpriteRenderer playerSpriteRenderer;
+
 
     private void Start()
     {
-        playerAnim = playerSprite.GetComponent<Animator>();
-        playerSpriteRenderer = playerSprite.GetComponent<SpriteRenderer>();
+       
         foreach (var effect in comboEffects)
         {
             comboEffectDict[effect.GetComponent<BaseComboEffect>().elementalType] = effect;
@@ -53,8 +48,7 @@ public class CombatManager : UnitySingleton<CombatManager>
                 Debug.Log("NO ENEMY COMBATANT OR PLAYER COMBATANT");
                 return;
             }
-            playerAnim.SetBool("inCombat", true);
-            playerSpriteRenderer.flipX = false;
+
             DecideTurn();
             InitializeCombatScene();
 
@@ -65,7 +59,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     {
         if (scene.name == "BattleScene")
         {
-            playerAnim.SetBool("inCombat", false);
+            
             ResetExplorationScene();
         }
     }
@@ -87,6 +81,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     void OnSwitchTurn(BattleState state)
     {
         UIManager.Instance.UpdateBattleUI(state);
+        Debug.Log("Can Switch Turn: " + canSwitchTurn);
         StartCoroutine(SwicthTurnRoutine());
     }
 
@@ -118,8 +113,6 @@ public class CombatManager : UnitySingleton<CombatManager>
         Debug.Log("Set up combatants");
         if (playerCombatant == null) return false;
         if (enemyCombatant == null) return false;
-        playerPosBeforeCombat = playerCombatant.transform.position;
-        playerHPBeforeCombat = playerCombatant.healthPoints;
         playerCombatant.OnDeathEvent.AddListener(OnEndBattle);
         enemyCombatant.OnDeathEvent.AddListener(OnEndBattle);
 
@@ -128,33 +121,29 @@ public class CombatManager : UnitySingleton<CombatManager>
 
     public void InitializeCombatScene()
     {
+
         canEndBattle = false;
-        PlayerController.Instance.StopAllMovement();
+        //PlayerController.Instance.StopAllMovement();
         canSwitchTurn = true;
-        playerCombatant.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        enemyCombatant.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
         Camera.main.transform.position = new Vector3(0, 0, -10);
         UIManager.Instance.OnBattleSceneLoaded();
-        playerCombatant.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y, 0);
-        enemyCombatant.transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
-
+       
+        playerCombatant.OnEnterCombat();
+        enemyCombatant.OnEnterCombat();
     }
 
     public void ResetExplorationScene()
     {
         if (playerCombatant == null) return;
-        
-
-        // reset enemy as well when lose
-        if (battleState== BattleState.Lost)
+        Debug.Log("Reset scene");
+        var isGameOver = battleState == BattleState.Lost;
+      
+        if (isGameOver)
         {
-            //var enemy = enemyCombatant.gameObject;
-            enemyCombatant.transform.localScale = Vector3.one;
-            enemyCombatant.GetComponent<EnemyInteractable>().currentInteractState = Interactable.InteractState.CanInteract;
+            enemyCombatant.OnExitCombat(isGameOver);
         }
-        playerCombatant.transform.position = playerPosBeforeCombat;
-        playerCombatant.transform.localScale = Vector3.one;
-        playerCombatant.StopAllCoroutines();
+        playerCombatant.OnExitCombat(isGameOver);
         battleState = BattleState.None;
         UIManager.Instance.OnBattleSceneUnLoaded();
     }

@@ -22,6 +22,8 @@ public class Damageable : MonoBehaviour
     public string displayName = "Pyoro";
     public float baseHealthPoints;
     public float healthPoints;
+    public float healthPointsBeforeCombat;
+    public Vector3 posBeforeCombat;
     public UnityEvent<float> OnDamageEvent;
     public UnityEvent<float> OnHealthUpdatedEvent;
     public UnityEvent<Damageable> OnDeathEvent;
@@ -69,11 +71,7 @@ public class Damageable : MonoBehaviour
         OnDamageEvent?.Invoke(dmg);
         Debug.Log("Cause dmg:" + dmg);
         flashEffect.Flash();
-        if (Mathf.RoundToInt(healthPoints) < 1)
-        {
-            StartCoroutine(DeathRoutine());
-            //OnDeathEvent?.Invoke(this);
-        }
+
     }
 
     public void UpdateHealth(float healthChange)
@@ -81,6 +79,11 @@ public class Damageable : MonoBehaviour
         healthPoints += healthChange;
         healthPoints = Mathf.Clamp(healthPoints, 0, 10000);
         OnHealthUpdatedEvent?.Invoke(healthPoints);
+        if (Mathf.RoundToInt(healthPoints) < 1)
+        {
+            StartCoroutine(DeathRoutine());
+        }
+
     }
     public virtual IEnumerator DeathRoutine()
     {
@@ -103,5 +106,20 @@ public class Damageable : MonoBehaviour
         agilityBuff = 0;
         stats.ResetStat();
 
+    }
+
+    virtual public void OnEnterCombat()
+    {
+        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        posBeforeCombat = transform.position;
+        healthPointsBeforeCombat = healthPoints;
+    }
+
+    virtual public void OnExitCombat(bool isGameOver = false)
+    {
+
+        transform.localScale = Vector3.one;
+        transform.position = posBeforeCombat;
+   
     }
 }

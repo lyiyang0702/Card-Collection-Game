@@ -100,6 +100,7 @@ public class UIManager : UnitySingleton<UIManager>
 
     public void PopulateCardsToTransform(List<CardScriptableObject> cardList, Transform targetParent)
     {
+        if (cardList.Count == 0) return;
         foreach (var card in cardList)
         {
             CreateCardUI(card).transform.SetParent(targetParent);

@@ -8,10 +8,16 @@ public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
     [SerializeField] BaseComboEffect comboEffect;
-    
+    public float quipBannerLingearTime = 3f;
+    public GameObject playerSprite;
+    private Animator playerAnim;
+    private SpriteRenderer playerSpriteRenderer;
+
     ElementalType comboEffectType;
     override public void Start()
     {
+        playerAnim = playerSprite.GetComponent<Animator>();
+        playerSpriteRenderer = playerSprite.GetComponent<SpriteRenderer>();
         UIManager.Instance.attackButton.onClick.AddListener(Attack);
         isPlayer = true;
     }
@@ -87,7 +93,8 @@ public class PlayerCombatantController : Damageable
             comboEffect = Instantiate(CombatManager.Instance.comboEffectDict[comboEffectType]).GetComponent<BaseComboEffect>(); 
             comboEffect.owner = this;
             comboEffect.shouldUpgradeCombo = upgradeCombo;
-            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, 2f, 1f);
+            comboEffect.waitTime = quipBannerLingearTime;
+            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);
             comboEffect.ApplyComboEffect(enemyCombatant);
         }
 
@@ -105,7 +112,33 @@ public class PlayerCombatantController : Damageable
         return stats.atk;
     }
 
-    
+    public override void OnEnterCombat()
+    {
+        base.OnEnterCombat();
+        PlayerController.Instance.StopAllMovement();
+        transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y, 0);
+        playerAnim.SetBool("inCombat", true);
+        playerSpriteRenderer.flipX = false;
+        healthPointsBeforeCombat = healthPoints;
+    }
 
+    public override void OnExitCombat(bool isGameOver = false)
+    {
+        Debug.Log("HP before combat: " + healthPointsBeforeCombat);
+        if(isGameOver )
+        {
+            healthPoints = healthPointsBeforeCombat;
+        }
+        
+        playerAnim.SetBool("inCombat", false);
+        StopAllCoroutines();
+        base.OnExitCombat();
 
+    }
+
+    public override IEnumerator DeathRoutine()
+    {
+        CombatManager.Instance.canEndBattle = true;
+        return base.DeathRoutine();
+    }
 }

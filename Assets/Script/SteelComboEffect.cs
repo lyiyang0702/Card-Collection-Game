@@ -13,6 +13,11 @@ public class SteelComboEffect : BaseComboEffect
             owner.UpdateHealth(enemyHP);
 
         }
+        else
+        {
+            other.UpdateHealth(-enemyHP/2);
+            owner.UpdateHealth(enemyHP/2);
+        }
         base.ApplyStatsModEffect(other, amount);
     }
 }

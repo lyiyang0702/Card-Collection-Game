@@ -525,6 +525,7 @@ MonoBehaviour:
   enemySpot: {fileID: 6866546678616551192}
   canSelectCards: 0
   CardUIPrefab: {fileID: 8565220101848944112, guid: 83517370cd240914d889de692ba021ba, type: 3}
+  inventoryButton: {fileID: 2869101697073908696}
 --- !u!1 &6866546678616551192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1282,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2869101697073908696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1858271887183973167, guid: c887755de15a966419331eab93aeeb3c, type: 3}
+  m_PrefabInstance: {fileID: 4474590822414516471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5173923608872208158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8779073378203486185, guid: c887755de15a966419331eab93aeeb3c, type: 3}
@@ -1385,11 +1397,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4821993343806740009, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4821993343806740009, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5634971305858033248, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1434,6 +1446,14 @@ PrefabInstance:
     - target: {fileID: 6538268506658169946, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6844734628142081914, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6844734628142081914, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
+      propertyPath: m_Direction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7085234388324971808, guid: db4736cba5a1774489e3dffa1ffe6ac1, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size

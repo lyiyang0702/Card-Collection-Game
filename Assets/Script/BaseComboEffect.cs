@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BaseComboEffect : MonoBehaviour
 {
@@ -11,14 +12,13 @@ public class BaseComboEffect : MonoBehaviour
     public EffectType effectType;
     public ElementalType elementalType;
     public bool shouldUpgradeCombo = false;
-
     [SerializeField] float effecTimer = 0f;
     [SerializeField] ModEffectType modEffectType;
     protected float effectTime = 0f;
     protected bool shouldCountDown = false;
-    float waitTime = 4f;
-    float timer = 0;
+    public float waitTime = 4f;
     public Damageable owner;
+    public UnityEvent countDownEndEvent;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,16 +28,8 @@ public class BaseComboEffect : MonoBehaviour
     virtual public void Update()
     {
         //Debug.Log("Count down started: " + shouldCountDown);
-        if(shouldCountDown)
-        {
-            //Debug.Log("Time elapsed: " + effecTimer);
-            effecTimer += Time.deltaTime;
-            if(effecTimer > effectTime)
-            {
-                effecTimer = 0f;
-                shouldCountDown = false;
-            }
-        }
+
+        CountDownTimer();
     }
 
     virtual public void ApplyStatsModEffect(Damageable other,float amount = 0)
@@ -51,8 +43,8 @@ public class BaseComboEffect : MonoBehaviour
     }
     virtual public void ApplyTimedModEffect(Damageable other)
     {
-        Debug.Log("Apply Timed Mod Effect");
-        
+        //Debug.Log("Apply Timed Mod Effect");
+        shouldCountDown = true;
     }
     virtual public void ApplyComboEffect(Damageable other, float amount = 0)
     {
@@ -64,7 +56,7 @@ public class BaseComboEffect : MonoBehaviour
     {
         CombatManager.Instance.canSwitchTurn = false;
         
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSecondsRealtime(waitTime);
         Debug.Log("Apply Combo Effect");
         switch (effectType)
         {
@@ -73,12 +65,31 @@ public class BaseComboEffect : MonoBehaviour
                 break;
             case EffectType.StatsMod:
                 ApplyStatsModEffect(other, amount);
+                CombatManager.Instance.canSwitchTurn = true;
+                Destroy(gameObject);
                 break;
             case EffectType.Other:
                 ApplyOtherEffect(other);
+                CombatManager.Instance.canSwitchTurn = true;
+                Destroy(gameObject);
                 break;
         }
-        CombatManager.Instance.canSwitchTurn = true;
-        Destroy(gameObject);
+        
+
     }
+
+    virtual public void CountDownTimer()
+    {
+        if (shouldCountDown)
+        {
+            Debug.Log("Time elapsed: " + effecTimer);
+            effecTimer += Time.deltaTime;
+            if (effecTimer > effectTime)
+            {
+                effecTimer = 0f;
+                countDownEndEvent.Invoke();
+            }
+        }
+    }
+
 }

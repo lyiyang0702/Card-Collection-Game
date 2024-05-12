@@ -530,6 +530,8 @@ MonoBehaviour:
   displayName: Player
   baseHealthPoints: 100
   healthPoints: 0
+  healthPointsBeforeCombat: 0
+  posBeforeCombat: {x: 0, y: 0, z: 0}
   OnDamageEvent:
     m_PersistentCalls:
       m_Calls:
@@ -563,6 +565,7 @@ MonoBehaviour:
   agilityBuff: 0
   cardCombo: []
   comboEffect: {fileID: 0}
+  playerSprite: {fileID: 2852489828970580688}
 --- !u!114 &7485871356975421995
 MonoBehaviour:
   m_ObjectHideFlags: 0
