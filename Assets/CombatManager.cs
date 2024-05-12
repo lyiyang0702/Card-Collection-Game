@@ -137,7 +137,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         enemyCombatant.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         Camera.main.transform.position = new Vector3(0, 0, -10);
         UIManager.Instance.OnBattleSceneLoaded();
-        playerCombatant.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y, 0);
+        playerCombatant.transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x+0.12f, UIManager.Instance.playerSpot.transform.position.y, 0);
         enemyCombatant.transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
 
     }
