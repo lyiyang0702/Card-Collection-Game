@@ -18,8 +18,14 @@ public class CombatManager : UnitySingleton<CombatManager>
     public bool canEndBattle = false;
     [SerializeField]List<GameObject> comboEffects;
     public Dictionary <ElementalType, GameObject> comboEffectDict = new Dictionary<ElementalType, GameObject>();
+    public GameObject playerSprite;
+    private Animator playerAnim;
+    private SpriteRenderer playerSpriteRenderer;
+
     private void Start()
     {
+        playerAnim = playerSprite.GetComponent<Animator>();
+        playerSpriteRenderer = playerSprite.GetComponent<SpriteRenderer>();
         foreach (var effect in comboEffects)
         {
             comboEffectDict[effect.GetComponent<BaseComboEffect>().elementalType] = effect;
@@ -46,6 +52,8 @@ public class CombatManager : UnitySingleton<CombatManager>
                 Debug.Log("NO ENEMY COMBATANT OR PLAYER COMBATANT");
                 return;
             }
+            playerAnim.SetBool("inCombat", true);
+            playerSpriteRenderer.flipX = false;
             DecideTurn();
             InitializeCombatScene();
 
@@ -56,6 +64,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     {
         if (scene.name == "BattleScene")
         {
+            playerAnim.SetBool("inCombat", false);
             ResetExplorationScene();
         }
     }

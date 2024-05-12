@@ -21,11 +21,17 @@ public class PlayerController : UnitySingleton<PlayerController>
     Rigidbody2D rb;
     public LayerMask wallLayer;
     public GameObject cam;
+    public GameObject iconObj;
+    private Animator anim;
+    private SpriteRenderer icon;
+
     override public void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
         playerCombatant = GetComponent<PlayerCombatantController>();
+        anim = iconObj.GetComponent<Animator>();
+        icon = iconObj.GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
@@ -171,7 +177,17 @@ public class PlayerController : UnitySingleton<PlayerController>
     {
         if (!isFreeWalk) return;
         rb.velocity = moveDirection * speed;
-        
+        if(moveDirection.x ==0 && moveDirection.y ==0){   
+            anim.SetBool("walking",false);
+        }else{
+            anim.SetBool("walking",true);
+        } 
+        if (moveDirection.x > 0){
+            icon.flipX = false;
+        }
+        else if (moveDirection.x < 0){
+            icon.flipX = true;
+        }
     }
 
     public void StopAllMovement()
