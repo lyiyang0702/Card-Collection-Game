@@ -8,7 +8,7 @@ public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
     [SerializeField] BaseComboEffect comboEffect;
-
+    
     ElementalType comboEffectType;
     override public void Start()
     {
