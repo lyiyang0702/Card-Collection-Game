@@ -12,6 +12,7 @@ public class CombatManager : UnitySingleton<CombatManager>
     public BattleState battleState = BattleState.None;
     public UnityEvent<BattleState> SwicthTurnEevent;
     [SerializeField] Vector3 playerPosBeforeCombat;
+    [SerializeField] float playerHPBeforeCombat;
     public PlayerCombatantController playerCombatant;
     public EnemyCombatantController enemyCombatant;
     public bool canSwitchTurn = true;
@@ -118,7 +119,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         if (playerCombatant == null) return false;
         if (enemyCombatant == null) return false;
         playerPosBeforeCombat = playerCombatant.transform.position;
-        Debug.Log("Player Pos before Combat: " + playerPosBeforeCombat);
+        playerHPBeforeCombat = playerCombatant.healthPoints;
         playerCombatant.OnDeathEvent.AddListener(OnEndBattle);
         enemyCombatant.OnDeathEvent.AddListener(OnEndBattle);
 
@@ -130,9 +131,6 @@ public class CombatManager : UnitySingleton<CombatManager>
         canEndBattle = false;
         PlayerController.Instance.StopAllMovement();
         canSwitchTurn = true;
-        //var player = playerCombatant.gameObject;
-        //var enemy = enemyCombatant.gameObject;
-
         playerCombatant.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         enemyCombatant.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         Camera.main.transform.position = new Vector3(0, 0, -10);
