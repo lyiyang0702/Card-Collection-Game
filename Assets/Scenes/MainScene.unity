@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &94497629 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3463642580401598918, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+  m_PrefabInstance: {fileID: 1303109060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &272271030 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5535157251525667703, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
@@ -250,9 +255,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 272271030}
     - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: playerAnim
+      value: 
+      objectReference: {fileID: 94497629}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 272271030}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: playerSprite
+      value: 
+      objectReference: {fileID: 1317784270}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -323,6 +336,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2855316712723982548, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 94497629}
     - target: {fileID: 5535157251525667703, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -372,6 +389,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+--- !u!1 &1317784270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2852489828970580688, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+  m_PrefabInstance: {fileID: 1303109060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1394872610 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 744649621168473029, guid: 24c5963773a746240adf3d458a7a40f5, type: 3}
