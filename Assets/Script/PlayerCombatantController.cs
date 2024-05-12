@@ -116,7 +116,7 @@ public class PlayerCombatantController : Damageable
     {
         base.OnEnterCombat();
         PlayerController.Instance.StopAllMovement();
-        transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x, UIManager.Instance.playerSpot.transform.position.y, 0);
+        transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x + 0.12f, UIManager.Instance.playerSpot.transform.position.y, 0);
         playerAnim.SetBool("inCombat", true);
         playerSpriteRenderer.flipX = false;
         healthPointsBeforeCombat = healthPoints;
