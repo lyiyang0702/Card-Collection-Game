@@ -89,15 +89,11 @@ public class CombatManager : UnitySingleton<CombatManager>
     {
         if (damageable.isEnemy)
         {
-            Debug.Log("Enemy: " + damageable.name + " is dead");
-            battleState = BattleState.Won;
             Destroy(damageable.gameObject);
             enemyCombatant = null;
         }
         else if (damageable.isPlayer)
         {
-            Debug.Log(damageable.name + " is dead");
-            battleState = BattleState.Lost;
             enemyCombatant.OnDeathEvent.RemoveListener(OnEndBattle);
             // Restart Game?
         }

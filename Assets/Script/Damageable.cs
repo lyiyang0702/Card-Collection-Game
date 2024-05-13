@@ -90,6 +90,7 @@ public class Damageable : MonoBehaviour
         CombatManager.Instance.canSwitchTurn = false;
         yield return new WaitUntil(() => CombatManager.Instance.canEndBattle == true);
         OnDeathEvent?.Invoke(this);
+
     }
 
     virtual public void OnSwitchTurn(BattleState state)

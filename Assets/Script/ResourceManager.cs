@@ -21,7 +21,7 @@ public class ResourceManager : UnitySingleton<ResourceManager>
 
     public List<CardScriptableObject> ReturnRandomCardByTier( int tier, int number  = 1)
     {
-        Debug.Log(number);
+        //Debug.Log(number);
         List<CardScriptableObject> generatedCards = new List<CardScriptableObject>();
 
         var tierCard = (

@@ -110,6 +110,8 @@ public class EnemyCombatantController : Damageable
     public override IEnumerator DeathRoutine()
     {
         SpawnReward();
+        Debug.Log("Enemy: " + gameObject.name + " is dead");
+        CombatManager.Instance.battleState = BattleState.Won;
         return base.DeathRoutine();
     }
 }

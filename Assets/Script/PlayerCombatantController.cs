@@ -7,11 +7,13 @@ using Unity.VisualScripting;
 public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
-    [SerializeField] BaseComboEffect comboEffect;
     public float quipBannerLingearTime = 3f;
     public GameObject playerSprite;
+    public BaseComboEffect comboEffect;
+
     private Animator playerAnim;
     private SpriteRenderer playerSpriteRenderer;
+
 
     ElementalType comboEffectType;
     override public void Start()
@@ -124,7 +126,7 @@ public class PlayerCombatantController : Damageable
 
     public override void OnExitCombat(bool isGameOver = false)
     {
-        Debug.Log("HP before combat: " + healthPointsBeforeCombat);
+        //Debug.Log("HP before combat: " + healthPointsBeforeCombat);
         if(isGameOver )
         {
             healthPoints = healthPointsBeforeCombat;
@@ -139,6 +141,8 @@ public class PlayerCombatantController : Damageable
     public override IEnumerator DeathRoutine()
     {
         CombatManager.Instance.canEndBattle = true;
+        Debug.Log(gameObject.name + " is dead");
+        CombatManager.Instance.battleState = BattleState.Lost;
         return base.DeathRoutine();
     }
 }
