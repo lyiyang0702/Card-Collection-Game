@@ -60,6 +60,7 @@ public class InventoryUIController : MonoBehaviour
         isDeafultSort = !isDeafultSort;
         //Debug.Log("Is Deafult Sort: " + isDeafultSort);
          UIManager.Instance.ClearCardChildren(inventoryGrid.transform);
+        UIManager.Instance.tempSelectedCards.Clear();
         if (isDeafultSort)
         {
             PlayerController.Instance.inventory.SortCardsByElementsThenColorTier();
