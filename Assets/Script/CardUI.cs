@@ -36,6 +36,14 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     CardScriptableObject _cardInfo;
     bool isSelected = false;
     bool isDeslected = true;
+
+    private void Start()
+    {
+        if(CombatManager.Instance.battleState == BattleState.None)
+        {
+            isClickable = false;
+        }
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
 

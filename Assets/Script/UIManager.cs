@@ -22,6 +22,7 @@ public class UIManager : UnitySingleton<UIManager>
     public bool canSelectCards = false;
     public GameObject CardUIPrefab;
     public Button inventoryButton;
+    public Button inventoryButtonOnMap;
     public TextMeshProUGUI enemyDefText;
     public TextMeshProUGUI enemyAtkText;
     // Start is called before the first frame update
@@ -50,6 +51,7 @@ public class UIManager : UnitySingleton<UIManager>
     public void OnBattleSceneLoaded()
     {
         PlayerController.Instance.input.SwitchCurrentActionMap("UI");
+        inventoryButtonOnMap.gameObject.SetActive(false);
         cameraCanvas.SetActive(true);
         levelMap.SetActive(false);
         enemyStatsBar.GetComponent<StatsBarUI>().UpdateStatsBar(CombatManager.Instance.enemyCombatant);
@@ -60,8 +62,9 @@ public class UIManager : UnitySingleton<UIManager>
     public void OnBattleSceneUnLoaded()
     {
         PlayerController.Instance.input.SwitchCurrentActionMap("Player");
+        inventoryButtonOnMap.gameObject.SetActive(true);
         //temp fix
-        for(int i = 0; i < selectedCardParent.transform.childCount; i++)
+        for (int i = 0; i < selectedCardParent.transform.childCount; i++)
         {
             Destroy(selectedCardParent.transform.GetChild(i).gameObject);
         }

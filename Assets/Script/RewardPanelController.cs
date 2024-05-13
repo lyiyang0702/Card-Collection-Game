@@ -7,13 +7,23 @@ public class RewardPanelController : MonoBehaviour
     public GameObject rewardCardParent;
     public TextMeshProUGUI titleText;
 
-    private void Start()
+
+    private void OnEnable()
     {
-        titleText.gameObject.SetActive(false);
+        if (CombatManager.Instance.battleState == BattleState.None)
+        {
+            titleText.gameObject.SetActive(false);
+            Time.timeScale = 0;
+        }
     }
     private void OnDisable()
     {
         UIManager.Instance.ClearCardChildren(rewardCardParent.transform);
+        if (CombatManager.Instance.battleState == BattleState.None)
+        {
+            Time.timeScale = 1;
+        }
+            
     }
 
     public void ClosePanel()
@@ -27,11 +37,5 @@ public class RewardPanelController : MonoBehaviour
         UIManager.Instance.PopulateCardsToTransform(cardList,rewardCardParent.transform);
     }
 
-    private void OnEnable()
-    {
-        if(CombatManager.Instance.battleState != BattleState.None)
-        {
-            titleText.gameObject.SetActive(true);
-        }
-    }
+
 }
