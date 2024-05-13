@@ -20,9 +20,11 @@ public class CardInteractable : Interactable
         var rngTier = Random.Range(1, 3);
         cardInfos = ResourceManager.Instance.ReturnRandomCardByTier(rngTier, rng);
         PlayerController.Instance.inventory.AddCardToInventory(this);
-
-        setInvisible();
-        StartCoroutine(getRidOf());
+        UIManager.Instance.rewardPanelUI.gameObject.SetActive(true);
+        UIManager.Instance.rewardPanelUI.PopulateRewardCard(cardInfos);
+        Destroy(gameObject);
+        //setInvisible();
+        //StartCoroutine(getRidOf());
     }
 
     public override void OnTargetInteractable()
@@ -33,6 +35,11 @@ public class CardInteractable : Interactable
 
     }
 
+    public override void OnStopTargetInteractable()
+    {
+        base.OnStopTargetInteractable();
+        
+    }
     private void setInvisible(){
         cardSprite.SetActive(false);
     }

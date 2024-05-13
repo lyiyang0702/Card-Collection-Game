@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
-    public float quipBannerLingearTime = 3f;
+    public float quipBannerLingearTime = 2f;
     public GameObject playerSprite;
 
 
@@ -48,7 +48,7 @@ public class PlayerCombatantController : Damageable
     {
         var enemyCombatant = CombatManager.Instance.enemyCombatant;
 
-        if(enemyCombatant == null)
+        if (enemyCombatant == null)
         {
             Debug.Log("No available enemy to attack");
             return;
@@ -66,8 +66,10 @@ public class PlayerCombatantController : Damageable
             return;
         }
         // then, apply combo effect
-        CheckIfHasComboEffect();
-
+        //CheckIfHasComboEffect();
+        if (comboEffect != null) {
+            comboEffect.ApplyComboEffect(enemyCombatant);
+        } 
         OnAttackEnd();
 
     }
@@ -99,9 +101,9 @@ public class PlayerCombatantController : Damageable
             comboEffect = Instantiate(CombatManager.Instance.comboEffectDict[comboEffectType]).GetComponent<BaseComboEffect>(); 
             comboEffect.owner = this;
             comboEffect.shouldUpgradeCombo = upgradeCombo;
-            comboEffect.waitTime = quipBannerLingearTime + 1f;
+            comboEffect.waitTime = 2f;
             UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);
-            comboEffect.ApplyComboEffect(enemyCombatant);
+            
         }
 
         return comboDict.Count > 0;

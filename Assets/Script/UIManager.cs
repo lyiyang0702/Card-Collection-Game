@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class UIManager : UnitySingleton<UIManager>
 {
     public List<GameObject> allLevelMaps = new List<GameObject>();
@@ -22,6 +22,8 @@ public class UIManager : UnitySingleton<UIManager>
     public bool canSelectCards = false;
     public GameObject CardUIPrefab;
     public Button inventoryButton;
+    public TextMeshProUGUI enemyDefText;
+    public TextMeshProUGUI enemyAtkText;
     // Start is called before the first frame update
 
     private void Start()
@@ -64,6 +66,7 @@ public class UIManager : UnitySingleton<UIManager>
             Destroy(selectedCardParent.transform.GetChild(i).gameObject);
         }
         cameraCanvas.SetActive(false);
+        rewardPanelUI.gameObject.SetActive(false);
         levelMap.SetActive(true);
     }
 

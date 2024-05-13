@@ -38,7 +38,7 @@ public class InventoryUIController : MonoBehaviour
             cardUI.GetComponent<RectTransform>().localScale = Vector3.one;
             PlayerController.Instance.inventory.RemoveCard(card);
         }
-
+        PlayerController.Instance.playerCombatant.CheckIfHasComboEffect();
     }
 
     void OnConfirm()

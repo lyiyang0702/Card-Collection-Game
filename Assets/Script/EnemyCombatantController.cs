@@ -111,6 +111,7 @@ public class EnemyCombatantController : Damageable
     {
         SpawnReward();
         Debug.Log("Enemy: " + gameObject.name + " is dead");
+
         CombatManager.Instance.battleState = BattleState.Won;
         return base.DeathRoutine();
     }
