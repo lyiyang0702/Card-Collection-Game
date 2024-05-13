@@ -31,7 +31,7 @@ public class Damageable : MonoBehaviour
     public bool isPlayer;
     public bool isEnemy;
     public Stats stats = new Stats();
-
+    public bool isDead = false;
     public int attackBuff;
     public int defenseBuff;
     public int agilityBuff;
@@ -81,6 +81,7 @@ public class Damageable : MonoBehaviour
         OnHealthUpdatedEvent?.Invoke(healthPoints);
         if (Mathf.RoundToInt(healthPoints) < 1)
         {
+
             StartCoroutine(DeathRoutine());
         }
 
@@ -88,6 +89,7 @@ public class Damageable : MonoBehaviour
     public virtual IEnumerator DeathRoutine()
     {
         CombatManager.Instance.canSwitchTurn = false;
+        isDead = true;
         yield return new WaitUntil(() => CombatManager.Instance.canEndBattle == true);
         OnDeathEvent?.Invoke(this);
 
@@ -118,7 +120,7 @@ public class Damageable : MonoBehaviour
 
     virtual public void OnExitCombat(bool isGameOver = false)
     {
-
+        isDead = false;
         transform.localScale = Vector3.one;
         transform.position = posBeforeCombat;
    

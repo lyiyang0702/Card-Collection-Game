@@ -30,7 +30,7 @@ public class QuipBannerController : MonoBehaviour
         yield return new WaitForSeconds(lingerDuration);
 
         GetComponent<CanvasGroup>().alpha = 0.0f;
-        //eanTween.alphaCanvas(GetComponent<CanvasGroup>(), 0, outDuration);
+        //LeanTween.alphaCanvas(GetComponent<CanvasGroup>(), 0, outDuration);
         //LeanTween.size(GetComponent<RectTransform>(), new Vector2(1, 0), outDuration);
     }
 }

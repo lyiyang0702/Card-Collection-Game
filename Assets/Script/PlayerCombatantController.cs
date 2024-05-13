@@ -9,13 +9,12 @@ public class PlayerCombatantController : Damageable
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
     public float quipBannerLingearTime = 3f;
     public GameObject playerSprite;
-    public BaseComboEffect comboEffect;
+
 
     private Animator playerAnim;
     private SpriteRenderer playerSpriteRenderer;
-
-
-    ElementalType comboEffectType;
+    private BaseComboEffect comboEffect;
+    private ElementalType comboEffectType;
     override public void Start()
     {
         playerAnim = playerSprite.GetComponent<Animator>();
@@ -27,7 +26,7 @@ public class PlayerCombatantController : Damageable
     private void FixedUpdate()
     {
         // Debug
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyUp(KeyCode.K))
         {
             var enemyCombatant = CombatManager.Instance.enemyCombatant;
             if(enemyCombatant != null)
@@ -36,7 +35,7 @@ public class PlayerCombatantController : Damageable
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.R))
         {
             if (CombatManager.Instance.playerCombatant != null)
             {
@@ -61,6 +60,11 @@ public class PlayerCombatantController : Damageable
         if (dmg == 0) return;
         enemyCombatant.ApplyDamage(dmg);
 
+        if (CombatManager.Instance.enemyCombatant.isDead)
+        {
+            OnAttackEnd();
+            return;
+        }
         // then, apply combo effect
         CheckIfHasComboEffect();
 
@@ -95,7 +99,7 @@ public class PlayerCombatantController : Damageable
             comboEffect = Instantiate(CombatManager.Instance.comboEffectDict[comboEffectType]).GetComponent<BaseComboEffect>(); 
             comboEffect.owner = this;
             comboEffect.shouldUpgradeCombo = upgradeCombo;
-            comboEffect.waitTime = quipBannerLingearTime;
+            comboEffect.waitTime = quipBannerLingearTime + 1f;
             UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);
             comboEffect.ApplyComboEffect(enemyCombatant);
         }
