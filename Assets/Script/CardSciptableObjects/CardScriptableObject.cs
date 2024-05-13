@@ -9,6 +9,15 @@ public enum ElementalType
     Rubber,
     Gold
 }
+
+public enum ColorTier
+{
+    Green = 1,
+    Blue = 2,
+    Purple = 3,
+    Golden = 4
+}
+
 [CreateAssetMenu(menuName = "Card")]
 
 public class CardScriptableObject: ScriptableObject,IEquatable<CardScriptableObject>
@@ -17,13 +26,7 @@ public class CardScriptableObject: ScriptableObject,IEquatable<CardScriptableObj
     public string displayName;
 
 
-    public enum ColorTier
-    {
-        Green = 1,
-        Blue = 2,
-        Purple = 3,
-        Golden = 4
-    }
+
 
     public ElementalType elementalType;
     public ColorTier colorTier;
