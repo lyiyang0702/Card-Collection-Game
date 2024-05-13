@@ -47,7 +47,7 @@ public class RubberComboEffect : BaseComboEffect
         Debug.Log("Rubber Combo Effect: " + owner.stats.atk);
         CombatManager.Instance.enemyCombatant.ApplyDamage(owner.stats.atk);
         mouseClickCounter = 0;
-        //CombatManager.Instance.canSwitchTurn = true;
+        CombatManager.Instance.canSwitchTurn = true;
         Destroy(gameObject);
     }
 }
