@@ -54,6 +54,7 @@ public class PlayerCombatantController : Damageable
             return;
         }
 
+        UIManager.Instance.quipBannerController.StopBannerQuip();
         // first, apply card damage
         // TO DO: Add attack ui
         var dmg = CalculateDamage();

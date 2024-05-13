@@ -33,4 +33,10 @@ public class QuipBannerController : MonoBehaviour
         //LeanTween.alphaCanvas(GetComponent<CanvasGroup>(), 0, outDuration);
         //LeanTween.size(GetComponent<RectTransform>(), new Vector2(1, 0), outDuration);
     }
+
+    public void StopBannerQuip()
+    {
+        StopAllCoroutines();
+        GetComponent<CanvasGroup>().alpha = 0.0f;
+    }
 }
