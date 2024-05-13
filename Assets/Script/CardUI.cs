@@ -26,9 +26,9 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     [SerializeField] private Color borderBlue;
     [SerializeField] private Color borderPurp;
     [SerializeField] private Color borderGold;
-    [SerializeField] private Color backGreen;
-    [SerializeField] private Color backBlue;
-    [SerializeField] private Color backPurp;
+    [SerializeField] private Color backRubber;
+    [SerializeField] private Color backSteel;
+    [SerializeField] private Color backTitanium;
     [SerializeField] private Color backGold;
 
     // clickable properties
@@ -79,24 +79,20 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
         _cardInfo = cardInfo;
         switch (cardInfo.colorTier)
         {
-            case CardScriptableObject.ColorTier.Green:
+            case ColorTier.Green:
                 border.color = borderGreen;
-                background.color = backGreen;
                 atkValueText.text = "1";
                 break;
-            case CardScriptableObject.ColorTier.Blue:
+            case ColorTier.Blue:
                 border.color = borderBlue;
-                background.color = backBlue;
                 atkValueText.text = "2";
                 break;
-            case CardScriptableObject.ColorTier.Purple:
+            case ColorTier.Purple:
                 border.color = borderPurp;
-                background.color = backPurp;
                 atkValueText.text = "3";
                 break;
-            case CardScriptableObject.ColorTier.Golden:
+            case ColorTier.Golden:
                 border.color = borderGold;
-                background.color = backGold;
                 atkValueText.text = "4";
                 break;
             default:
@@ -104,6 +100,22 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
         }
         cardNameText.text = cardInfo.displayName;
         elementalTypeText.text = cardInfo.elementalType.ToString();
+        switch (cardInfo.elementalType){
+            case ElementalType.Gold:
+                background.color = backGold;
+                break;
+            case ElementalType.Rubber:
+                background.color = backRubber;
+                break;
+            case ElementalType.Steel:
+                background.color = backSteel;
+                break;
+            case ElementalType.Titanium:
+                background.color = backTitanium;
+                break;
+            default:
+                break;
+        }
         cardSprite.sprite = cardInfo.cardSprite;
     }
 
