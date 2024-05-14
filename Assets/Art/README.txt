@@ -1,5 +1,5 @@
 unimplemented:
-enemy sprites
-enemy idle
-enemy taking damage
-enemy death
+boss sprites
+boss idle
+boss taking damage
+boss death
