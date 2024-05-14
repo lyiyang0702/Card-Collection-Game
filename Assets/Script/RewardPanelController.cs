@@ -14,6 +14,7 @@ public class RewardPanelController : MonoBehaviour
         {
             titleText.gameObject.SetActive(false);
             Time.timeScale = 0;
+            return;
         }
         titleText.gameObject.SetActive(true);
     }

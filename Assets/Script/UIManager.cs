@@ -100,7 +100,7 @@ public class UIManager : UnitySingleton<UIManager>
     {
         GameObject cardObj = Instantiate(CardUIPrefab);
         var cardUI = cardObj.GetComponent<CardUI>();
-        cardUI.UpdateCardUI(cardInfo);
+        cardUI.UpdateCardUI(cardInfo,shouldGlow);
  
         cardObj.GetComponent<CardDamageSource>().InitializeCard(cardInfo, PlayerController.Instance.playerCombatant);
 
