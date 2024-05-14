@@ -21,7 +21,9 @@ public class InventoryUIController : MonoBehaviour
         if (CombatManager.Instance.battleState == BattleState.None)
         {
             ConfirmButton.gameObject.SetActive(false);
+            return;
         }
+        ConfirmButton.gameObject.SetActive(true);
     }
 
     private void OnDisable()
