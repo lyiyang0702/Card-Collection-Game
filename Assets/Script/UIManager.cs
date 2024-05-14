@@ -26,6 +26,7 @@ public class UIManager : UnitySingleton<UIManager>
     public Button inventoryButtonOnMap;
     public TextMeshProUGUI enemyDefText;
     public TextMeshProUGUI enemyAtkText;
+    public AudioSource soundtrack;
     // Start is called before the first frame update
 
     private void Start()
@@ -58,6 +59,7 @@ public class UIManager : UnitySingleton<UIManager>
         enemyStatsBar.GetComponent<StatsBarUI>().UpdateStatsBar(CombatManager.Instance.enemyCombatant);
         playerStatsBar.GetComponent<StatsBarUI>().UpdateStatsBar(CombatManager.Instance.playerCombatant);
         UpdateBattleUI(CombatManager.Instance.battleState);
+        soundtrack.Stop();
     }
 
     public void OnBattleSceneUnLoaded()
@@ -72,6 +74,7 @@ public class UIManager : UnitySingleton<UIManager>
         cameraCanvas.SetActive(false);
         rewardPanelUI.gameObject.SetActive(false);
         levelMap.SetActive(true);
+        soundtrack.Play();
     }
 
     public void UpdateBattleUI(BattleState state)

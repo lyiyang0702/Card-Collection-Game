@@ -13,6 +13,7 @@ public class EnemyCombatantController : Damageable
     [SerializeField] int elementalRewardNum = 4;
     [SerializeField] int randomRewardNum = 1;
     [SerializeField] List<CardScriptableObject> reward = new List<CardScriptableObject>();
+    [SerializeField] Animator anim;
     override public void Start()
     {
         base.Start();
@@ -56,6 +57,7 @@ public class EnemyCombatantController : Damageable
     IEnumerator AttackRoutine()
     {
         yield return new WaitForSeconds(2);
+        SetBoolFalse("takeDamage");
         Debug.Log("Enemy Attack");
         PlayerController.Instance.playerCombatant.ApplyDamage(stats.atk);
         //CombatManager.Instance.SwicthTurnEevent.Invoke(BattleState.PlayerTurn);
@@ -115,4 +117,15 @@ public class EnemyCombatantController : Damageable
         CombatManager.Instance.battleState = BattleState.Won;
         return base.DeathRoutine();
     }
+
+    public void SetBoolTrue(string boolName)
+    {
+        anim.SetBool(boolName, true);
+    }
+
+    public void SetBoolFalse(string boolName)
+    {
+        anim.SetBool(boolName, false);
+    }
+
 }

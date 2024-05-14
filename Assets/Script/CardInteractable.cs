@@ -22,9 +22,9 @@ public class CardInteractable : Interactable
         PlayerController.Instance.inventory.AddCardToInventory(this);
         UIManager.Instance.rewardPanelUI.gameObject.SetActive(true);
         UIManager.Instance.rewardPanelUI.PopulateRewardCard(cardInfos);
-        Destroy(gameObject);
-        //setInvisible();
-        //StartCoroutine(getRidOf());
+        //Destroy(gameObject);
+        setInvisible();
+        StartCoroutine(getRidOf());
     }
 
     public override void OnTargetInteractable()
