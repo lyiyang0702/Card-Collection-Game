@@ -9,12 +9,19 @@ public class PlayerCombatantController : Damageable
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
     public float quipBannerLingearTime = 2f;
     public GameObject playerSprite;
+    public AudioSource confirmSound;
 
 
     private Animator playerAnim;
     private SpriteRenderer playerSpriteRenderer;
     private BaseComboEffect comboEffect;
     private ElementalType comboEffectType;
+    [SerializeField] private AudioClip defaultSFX;
+    [SerializeField] private AudioClip goldSFX;
+    [SerializeField] private AudioClip rubberSFX;
+    [SerializeField] private AudioClip steelSFX;
+    [SerializeField] private AudioClip titaniumSFX;
+    [SerializeField] private AudioClip errorSFX;
     override public void Start()
     {
         playerAnim = playerSprite.GetComponent<Animator>();
@@ -82,6 +89,7 @@ public class PlayerCombatantController : Damageable
         cardCombo.Clear();
         stats.atk = 0;
         Debug.Log("Player Attack");
+        confirmSound.clip = errorSFX;
         OnSwitchTurn(BattleState.EnemyTurn);
     }
     public bool CheckIfHasComboEffect()
@@ -89,6 +97,7 @@ public class PlayerCombatantController : Damageable
         var enemyCombatant = CombatManager.Instance.enemyCombatant;
         bool upgradeCombo = false;
         Dictionary<ElementalType, int> comboDict = new Dictionary<ElementalType, int>();
+        confirmSound.clip = defaultSFX;
         foreach (var card in cardCombo.GroupBy(x => x.cardInfo.elementalType))
         {
             comboDict[card.Key] = card.Count();
@@ -103,10 +112,29 @@ public class PlayerCombatantController : Damageable
             comboEffect.owner = this;
             comboEffect.shouldUpgradeCombo = upgradeCombo;
             comboEffect.waitTime = 2f;
-            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);
-            
+            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);          
         }
+        switch(comboEffectType){
+            case ElementalType.Gold:
+                confirmSound.clip = goldSFX;
+            break;
 
+            case ElementalType.Rubber:
+                confirmSound.clip = rubberSFX;
+            break;
+
+            case ElementalType.Steel:
+                confirmSound.clip = steelSFX;
+            break;
+
+            case ElementalType.Titanium:
+                confirmSound.clip = titaniumSFX;
+            break;
+
+            default:
+                confirmSound.clip = defaultSFX;
+            break;
+            }
         return comboDict.Count > 0;
     }
 

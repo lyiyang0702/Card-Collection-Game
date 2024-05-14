@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8289666250805712282, guid: 36b90536b3d2a124690116243b9244be, type: 3}
       propertyPath: OnDamageEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8289666250805712282, guid: 36b90536b3d2a124690116243b9244be, type: 3}
       propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
