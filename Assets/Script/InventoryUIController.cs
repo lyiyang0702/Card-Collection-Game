@@ -10,6 +10,7 @@ public class InventoryUIController : MonoBehaviour
     public Button ConfirmButton;
     public TextMeshProUGUI sortTip;
     bool isDeafultSort = false;
+    bool isConfirmed = false;
     private void OnEnable()
     {
         SortCards();
@@ -38,6 +39,7 @@ public class InventoryUIController : MonoBehaviour
 
     void SubmitSelectedCards()
     {
+        isConfirmed = true;
         var cardParent = UIManager.Instance.selectedCardParent.transform;
         foreach (var card in UIManager.Instance.tempSelectedCards)
         {
@@ -52,6 +54,11 @@ public class InventoryUIController : MonoBehaviour
 
     void OnConfirm()
     {
+        if (UIManager.Instance.tempSelectedCards.Count == 0)
+        {
+            UIManager.Instance.quipBannerController.StartBannerQuip("No card selected!", null, 0.1f, 1f, 0.1f);
+            return;
+        }
         SubmitSelectedCards();
         gameObject.SetActive(false);
     }
@@ -76,4 +83,17 @@ public class InventoryUIController : MonoBehaviour
         UIManager.Instance.PopulateCardsToTransform(PlayerController.Instance.inventory.cards, inventoryGrid.transform,false);
     }
 
+    public void CloseInventory()
+    {
+        if (UIManager.Instance.tempSelectedCards.Count == 0 && CombatManager.Instance.battleState != BattleState.None)
+        {
+            UIManager.Instance.quipBannerController.StartBannerQuip("No card selected!", null, 0.1f, 1f, 0.1f);
+            return;
+        }
+        gameObject.SetActive(false);
+        if (!isConfirmed)
+        {
+            UIManager.Instance.inventoryButton.interactable = true;
+        }
+    }
 }
