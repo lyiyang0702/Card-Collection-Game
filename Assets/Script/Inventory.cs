@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -48,7 +50,7 @@ public class Inventory : MonoBehaviour
     public void RemoveCard(CardScriptableObject card)
     {
         if (!cards.Contains(card)) return;
-        //Debug.Log(card.name + " is removed from inventory: " + cards.Remove(card));
+        Debug.Log(card.name + " is removed from inventory: " + cards.Remove(card));
     }
 
     //public void AddCardToInventory(CardInteractable cardInteractable)
@@ -60,4 +62,37 @@ public class Inventory : MonoBehaviour
     //    card.InitializeCard(cardInfo, owner);
     //    cards.Add(cardObj);
     //}
+
+    public List<CardScriptableObject>  SortCardByElementalType(List<CardScriptableObject> cards)
+    {
+        return cards.OrderBy(x => x.elementalType).ToList();
+    }
+
+    public List<CardScriptableObject> SortCardByRarity(List<CardScriptableObject> cards)
+    {
+        return cards.OrderBy(x => x.colorTier).ToList();
+    }
+
+
+    public void SortCardsByElementsThenColorTier()
+    {
+        List<CardScriptableObject> sortedCards = new List<CardScriptableObject>();
+        IEnumerable<IGrouping<ElementalType, CardScriptableObject>> query = SortCardByRarity(cards).GroupBy(card => card.elementalType, cards => cards);
+        foreach (IGrouping<ElementalType, CardScriptableObject> cardGroup in query)
+        {
+            sortedCards.AddRange(SortCardByElementalType(cardGroup.ToList()));
+        }
+        cards = sortedCards;
+    }
+
+    public void SortCardsByRarityThenElements()
+    {
+        List<CardScriptableObject> sortedCards = new List<CardScriptableObject>();
+        IEnumerable<IGrouping<ColorTier, CardScriptableObject>> query = SortCardByElementalType(cards).GroupBy(card => card.colorTier, cards => cards);
+        foreach (IGrouping<ColorTier, CardScriptableObject> cardGroup in query)
+        {
+            sortedCards.AddRange(SortCardByRarity(cardGroup.ToList()));
+        }
+        cards = sortedCards;
+    }
 }

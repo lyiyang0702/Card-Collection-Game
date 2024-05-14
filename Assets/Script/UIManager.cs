@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
+using UnityEngine.Networking;
 public class UIManager : UnitySingleton<UIManager>
 {
     public List<GameObject> allLevelMaps = new List<GameObject>();
@@ -22,6 +23,9 @@ public class UIManager : UnitySingleton<UIManager>
     public bool canSelectCards = false;
     public GameObject CardUIPrefab;
     public Button inventoryButton;
+    public Button inventoryButtonOnMap;
+    public TextMeshProUGUI enemyDefText;
+    public TextMeshProUGUI enemyAtkText;
     // Start is called before the first frame update
 
     private void Start()
@@ -47,7 +51,8 @@ public class UIManager : UnitySingleton<UIManager>
     }
     public void OnBattleSceneLoaded()
     {
-        PlayerController.Instance.input.SwitchCurrentActionMap("UI");
+        //PlayerController.Instance.input.SwitchCurrentActionMap("UI");
+        inventoryButtonOnMap.gameObject.SetActive(false);
         cameraCanvas.SetActive(true);
         levelMap.SetActive(false);
         enemyStatsBar.GetComponent<StatsBarUI>().UpdateStatsBar(CombatManager.Instance.enemyCombatant);
@@ -57,13 +62,15 @@ public class UIManager : UnitySingleton<UIManager>
 
     public void OnBattleSceneUnLoaded()
     {
-        PlayerController.Instance.input.SwitchCurrentActionMap("Player");
+        //PlayerController.Instance.input.SwitchCurrentActionMap("Player");
+        inventoryButtonOnMap.gameObject.SetActive(true);
         //temp fix
-        for(int i = 0; i < selectedCardParent.transform.childCount; i++)
+        for (int i = 0; i < selectedCardParent.transform.childCount; i++)
         {
             Destroy(selectedCardParent.transform.GetChild(i).gameObject);
         }
         cameraCanvas.SetActive(false);
+        rewardPanelUI.gameObject.SetActive(false);
         levelMap.SetActive(true);
     }
 
@@ -89,21 +96,23 @@ public class UIManager : UnitySingleton<UIManager>
         }
     }
 
-    public GameObject CreateCardUI(CardScriptableObject cardInfo)
+    public GameObject CreateCardUI(CardScriptableObject cardInfo, bool shouldGlow = false)
     {
         GameObject cardObj = Instantiate(CardUIPrefab);
-        cardObj.GetComponent<CardUI>().UpdateCardUI(cardInfo);
+        var cardUI = cardObj.GetComponent<CardUI>();
+        cardUI.UpdateCardUI(cardInfo,shouldGlow);
+ 
         cardObj.GetComponent<CardDamageSource>().InitializeCard(cardInfo, PlayerController.Instance.playerCombatant);
 
         return cardObj;
     }
 
-    public void PopulateCardsToTransform(List<CardScriptableObject> cardList, Transform targetParent)
+    public void PopulateCardsToTransform(List<CardScriptableObject> cardList, Transform targetParent, bool shouldGlow = false)
     {
         if (cardList.Count == 0) return;
         foreach (var card in cardList)
         {
-            CreateCardUI(card).transform.SetParent(targetParent);
+            CreateCardUI(card,shouldGlow).transform.SetParent(targetParent);
         }
     }
 }

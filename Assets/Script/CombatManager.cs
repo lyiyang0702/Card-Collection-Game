@@ -111,7 +111,8 @@ public class CombatManager : UnitySingleton<CombatManager>
         if (enemyCombatant == null) return false;
         playerCombatant.OnDeathEvent.AddListener(OnEndBattle);
         enemyCombatant.OnDeathEvent.AddListener(OnEndBattle);
-
+        UIManager.Instance.enemyAtkText.text = enemyCombatant.stats.atk.ToString();
+        UIManager.Instance.enemyDefText.text = enemyCombatant.stats.def.ToString();
         return true;
     }
 

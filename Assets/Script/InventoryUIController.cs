@@ -3,18 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class InventoryUIController : MonoBehaviour
 {
     public GameObject inventoryGrid;
     public Button ConfirmButton;
-
+    public TextMeshProUGUI sortTip;
+    bool isDeafultSort = false;
     private void OnEnable()
     {
-        UIManager.Instance.PopulateCardsToTransform(PlayerController.Instance.inventory.cards, inventoryGrid.transform);
+        SortCards();
+
         ConfirmButton.onClick.AddListener(OnConfirm);
         UIManager.Instance.canSelectCards = true;
         UIManager.Instance.inventoryButton.interactable = false;
+
+        if (CombatManager.Instance.battleState == BattleState.None)
+        {
+            ConfirmButton.gameObject.SetActive(false);
+        }
     }
 
     private void OnDisable()
@@ -38,7 +45,7 @@ public class InventoryUIController : MonoBehaviour
             cardUI.GetComponent<RectTransform>().localScale = Vector3.one;
             PlayerController.Instance.inventory.RemoveCard(card);
         }
-
+        PlayerController.Instance.playerCombatant.CheckIfHasComboEffect();
     }
 
     void OnConfirm()
@@ -47,5 +54,24 @@ public class InventoryUIController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+
+    public void SortCards()
+    {
+        isDeafultSort = !isDeafultSort;
+        //Debug.Log("Is Deafult Sort: " + isDeafultSort);
+         UIManager.Instance.ClearCardChildren(inventoryGrid.transform);
+        UIManager.Instance.tempSelectedCards.Clear();
+        if (isDeafultSort)
+        {
+            PlayerController.Instance.inventory.SortCardsByElementsThenColorTier();
+            sortTip.text = "Elemental Type";
+        }
+        else
+        {
+            PlayerController.Instance.inventory.SortCardsByRarityThenElements();
+            sortTip.text = "Rarity";
+        }
+        UIManager.Instance.PopulateCardsToTransform(PlayerController.Instance.inventory.cards, inventoryGrid.transform,false);
+    }
 
 }

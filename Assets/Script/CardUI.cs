@@ -8,8 +8,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CardUI : MonoBehaviour,IPointerClickHandler
+public class CardUI : MonoBehaviour,IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    public GameObject glowOutline;
     public Image border;
     public Image background;
     public TextMeshProUGUI atkValueText;
@@ -36,6 +37,14 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
     CardScriptableObject _cardInfo;
     bool isSelected = false;
     bool isDeslected = true;
+
+    private void Start()
+    {
+        if(CombatManager.Instance.battleState == BattleState.None)
+        {
+            isClickable = false;
+        }
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
 
@@ -48,6 +57,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
 
         if (isSelected)
         {
+            
             if (UIManager.Instance.tempSelectedCards.Count >= 5) return;
             if (!CheckIfCardIsDuplicated(_cardInfo))
             {
@@ -74,7 +84,25 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
 
     }
 
-    public void UpdateCardUI(CardScriptableObject cardInfo)
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (CombatManager.Instance.battleState == BattleState.Lost || CombatManager.Instance.battleState == BattleState.Won) return;
+        if (_cardInfo.colorTier == ColorTier.Golden)
+        {
+            glowOutline.SetActive(true);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (CombatManager.Instance.battleState == BattleState.Lost || CombatManager.Instance.battleState == BattleState.Won) return;
+        if (_cardInfo.colorTier == ColorTier.Golden)
+        {
+            glowOutline.SetActive(false);
+        }
+    }
+
+    public void UpdateCardUI(CardScriptableObject cardInfo, bool shouldGlow = false)
     {
         _cardInfo = cardInfo;
         switch (cardInfo.colorTier)
@@ -117,6 +145,14 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
                 break;
         }
         cardSprite.sprite = cardInfo.cardSprite;
+        if (_cardInfo.colorTier == ColorTier.Golden)
+        {
+            glowOutline.SetActive(shouldGlow);
+        }
+        else
+        {
+            glowOutline.SetActive(false);
+        }
     }
 
 
@@ -142,5 +178,7 @@ public class CardUI : MonoBehaviour,IPointerClickHandler
             
         }
     }
-    
+
+
+
 }
