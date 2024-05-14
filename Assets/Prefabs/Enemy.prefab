@@ -92,6 +92,8 @@ MonoBehaviour:
   displayName: Pyoro
   baseHealthPoints: 0
   healthPoints: 0
+  healthPointsBeforeCombat: 0
+  posBeforeCombat: {x: 0, y: 0, z: 0}
   OnDamageEvent:
     m_PersistentCalls:
       m_Calls:
@@ -107,12 +109,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8289666250805712282}
+        m_TargetAssemblyTypeName: EnemyCombatantController, Assembly-CSharp
+        m_MethodName: SetBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: takeDamage
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthUpdatedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDeathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8289666250805712282}
+        m_TargetAssemblyTypeName: EnemyCombatantController, Assembly-CSharp
+        m_MethodName: SetBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: isDead
+          m_BoolArgument: 0
+        m_CallState: 2
   rb: {fileID: 0}
   isPlayer: 0
   isEnemy: 0
@@ -120,6 +146,7 @@ MonoBehaviour:
     atk: 0
     spd: 0
     def: 0
+  isDead: 0
   attackBuff: 0
   defenseBuff: 0
   agilityBuff: 0
@@ -130,6 +157,7 @@ MonoBehaviour:
   elementalRewardNum: 4
   randomRewardNum: 1
   reward: []
+  anim: {fileID: 1102506072100955382}
 --- !u!50 &4279082337833552661
 Rigidbody2D:
   serializedVersion: 4
@@ -261,6 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8837519449120233338}
   - component: {fileID: 925831144964048061}
+  - component: {fileID: 1102506072100955382}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -278,7 +307,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6603, y: 0.675, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4819689125849010308}
@@ -324,7 +353,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 115235997e9f21a438c9576714fe36f4, type: 3}
+  m_Sprite: {fileID: 2142637396, guid: a34968f5f97be1441b576daee8fb1c2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -335,6 +364,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1102506072100955382
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163255901591696218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a41776cf5bc1ac4408739bc114f70f1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4759672345106455821
 GameObject:
   m_ObjectHideFlags: 0
