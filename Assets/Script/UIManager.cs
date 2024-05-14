@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
 public class UIManager : UnitySingleton<UIManager>
 {
     public List<GameObject> allLevelMaps = new List<GameObject>();
@@ -50,7 +51,7 @@ public class UIManager : UnitySingleton<UIManager>
     }
     public void OnBattleSceneLoaded()
     {
-        PlayerController.Instance.input.SwitchCurrentActionMap("UI");
+        //PlayerController.Instance.input.SwitchCurrentActionMap("UI");
         inventoryButtonOnMap.gameObject.SetActive(false);
         cameraCanvas.SetActive(true);
         levelMap.SetActive(false);
@@ -61,7 +62,7 @@ public class UIManager : UnitySingleton<UIManager>
 
     public void OnBattleSceneUnLoaded()
     {
-        PlayerController.Instance.input.SwitchCurrentActionMap("Player");
+        //PlayerController.Instance.input.SwitchCurrentActionMap("Player");
         inventoryButtonOnMap.gameObject.SetActive(true);
         //temp fix
         for (int i = 0; i < selectedCardParent.transform.childCount; i++)
@@ -95,21 +96,23 @@ public class UIManager : UnitySingleton<UIManager>
         }
     }
 
-    public GameObject CreateCardUI(CardScriptableObject cardInfo)
+    public GameObject CreateCardUI(CardScriptableObject cardInfo, bool shouldGlow = false)
     {
         GameObject cardObj = Instantiate(CardUIPrefab);
-        cardObj.GetComponent<CardUI>().UpdateCardUI(cardInfo);
+        var cardUI = cardObj.GetComponent<CardUI>();
+        cardUI.UpdateCardUI(cardInfo);
+ 
         cardObj.GetComponent<CardDamageSource>().InitializeCard(cardInfo, PlayerController.Instance.playerCombatant);
 
         return cardObj;
     }
 
-    public void PopulateCardsToTransform(List<CardScriptableObject> cardList, Transform targetParent)
+    public void PopulateCardsToTransform(List<CardScriptableObject> cardList, Transform targetParent, bool shouldGlow = false)
     {
         if (cardList.Count == 0) return;
         foreach (var card in cardList)
         {
-            CreateCardUI(card).transform.SetParent(targetParent);
+            CreateCardUI(card,shouldGlow).transform.SetParent(targetParent);
         }
     }
 }

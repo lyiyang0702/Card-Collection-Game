@@ -71,7 +71,7 @@ public class InventoryUIController : MonoBehaviour
             PlayerController.Instance.inventory.SortCardsByRarityThenElements();
             sortTip.text = "Rarity";
         }
-        UIManager.Instance.PopulateCardsToTransform(PlayerController.Instance.inventory.cards, inventoryGrid.transform);
+        UIManager.Instance.PopulateCardsToTransform(PlayerController.Instance.inventory.cards, inventoryGrid.transform,false);
     }
 
 }

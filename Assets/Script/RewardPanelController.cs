@@ -15,6 +15,7 @@ public class RewardPanelController : MonoBehaviour
             titleText.gameObject.SetActive(false);
             Time.timeScale = 0;
         }
+        titleText.gameObject.SetActive(true);
     }
     private void OnDisable()
     {
@@ -34,7 +35,7 @@ public class RewardPanelController : MonoBehaviour
 
     public void PopulateRewardCard(List<CardScriptableObject> cardList)
     {
-        UIManager.Instance.PopulateCardsToTransform(cardList,rewardCardParent.transform);
+        UIManager.Instance.PopulateCardsToTransform(cardList,rewardCardParent.transform, true);
     }
 
 
