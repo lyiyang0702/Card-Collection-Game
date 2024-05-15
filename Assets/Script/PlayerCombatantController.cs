@@ -94,7 +94,7 @@ public class PlayerCombatantController : Damageable
             return;
         }
         Debug.Log("Player Attack");
-        confirmSound.clip = errorSFX;
+        StartCoroutine(resetSFX());
         OnSwitchTurn(BattleState.EnemyTurn);
     }
     public bool CheckIfHasComboEffect()
@@ -186,5 +186,10 @@ public class PlayerCombatantController : Damageable
         Debug.Log(gameObject.name + " is dead");
         CombatManager.Instance.battleState = BattleState.Lost;
         return base.DeathRoutine();
+    }
+
+    IEnumerator resetSFX(){
+        yield return new WaitForSeconds(1.0f);
+        confirmSound.clip = errorSFX;
     }
 }

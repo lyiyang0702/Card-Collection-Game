@@ -138,6 +138,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6267113768469115983, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
   m_PrefabInstance: {fileID: 1303109060}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &272271040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+  m_PrefabInstance: {fileID: 1303109060}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272271030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1f6a297af79584f9a86320446a5281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &470134564
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +293,34 @@ PrefabInstance:
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 1317784270}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: SwicthTurnEevent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: SwicthTurnEevent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: SwicthTurnEevent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 272271040}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: SwicthTurnEevent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: SwicthTurnEevent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: testresetSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: SwicthTurnEevent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerCombatantController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620115991175172607, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+      propertyPath: SwicthTurnEevent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -494,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: goldSFX
       value: 
-      objectReference: {fileID: 8300000, guid: d25a7172b8ecfa641b283fda20c681d7, type: 3}
+      objectReference: {fileID: 8300000, guid: e09d10c13fb9e2b408f160528e54e021, type: 3}
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: errorSFX
       value: 
@@ -502,19 +541,19 @@ PrefabInstance:
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: steelSFX
       value: 
-      objectReference: {fileID: 8300000, guid: d25a7172b8ecfa641b283fda20c681d7, type: 3}
+      objectReference: {fileID: 8300000, guid: bff2e4bc1b8398c4c853c2e44d56949d, type: 3}
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: rubberSFX
       value: 
-      objectReference: {fileID: 8300000, guid: d25a7172b8ecfa641b283fda20c681d7, type: 3}
+      objectReference: {fileID: 8300000, guid: c8ea45a2e0d658945b4ed9b4200b26fb, type: 3}
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: defaultSFX
       value: 
-      objectReference: {fileID: 8300000, guid: f468438bb9a113c428f39f0dc7c1080c, type: 3}
+      objectReference: {fileID: 8300000, guid: c163e8035dfef1246b1a6d7ac5091cfb, type: 3}
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: titaniumSFX
       value: 
-      objectReference: {fileID: 8300000, guid: d25a7172b8ecfa641b283fda20c681d7, type: 3}
+      objectReference: {fileID: 8300000, guid: 4b735786ea0d4aa40a0923522149c285, type: 3}
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: confirmSound
       value: 
@@ -851,6 +890,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2603329388065065139, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603329388065065139, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603329388065065139, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 998133316}
+    - target: {fileID: 2603329388065065139, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603329388065065139, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603329388065065139, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603329388065065139, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4204310004153892152, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
