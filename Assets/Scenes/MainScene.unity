@@ -331,6 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 272271030}
   tutorialUI: {fileID: 515069751}
+  TutorialBattleText: {fileID: 0}
 --- !u!114 &564387659 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7272957407407206647, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
@@ -1219,6 +1220,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3274755567810220386, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontSize
+      value: 41.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274755567810220386, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274755567810220386, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274755567810220386, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274755567810220386, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3902004703800649499, guid: e7d01f92277e5ae40b2fe2025b7b7721, type: 2}
+    - target: {fileID: 3274755567810220386, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294506751
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274755567810220386, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4204310004153892152, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1259,6 +1288,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4716245993923398063, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontSize
+      value: 41.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716245993923398063, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9423638
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716245993923398063, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.9423638
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716245993923398063, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.96981126
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716245993923398063, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3902004703800649499, guid: e7d01f92277e5ae40b2fe2025b7b7721, type: 2}
+    - target: {fileID: 4716245993923398063, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293980407
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716245993923398063, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6145676398290121059, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_Name
       value: CanvasParent
@@ -1267,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1394872610}
+    - target: {fileID: 8456556979463793193, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8702208392929201343, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: soundtrack
       value: 
