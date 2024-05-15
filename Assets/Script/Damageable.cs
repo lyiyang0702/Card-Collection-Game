@@ -90,7 +90,14 @@ public class Damageable : MonoBehaviour
     {
         CombatManager.Instance.canSwitchTurn = false;
         isDead = true;
-        yield return new WaitUntil(() => CombatManager.Instance.canEndBattle == true);
+
+        if (!CombatManager.Instance.canEndBattle)
+        {
+           yield return null;
+        }
+        Debug.Log("Start Death Routine");
+        //yield return new WaitUntil(() => CombatManager.Instance.canEndBattle == true);
+        yield return new WaitForSeconds(3f);
         OnDeathEvent?.Invoke(this);
 
     }

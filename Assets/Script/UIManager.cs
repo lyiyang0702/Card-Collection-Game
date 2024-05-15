@@ -35,7 +35,7 @@ public class UIManager : UnitySingleton<UIManager>
     }
     private void OnEnable()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
 
     }

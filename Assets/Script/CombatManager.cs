@@ -26,7 +26,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         {
             comboEffectDict[effect.GetComponent<BaseComboEffect>().elementalType] = effect;
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         playerCombatant = PlayerController.Instance.playerCombatant;
         SceneManager.sceneLoaded += OnBattleSceneLoaded;
         SceneManager.sceneUnloaded += OnBattleSceneUnloaded;
@@ -94,6 +94,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         }
         else if (damageable.isPlayer)
         {
+            GameManager.Instance.RestartGame();
             enemyCombatant.OnDeathEvent.RemoveListener(OnEndBattle);
             // Restart Game?
         }

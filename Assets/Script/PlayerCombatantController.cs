@@ -186,10 +186,11 @@ public class PlayerCombatantController : Damageable
     public override IEnumerator DeathRoutine()
     {
         CombatManager.Instance.canEndBattle = true;
-        UIManager.Instance.quipBannerController.StartBannerQuip("YOU DIED", null, 0.1f, 2f, 0.1f);
+        UIManager.Instance.quipBannerController.StartBannerQuip("YOU DIED", null, 0.1f, 3f, 0.1f);
         Debug.Log(gameObject.name + " is dead");
         CombatManager.Instance.battleState = BattleState.Lost;
         return base.DeathRoutine();
+
     }
 
     IEnumerator resetSFX(){

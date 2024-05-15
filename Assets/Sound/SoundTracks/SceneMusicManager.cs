@@ -13,7 +13,7 @@ public class SceneMusicManager : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 

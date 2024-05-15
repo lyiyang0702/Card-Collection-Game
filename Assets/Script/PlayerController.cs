@@ -28,7 +28,7 @@ public class PlayerController : UnitySingleton<PlayerController>
     override public void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         playerCombatant = GetComponent<PlayerCombatantController>();
         anim = iconObj.GetComponent<Animator>();
         icon = iconObj.GetComponent<SpriteRenderer>();
