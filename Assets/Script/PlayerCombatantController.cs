@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
-    public float quipBannerLingearTime = 2f;
+    public float quipBannerLingearTime = 3f;
     public GameObject playerSprite;
     public AudioSource confirmSound;
 
@@ -157,8 +157,9 @@ public class PlayerCombatantController : Damageable
     public override void OnEnterCombat()
     {
         base.OnEnterCombat();
+        transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         PlayerController.Instance.StopAllMovement();
-        transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x + 0.12f, UIManager.Instance.playerSpot.transform.position.y, 0);
+        transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x + 0.08f, UIManager.Instance.playerSpot.transform.position.y- 0.5f, 0);
         playerAnim.SetBool("inCombat", true);
         playerSpriteRenderer.flipX = false;
         healthPointsBeforeCombat = healthPoints;
