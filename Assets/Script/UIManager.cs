@@ -118,4 +118,16 @@ public class UIManager : UnitySingleton<UIManager>
             CreateCardUI(card,shouldGlow).transform.SetParent(targetParent);
         }
     }
+
+    //Mak new Code
+    /*public void ShowTutorialBattleIntroText(string message)
+    {
+        TutorialBattleText.text = message;
+        TutorialBattleText.gameObject.SetActive(true);
+    }
+
+    public void HideTutorialBattleIntroText() 
+    {
+        TutorialBattleText.gameObject.SetActive(false);
+    }*/
 }
