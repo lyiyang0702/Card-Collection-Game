@@ -343,7 +343,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5535157251525667703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea40a1d253044e48aa7200b69abbb23, type: 3}
   m_Name: 
@@ -560,12 +560,20 @@ MonoBehaviour:
     atk: 0
     spd: 10
     def: 10
+  isDead: 0
   attackBuff: 0
   defenseBuff: 0
   agilityBuff: 0
   cardCombo: []
-  comboEffect: {fileID: 0}
+  quipBannerLingearTime: 2
   playerSprite: {fileID: 2852489828970580688}
+  confirmSound: {fileID: 0}
+  defaultSFX: {fileID: 0}
+  goldSFX: {fileID: 0}
+  rubberSFX: {fileID: 0}
+  steelSFX: {fileID: 0}
+  titaniumSFX: {fileID: 0}
+  errorSFX: {fileID: 0}
 --- !u!114 &7485871356975421995
 MonoBehaviour:
   m_ObjectHideFlags: 0

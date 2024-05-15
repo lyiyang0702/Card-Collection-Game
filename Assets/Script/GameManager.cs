@@ -39,5 +39,4 @@ public class GameManager : UnitySingleton<GameManager>
         //UIManager.Instance.allLevelMaps[areaID - 1].GetComponent<LevelManager>().SpawnPlayer();
     }
 
-
 }
