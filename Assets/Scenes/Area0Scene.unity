@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialMap
       objectReference: {fileID: 0}
+    - target: {fileID: 8313109955178622842, guid: b1f7175af983dc744a01708ced5dc64c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
