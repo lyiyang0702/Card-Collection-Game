@@ -88,6 +88,11 @@ public class PlayerCombatantController : Damageable
         UIManager.Instance.ClearCardChildren(UIManager.Instance.selectedCardParent.transform);
         cardCombo.Clear();
         stats.atk = 0;
+        if(PlayerController.Instance.inventory.GetRemainCardsNum() == 0 && !CombatManager.Instance.enemyCombatant.isDead)
+        {
+            StartCoroutine(DeathRoutine());
+            return;
+        }
         Debug.Log("Player Attack");
         confirmSound.clip = errorSFX;
         OnSwitchTurn(BattleState.EnemyTurn);
@@ -176,6 +181,7 @@ public class PlayerCombatantController : Damageable
     public override IEnumerator DeathRoutine()
     {
         CombatManager.Instance.canEndBattle = true;
+        UIManager.Instance.quipBannerController.StartBannerQuip("YOU DIED", null, 0.1f, 2f, 0.1f);
         Debug.Log(gameObject.name + " is dead");
         CombatManager.Instance.battleState = BattleState.Lost;
         return base.DeathRoutine();
