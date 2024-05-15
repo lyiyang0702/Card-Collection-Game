@@ -22,6 +22,9 @@ public class PlayerCombatantController : Damageable
     [SerializeField] private AudioClip steelSFX;
     [SerializeField] private AudioClip titaniumSFX;
     [SerializeField] private AudioClip errorSFX;
+    public AudioSource hitSound;
+    [SerializeField] private AudioClip[] enemySFX;
+
     override public void Start()
     {
         playerAnim = playerSprite.GetComponent<Animator>();
@@ -94,6 +97,7 @@ public class PlayerCombatantController : Damageable
             return;
         }
         Debug.Log("Player Attack");
+        setEnemySFX();
         StartCoroutine(resetSFX());
         OnSwitchTurn(BattleState.EnemyTurn);
     }
@@ -191,5 +195,10 @@ public class PlayerCombatantController : Damageable
     IEnumerator resetSFX(){
         yield return new WaitForSeconds(1.0f);
         confirmSound.clip = errorSFX;
+    }
+
+    public void setEnemySFX(){
+        int rand = UnityEngine.Random.Range(0,3);
+        hitSound.clip = enemySFX[rand];
     }
 }

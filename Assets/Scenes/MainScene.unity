@@ -539,9 +539,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 14d9940d441be564984be9a16b413240, type: 3}
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 1303109061}
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: steelSFX
       value: 
       objectReference: {fileID: 8300000, guid: bff2e4bc1b8398c4c853c2e44d56949d, type: 3}
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: enemySFX1
+      value: 
+      objectReference: {fileID: 8300000, guid: 85cc53230b1ea3849adf21c695bb916b, type: 3}
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: enemySFX2
+      value: 
+      objectReference: {fileID: 8300000, guid: abacad4c4bf22ea41b75d20a60ec2059, type: 3}
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: enemySFX3
+      value: 
+      objectReference: {fileID: 8300000, guid: cc389d5de5ede6d4d949afd2dddf7ea6, type: 3}
     - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: rubberSFX
       value: 
@@ -558,6 +574,22 @@ PrefabInstance:
       propertyPath: confirmSound
       value: 
       objectReference: {fileID: 998133316}
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: enemySFX.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: enemySFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 85cc53230b1ea3849adf21c695bb916b, type: 3}
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: enemySFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: abacad4c4bf22ea41b75d20a60ec2059, type: 3}
+    - target: {fileID: 2985717671615271795, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+      propertyPath: enemySFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: cc389d5de5ede6d4d949afd2dddf7ea6, type: 3}
     - target: {fileID: 3397142081033938710, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
       propertyPath: m_Camera
       value: 
@@ -634,6 +666,11 @@ PrefabInstance:
       addedObject: {fileID: 998133317}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+--- !u!82 &1303109061 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4925453556503148546, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
+  m_PrefabInstance: {fileID: 1303109060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1317784270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2852489828970580688, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
