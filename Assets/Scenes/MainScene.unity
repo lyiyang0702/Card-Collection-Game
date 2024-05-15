@@ -128,17 +128,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 3463642580401598918, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
   m_PrefabInstance: {fileID: 1303109060}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &257257149 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1138660293880707929, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
-  m_PrefabInstance: {fileID: 2141659735}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f0d3ed34404274aad979580e42c9fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &272271030 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5535157251525667703, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
@@ -847,22 +836,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 926560988609240878, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 926560988609240878, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 257257149}
-    - target: {fileID: 926560988609240878, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseInventory
-      objectReference: {fileID: 0}
-    - target: {fileID: 926560988609240878, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: InventoryUIController, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 4204310004153892152, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -505,6 +505,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3285900681169331230}
     m_Modifications:
+    - target: {fileID: 161532975574017536, guid: 5e1f985b3270edf4dad4b6dacf75540c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.85637665
+      objectReference: {fileID: 0}
     - target: {fileID: 2953648945177697316, guid: 5e1f985b3270edf4dad4b6dacf75540c, type: 3}
       propertyPath: m_Name
       value: StatsBar
@@ -639,6 +643,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1796055347407422311}
     m_Modifications:
+    - target: {fileID: 161532975574017536, guid: 5e1f985b3270edf4dad4b6dacf75540c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.85637665
+      objectReference: {fileID: 0}
     - target: {fileID: 1005993988570062723, guid: 5e1f985b3270edf4dad4b6dacf75540c, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1

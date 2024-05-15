@@ -74,6 +74,7 @@ public class EnemyCombatantController : Damageable
     public override void OnEnterCombat()
     {
         base.OnEnterCombat();
+        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         transform.position = new Vector3(UIManager.Instance.enemySpot.transform.position.x, UIManager.Instance.enemySpot.transform.position.y + 0.5f, 0);
         
     }

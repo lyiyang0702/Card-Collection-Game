@@ -113,7 +113,7 @@ public class Damageable : MonoBehaviour
 
     virtual public void OnEnterCombat()
     {
-        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        
         posBeforeCombat = transform.position;
         healthPointsBeforeCombat = healthPoints;
     }
