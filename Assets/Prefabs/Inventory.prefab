@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Select Your Cards
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_margin: {x: -88.99701, y: 0, z: -90.70862, w: -69.5954}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1330917514180634011
@@ -201,8 +201,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: By Elemental Type
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+  m_sharedMaterial: {fileID: 2625766151113065112, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -814,6 +814,7 @@ MonoBehaviour:
   inventoryGrid: {fileID: 8261900522009458595}
   ConfirmButton: {fileID: 3710934662299392370}
   sortTip: {fileID: 9166109088469604525}
+  isConfirmed: 0
 --- !u!1 &4874493888908598447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,8 +1008,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Confirm
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+  m_sharedMaterial: {fileID: 2625766151113065112, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
