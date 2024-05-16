@@ -114,7 +114,7 @@ public class EnemyCombatantController : Damageable
     {
         SpawnReward();
         Debug.Log("Enemy: " + gameObject.name + " is dead");
-
+        UIManager.Instance.quipBannerController.StartBannerQuip("YOU WIN", null, 0.1f, 1f, 0.1f);
         CombatManager.Instance.battleState = BattleState.Won;
         return base.DeathRoutine();
     }

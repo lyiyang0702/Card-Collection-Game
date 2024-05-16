@@ -6,14 +6,22 @@ using UnityEngine.UI;
 using TMPro;
 public class InventoryUIController : MonoBehaviour
 {
+    public GameObject comboTutorialPanel;
     public GameObject inventoryGrid;
     public Button ConfirmButton;
     public TextMeshProUGUI sortTip;
     bool isDeafultSort = false;
     bool isConfirmed = false;
+
     private void OnEnable()
     {
+
         SortCards();
+
+        if (inventoryGrid.transform.childCount != 0 && GameManager.Instance.currentArea == 0)
+        {
+            comboTutorialPanel.SetActive(true);
+        }
 
         ConfirmButton.onClick.AddListener(OnConfirm);
         UIManager.Instance.canSelectCards = true;
@@ -25,6 +33,7 @@ public class InventoryUIController : MonoBehaviour
             return;
         }
         ConfirmButton.gameObject.SetActive(true);
+
     }
 
     private void OnDisable()
@@ -73,14 +82,15 @@ public class InventoryUIController : MonoBehaviour
         if (isDeafultSort)
         {
             PlayerController.Instance.inventory.SortCardsByElementsThenColorTier();
-            sortTip.text = "Elemental Type";
+            sortTip.text = "SORT BY ELEMENT";
         }
         else
         {
             PlayerController.Instance.inventory.SortCardsByRarityThenElements();
-            sortTip.text = "Rarity";
+            sortTip.text = "SORT BY RARITY";
         }
         UIManager.Instance.PopulateCardsToTransform(PlayerController.Instance.inventory.cards, inventoryGrid.transform,false);
+
     }
 
     public void CloseInventory()

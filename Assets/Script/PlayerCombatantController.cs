@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
-    public float quipBannerLingearTime = 3f;
+    public float quipBannerLingearTime = 10f;
     public GameObject playerSprite;
     public AudioSource confirmSound;
 
@@ -91,7 +91,7 @@ public class PlayerCombatantController : Damageable
         UIManager.Instance.ClearCardChildren(UIManager.Instance.selectedCardParent.transform);
         cardCombo.Clear();
         stats.atk = 0;
-        if(PlayerController.Instance.inventory.GetRemainCardsNum() == 0 && !CombatManager.Instance.enemyCombatant.isDead)
+        if (PlayerController.Instance.inventory.GetRemainCardsNum() == 0 && !CombatManager.Instance.enemyCombatant.isDead)
         {
             StartCoroutine(DeathRoutine());
             return;
@@ -121,7 +121,7 @@ public class PlayerCombatantController : Damageable
             comboEffect.owner = this;
             comboEffect.shouldUpgradeCombo = upgradeCombo;
             comboEffect.waitTime = 2f;
-            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);          
+            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);
         }
         switch(comboEffectType){
             case ElementalType.Gold:
@@ -189,7 +189,9 @@ public class PlayerCombatantController : Damageable
         UIManager.Instance.quipBannerController.StartBannerQuip("YOU DIED", null, 0.1f, 3f, 0.1f);
         Debug.Log(gameObject.name + " is dead");
         CombatManager.Instance.battleState = BattleState.Lost;
-        return base.DeathRoutine();
+        Debug.Log("Start Player Death Routine");
+        yield return new WaitForSeconds(3f);
+        OnDeathEvent?.Invoke(this);
 
     }
 

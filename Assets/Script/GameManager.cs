@@ -5,12 +5,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : UnitySingleton<GameManager>
 {
-    public int currentArea = 0;
+    public int currentArea = 1;
     public bool isDebug = false;
     // Start is called before the first frame update
     void Start()
     {
-        //DontDestroyOnLoad(gameObject);
         LoadAllScenes(5);
     }
 
@@ -57,9 +56,6 @@ public class GameManager : UnitySingleton<GameManager>
     }
     public void RestartGame()
     {
-        //SceneManager.LoadScene("MainScene");
-        
-        UnloadAllScene(5);
-        LoadAllScenes(5);
+        SceneManager.LoadScene("MainScene");
     }
 }
