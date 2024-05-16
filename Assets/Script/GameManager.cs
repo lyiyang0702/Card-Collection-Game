@@ -5,11 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : UnitySingleton<GameManager>
 {
-    public int currentArea = 1;
+    public int currentArea = 0;
     public bool isDebug = false;
     // Start is called before the first frame update
     void Start()
     {
+        
         LoadAllScenes(5);
     }
 
@@ -41,6 +42,7 @@ public class GameManager : UnitySingleton<GameManager>
 
     void LoadAllScenes(int areaCount)
     {
+       
         for (int i = 0; i < areaCount; i++)
         {
             LoadAreaScene(i);

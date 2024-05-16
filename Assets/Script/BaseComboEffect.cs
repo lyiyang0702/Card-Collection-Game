@@ -7,6 +7,7 @@ public class BaseComboEffect : MonoBehaviour
 {
     public string displayName;
     public string comboEffectDescription;
+    public bool applyToDeadEnemy = false;
     public enum EffectType { Timed, StatsMod, Other};
     public enum ModEffectType { Atk, Def, Health};
     public EffectType effectType;

@@ -71,5 +71,6 @@ public class ComicManager : MonoBehaviour
     {
         //implement scene load
         Debug.Log("Loading Next Scene");
+        SceneManager.LoadScene("MainScene");
     }
 }

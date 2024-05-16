@@ -112,10 +112,19 @@ public class EnemyCombatantController : Damageable
 
     public override IEnumerator DeathRoutine()
     {
-        SpawnReward();
-        Debug.Log("Enemy: " + gameObject.name + " is dead");
-        UIManager.Instance.quipBannerController.StartBannerQuip("YOU WIN", null, 0.1f, 1f, 0.1f);
-        CombatManager.Instance.battleState = BattleState.Won;
+        if(difficulty == Difficulty.Boss)
+        {
+            UIManager.Instance.endingPanel.SetActive(true) ;
+            
+        }
+        else
+        {
+            SpawnReward();
+            Debug.Log("Enemy: " + gameObject.name + " is dead");
+            UIManager.Instance.quipBannerController.StartBannerQuip("YOU WIN", null, 0.1f, 1f, 0.1f);
+            CombatManager.Instance.battleState = BattleState.Won;
+        }
+
         return base.DeathRoutine();
     }
 

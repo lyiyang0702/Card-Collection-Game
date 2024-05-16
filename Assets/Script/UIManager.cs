@@ -27,6 +27,7 @@ public class UIManager : UnitySingleton<UIManager>
     public TextMeshProUGUI enemyDefText;
     public TextMeshProUGUI enemyAtkText;
     public AudioSource soundtrack;
+    public GameObject endingPanel;
     // Start is called before the first frame update
 
     private void Start()

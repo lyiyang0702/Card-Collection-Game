@@ -46,9 +46,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Steel Combo
   comboEffectDescription: 'Steal hp : 50% for 3, 100% for 5 '
+  applyToDeadEnemy: 1
   effectType: 1
   elementalType: 0
   shouldUpgradeCombo: 0
   effecTimer: 0
   modEffectType: 2
+  waitTime: 4
   owner: {fileID: 0}
+  countDownEndEvent:
+    m_PersistentCalls:
+      m_Calls: []

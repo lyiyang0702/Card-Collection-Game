@@ -48,7 +48,7 @@ public class CombatManager : UnitySingleton<CombatManager>
                 Debug.Log("NO ENEMY COMBATANT OR PLAYER COMBATANT");
                 return;
             }
-
+            
             DecideTurn();
             InitializeCombatScene();
 

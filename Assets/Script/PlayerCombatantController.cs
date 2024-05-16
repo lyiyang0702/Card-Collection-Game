@@ -70,9 +70,14 @@ public class PlayerCombatantController : Damageable
         var dmg = CalculateDamage();
         if (dmg == 0) return;
         enemyCombatant.ApplyDamage(dmg);
-
+        
         if (CombatManager.Instance.enemyCombatant.isDead)
         {
+            if (comboEffect != null && comboEffect.applyToDeadEnemy)
+            {
+                comboEffect.ApplyComboEffect(CombatManager.Instance.enemyCombatant);
+            }
+
             OnAttackEnd();
             return;
         }
@@ -87,6 +92,7 @@ public class PlayerCombatantController : Damageable
 
     void OnAttackEnd()
     {
+
         //Clear card deck and combo list
         UIManager.Instance.ClearCardChildren(UIManager.Instance.selectedCardParent.transform);
         cardCombo.Clear();
