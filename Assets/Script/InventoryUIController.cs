@@ -11,17 +11,20 @@ public class InventoryUIController : MonoBehaviour
     public Button ConfirmButton;
     public TextMeshProUGUI sortTip;
     bool isDeafultSort = false;
-    bool isConfirmed = false;
+    [SerializeField]bool isConfirmed = false;
 
-    private void OnEnable()
+    private void Start()
     {
-
-        SortCards();
-
-        if (inventoryGrid.transform.childCount != 0 && GameManager.Instance.currentArea == 0)
+        if (PlayerController.Instance.inventory.GetRemainCardsNum() > 0 && GameManager.Instance.currentArea == 0 && CombatManager.Instance.battleState != BattleState.None)
         {
             comboTutorialPanel.SetActive(true);
         }
+    }
+    private void OnEnable()
+    {
+        
+        SortCards();
+
 
         ConfirmButton.onClick.AddListener(OnConfirm);
         UIManager.Instance.canSelectCards = true;
@@ -38,6 +41,7 @@ public class InventoryUIController : MonoBehaviour
 
     private void OnDisable()
     {
+        isConfirmed = false;
         UIManager.Instance.ClearCardChildren(inventoryGrid.transform);
         ConfirmButton.onClick.RemoveListener(OnConfirm);
         UIManager.Instance.tempSelectedCards.Clear();
