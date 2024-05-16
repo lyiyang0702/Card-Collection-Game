@@ -20,7 +20,7 @@ public class TutorialManager : MonoBehaviour
     {
         
         
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             tutorialUI.SetActive(false);
             player.GetComponent<PlayerController>().enabled = true;
