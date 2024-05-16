@@ -810,6 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f0d3ed34404274aad979580e42c9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comboTutorialPanel: {fileID: 0}
   inventoryGrid: {fileID: 8261900522009458595}
   ConfirmButton: {fileID: 3710934662299392370}
   sortTip: {fileID: 9166109088469604525}
@@ -1004,7 +1005,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Comfirm
+  m_text: Confirm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
