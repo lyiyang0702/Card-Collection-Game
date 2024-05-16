@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using Unity.VisualScripting;
 using System;
-using TMPro;
-
 
 public enum BattleState {None, Start, PlayerTurn, EnemyTurn, Won, Lost}
 public class CombatManager : UnitySingleton<CombatManager>
@@ -19,9 +17,6 @@ public class CombatManager : UnitySingleton<CombatManager>
     public bool canEndBattle = false;
     [SerializeField]List<GameObject> comboEffects;
     public Dictionary <ElementalType, GameObject> comboEffectDict = new Dictionary<ElementalType, GameObject>();
-    public GameObject canvas;
-    public TextMeshProUGUI TutorialBattleText;
-    public GameObject TutorialEnemy;
 
 
     private void Start()
@@ -31,7 +26,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         {
             comboEffectDict[effect.GetComponent<BaseComboEffect>().elementalType] = effect;
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         playerCombatant = PlayerController.Instance.playerCombatant;
         SceneManager.sceneLoaded += OnBattleSceneLoaded;
         SceneManager.sceneUnloaded += OnBattleSceneUnloaded;
@@ -53,39 +48,11 @@ public class CombatManager : UnitySingleton<CombatManager>
                 Debug.Log("NO ENEMY COMBATANT OR PLAYER COMBATANT");
                 return;
             }
-
-            if (GameManager.Instance.currentArea == 0)
-            {
-                UIManager.Instance.ShowBattleIntroText("Place 3 or 5 same elemental type cards to trigger the combo effect!");
-                Debug.Log("mak here");
-
-                StartCoroutine(WaitForKeyPress(KeyCode.Space));
-                Debug.Log("mak here");
-
-                   
-                    
-            }
-
+            
             DecideTurn();
             InitializeCombatScene();
 
         }
-    }
-
-    IEnumerator WaitForKeyPress(KeyCode key)
-    {
-        bool done = false;
-        while (!done)
-        {
-            if (Input.GetKeyDown(key))
-            {
-                done = true;
-                UIManager.Instance.HideBattleIntroText();
-            }
-            yield return null;
-        }
-
-        DecideTurn();
     }
 
     private void OnBattleSceneUnloaded(Scene scene)
@@ -127,6 +94,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         }
         else if (damageable.isPlayer)
         {
+            GameManager.Instance.RestartGame();
             enemyCombatant.OnDeathEvent.RemoveListener(OnEndBattle);
             // Restart Game?
         }
@@ -187,8 +155,4 @@ public class CombatManager : UnitySingleton<CombatManager>
             enemyCombatant.Attack();
         }
     }
-
-
-
-
 }

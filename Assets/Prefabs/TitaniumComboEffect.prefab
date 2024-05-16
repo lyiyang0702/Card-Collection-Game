@@ -45,10 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Titanium Combo
-  comboEffectDescription: 'penetration: 50% for 3, 100% for 5 '
+  comboEffectDescription: Armor penetration 50% (combo 3)/ 100% (combo 5)
   effectType: 1
   elementalType: 1
   shouldUpgradeCombo: 0
   effecTimer: 0
   modEffectType: 1
+  waitTime: 4
   owner: {fileID: 0}
+  countDownEndEvent:
+    m_PersistentCalls:
+      m_Calls: []

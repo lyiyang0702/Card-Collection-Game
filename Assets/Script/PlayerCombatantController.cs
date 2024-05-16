@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class PlayerCombatantController : Damageable
 {
     public List<CardDamageSource> cardCombo = new List<CardDamageSource>();
-    public float quipBannerLingearTime = 2f;
+    public float quipBannerLingearTime = 10f;
     public GameObject playerSprite;
     public AudioSource confirmSound;
 
@@ -22,6 +22,9 @@ public class PlayerCombatantController : Damageable
     [SerializeField] private AudioClip steelSFX;
     [SerializeField] private AudioClip titaniumSFX;
     [SerializeField] private AudioClip errorSFX;
+    public AudioSource hitSound;
+    [SerializeField] private AudioClip[] enemySFX;
+
     override public void Start()
     {
         playerAnim = playerSprite.GetComponent<Animator>();
@@ -67,9 +70,14 @@ public class PlayerCombatantController : Damageable
         var dmg = CalculateDamage();
         if (dmg == 0) return;
         enemyCombatant.ApplyDamage(dmg);
-
+        
         if (CombatManager.Instance.enemyCombatant.isDead)
         {
+            if (comboEffect != null && comboEffect.applyToDeadEnemy)
+            {
+                comboEffect.ApplyComboEffect(CombatManager.Instance.enemyCombatant);
+            }
+
             OnAttackEnd();
             return;
         }
@@ -84,12 +92,19 @@ public class PlayerCombatantController : Damageable
 
     void OnAttackEnd()
     {
+
         //Clear card deck and combo list
         UIManager.Instance.ClearCardChildren(UIManager.Instance.selectedCardParent.transform);
         cardCombo.Clear();
         stats.atk = 0;
+        if (PlayerController.Instance.inventory.GetRemainCardsNum() == 0 && !CombatManager.Instance.enemyCombatant.isDead)
+        {
+            StartCoroutine(DeathRoutine());
+            return;
+        }
         Debug.Log("Player Attack");
-        confirmSound.clip = errorSFX;
+        setEnemySFX();
+        StartCoroutine(resetSFX());
         OnSwitchTurn(BattleState.EnemyTurn);
     }
     public bool CheckIfHasComboEffect()
@@ -112,7 +127,7 @@ public class PlayerCombatantController : Damageable
             comboEffect.owner = this;
             comboEffect.shouldUpgradeCombo = upgradeCombo;
             comboEffect.waitTime = 2f;
-            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);          
+            UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);
         }
         switch(comboEffectType){
             case ElementalType.Gold:
@@ -152,8 +167,9 @@ public class PlayerCombatantController : Damageable
     public override void OnEnterCombat()
     {
         base.OnEnterCombat();
+        transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         PlayerController.Instance.StopAllMovement();
-        transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x + 0.12f, UIManager.Instance.playerSpot.transform.position.y, 0);
+        transform.position = new Vector3(UIManager.Instance.playerSpot.transform.position.x + 0.08f, UIManager.Instance.playerSpot.transform.position.y- 0.5f, 0);
         playerAnim.SetBool("inCombat", true);
         playerSpriteRenderer.flipX = false;
         healthPointsBeforeCombat = healthPoints;
@@ -176,8 +192,22 @@ public class PlayerCombatantController : Damageable
     public override IEnumerator DeathRoutine()
     {
         CombatManager.Instance.canEndBattle = true;
+        UIManager.Instance.quipBannerController.StartBannerQuip("YOU DIED", null, 0.1f, 3f, 0.1f);
         Debug.Log(gameObject.name + " is dead");
         CombatManager.Instance.battleState = BattleState.Lost;
-        return base.DeathRoutine();
+        Debug.Log("Start Player Death Routine");
+        yield return new WaitForSeconds(3f);
+        OnDeathEvent?.Invoke(this);
+
+    }
+
+    IEnumerator resetSFX(){
+        yield return new WaitForSeconds(1.0f);
+        confirmSound.clip = errorSFX;
+    }
+
+    public void setEnemySFX(){
+        int rand = UnityEngine.Random.Range(0,3);
+        hitSound.clip = enemySFX[rand];
     }
 }

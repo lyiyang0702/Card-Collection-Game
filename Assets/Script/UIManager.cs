@@ -27,8 +27,7 @@ public class UIManager : UnitySingleton<UIManager>
     public TextMeshProUGUI enemyDefText;
     public TextMeshProUGUI enemyAtkText;
     public AudioSource soundtrack;
-    public TextMeshProUGUI battleIntroText;
-    public GameObject battleIntroPanel;
+    public GameObject endingPanel;
     // Start is called before the first frame update
 
     private void Start()
@@ -37,7 +36,7 @@ public class UIManager : UnitySingleton<UIManager>
     }
     private void OnEnable()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
 
     }
@@ -121,36 +120,6 @@ public class UIManager : UnitySingleton<UIManager>
         }
     }
 
-    public void ShowBattleIntroText(string message)
-    {
-        battleIntroText.text = message;
-        battleIntroPanel.SetActive(true);
-        Time.timeScale = 0;
-        DisableAllInteractiveElements();
-    }
-
-    public void HideBattleIntroText() 
-    {
-        battleIntroPanel.SetActive(false);
-        Time.timeScale = 1;
-        EnableAllInteractiveElements();
-    }
-
-    public void DisableAllInteractiveElements()
-    {
-        foreach (var button in FindObjectsOfType<Button>())
-        {
-            button.interactable = false;
-        }
-    }
-
-    public void EnableAllInteractiveElements()
-    {
-        foreach (var button in FindObjectsOfType<Button>())
-        {
-            button.interactable = true;
-        }
-    }
     //Mak new Code
     /*public void ShowTutorialBattleIntroText(string message)
     {

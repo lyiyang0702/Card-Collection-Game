@@ -7,7 +7,14 @@ public class ResourceManager : UnitySingleton<ResourceManager>
 {
     
     public List<CardScriptableObject> cardList = new List<CardScriptableObject>();
+    public GameObject gameManager;
     // Start is called before the first frame update
+
+    override public void Awake()
+    {
+        base.Awake();
+        Instantiate(gameManager);
+    }
     void Start()
     {
         

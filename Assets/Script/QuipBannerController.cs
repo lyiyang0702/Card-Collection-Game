@@ -9,7 +9,6 @@ public class QuipBannerController : MonoBehaviour
     [SerializeField] private Image bannerBackdrop;
     [SerializeField] private TextMeshProUGUI bannerTitle;
     [SerializeField] private CanvasGroup canvasGroup;
-
     public void StartBannerQuip(string description, string titleText, float toDuration, float lingerDuration, float outDuration)
     {
         Debug.Log("Start Quip Banner");
@@ -27,16 +26,21 @@ public class QuipBannerController : MonoBehaviour
         //LeanTween.size(GetComponent<RectTransform>(), new Vector2(2000,200), toDuration);
 
 
-        yield return new WaitForSeconds(lingerDuration);
+        yield return new WaitForSecondsRealtime(lingerDuration);
 
         GetComponent<CanvasGroup>().alpha = 0.0f;
         //LeanTween.alphaCanvas(GetComponent<CanvasGroup>(), 0, outDuration);
         //LeanTween.size(GetComponent<RectTransform>(), new Vector2(1, 0), outDuration);
     }
 
+    public void ToggleBannerAlpha(float alpha)
+    {
+        GetComponent<CanvasGroup>().alpha = alpha;
+    }
     public void StopBannerQuip()
     {
         StopAllCoroutines();
         GetComponent<CanvasGroup>().alpha = 0.0f;
     }
+
 }

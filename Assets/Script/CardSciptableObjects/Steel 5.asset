@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 
   displayName: The Wrong Trousers
   elementalType: 0
-  colorTier: 3
+  colorTier: 1
   cardSprite: {fileID: 21300000, guid: a29017aeefe18644a8a900f85652bea4, type: 3}

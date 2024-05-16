@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Titanium 1
   m_EditorClassIdentifier: 
   id: 
-  displayName: TestCard
+  displayName: Helper Bot
   elementalType: 1
   colorTier: 1
-  cardSprite: {fileID: 21300000, guid: 115235997e9f21a438c9576714fe36f4, type: 3}
+  cardSprite: {fileID: 1645281182, guid: 64cb74ac64f53ce47b5860cc5af9b33a, type: 3}

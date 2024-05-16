@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Golden 4
   m_EditorClassIdentifier: 
   id: 
-  displayName: TestCard
+  displayName: Pigeon Drone
   elementalType: 3
-  colorTier: 3
-  cardSprite: {fileID: 21300058, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  colorTier: 4
+  cardSprite: {fileID: 1733149435, guid: fa65b2d83800ce54aa4da4c2213b5aa7, type: 3}

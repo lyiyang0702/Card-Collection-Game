@@ -90,6 +90,9 @@ public class Damageable : MonoBehaviour
     {
         CombatManager.Instance.canSwitchTurn = false;
         isDead = true;
+
+
+        Debug.Log("Start Death Routine");
         yield return new WaitUntil(() => CombatManager.Instance.canEndBattle == true);
         OnDeathEvent?.Invoke(this);
 
@@ -113,7 +116,7 @@ public class Damageable : MonoBehaviour
 
     virtual public void OnEnterCombat()
     {
-        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        
         posBeforeCombat = transform.position;
         healthPointsBeforeCombat = healthPoints;
     }

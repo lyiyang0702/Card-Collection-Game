@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,19 +10,19 @@ public class GameManager : UnitySingleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            LoadAreaScene(i);
-        }
+        
+        LoadAllScenes(5);
     }
+
+
     // Update is called once per frame
     void Update()
     {
         
     }
-    public void UnloadCurrentArea()
+    public void UnloadScene(int areaID)
     {
-        SceneManager.UnloadSceneAsync("Area" + currentArea.ToString() + "Scene");
+        SceneManager.UnloadSceneAsync("Area" + areaID.ToString() + "Scene");
     }
     public void LoadAreaScene(int areaID)
     {
@@ -39,4 +40,24 @@ public class GameManager : UnitySingleton<GameManager>
         //UIManager.Instance.allLevelMaps[areaID - 1].GetComponent<LevelManager>().SpawnPlayer();
     }
 
+    void LoadAllScenes(int areaCount)
+    {
+       
+        for (int i = 0; i < areaCount; i++)
+        {
+            LoadAreaScene(i);
+        }
+    }
+
+    void UnloadAllScene(int areaCount)
+    {
+        for (int i = 0;i < areaCount; i++)
+        {
+            UnloadScene(i); 
+        }
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 }

@@ -45,11 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Gold Combo
-  comboEffectDescription: ' more cards drop : bonus 2 other type cards for 3, 4 other
-    type cards for 5 '
+  comboEffectDescription: Bonus extra drop 2 (combo 3) / 4 (combo 5) cards
   effectType: 2
   elementalType: 3
   shouldUpgradeCombo: 0
   effecTimer: 0
   modEffectType: 0
+  waitTime: 4
   owner: {fileID: 0}
+  countDownEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
