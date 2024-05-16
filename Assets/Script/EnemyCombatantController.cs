@@ -24,15 +24,15 @@ public class EnemyCombatantController : Damageable
         {
             case Difficulty.Easy:
                 InitializeStats(8, 2, 0);
-                InitializeRewardInfo(new int[] { 60, 30, 10, 0 });
+                InitializeRewardInfo(new int[] { 40, 30, 20, 10 });
                 break;
             case Difficulty.Mid:
                 InitializeStats(6, 3, 1);
-                InitializeRewardInfo(new int[] { 30, 50, 20, 0 });
+                InitializeRewardInfo(new int[] { 20, 30, 30, 20 });
                 break;
             case Difficulty.Hard:
                 InitializeStats(20, 3, 0);
-                InitializeRewardInfo(new int[] { 10, 40, 40, 10 });
+                InitializeRewardInfo(new int[] { 10, 20, 40, 30 });
                 break;
             case Difficulty.Boss:
                 InitializeStats(100, 10, 3);
@@ -41,7 +41,6 @@ public class EnemyCombatantController : Damageable
             default:
                 break;
         }
-
 
     }
 

@@ -738,7 +738,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Explain combo effect here
+  m_text: 'Choose 3 or 5 same elemental type cards to play combo!
+
+
+    Gold: Loot
+    more bonus card
+
+
+    Steel: Heal from beat enemy
+
+
+    Titanium: Armor penetration
+
+
+    Rubber:
+    Deal extra damage by clicking on enemy'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e7d01f92277e5ae40b2fe2025b7b7721, type: 2}
   m_sharedMaterial: {fileID: 3902004703800649499, guid: e7d01f92277e5ae40b2fe2025b7b7721, type: 2}
@@ -1895,6 +1909,10 @@ PrefabInstance:
     - target: {fileID: 2023768946269707828, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_Value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163656845441323515, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2198603721746551052, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_IsActive
