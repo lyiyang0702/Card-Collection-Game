@@ -11,7 +11,6 @@ public class PlayerCombatantController : Damageable
     public GameObject playerSprite;
     public AudioSource confirmSound;
 
-
     private Animator playerAnim;
     private SpriteRenderer playerSpriteRenderer;
     private BaseComboEffect comboEffect;
@@ -56,6 +55,7 @@ public class PlayerCombatantController : Damageable
     }
     public void Attack()
     {
+        if (cardCombo.Count == 0) return;
         var enemyCombatant = CombatManager.Instance.enemyCombatant;
 
         if (enemyCombatant == null)
@@ -67,9 +67,14 @@ public class PlayerCombatantController : Damageable
         UIManager.Instance.quipBannerController.StopBannerQuip();
         // first, apply card damage
         // TO DO: Add attack ui
-        var dmg = CalculateDamage();
-        if (dmg == 0) return;
-        enemyCombatant.ApplyDamage(dmg);
+        if(comboEffect!= null && comboEffect.effectType == BaseComboEffect.EffectType.StatsMod)
+        {
+            comboEffect.ApplyStatsModEffect(enemyCombatant);
+        }
+
+        dealtDmg = CalculateDamage(enemyCombatant);
+        
+        enemyCombatant.ApplyDamage(dealtDmg);
         
         if (CombatManager.Instance.enemyCombatant.isDead)
         {
@@ -83,7 +88,7 @@ public class PlayerCombatantController : Damageable
         }
         // then, apply combo effect
         //CheckIfHasComboEffect();
-        if (comboEffect != null) {
+        if (comboEffect != null && comboEffect.effectType != BaseComboEffect.EffectType.StatsMod) {
             comboEffect.ApplyComboEffect(enemyCombatant);
         } 
         OnAttackEnd();
@@ -126,7 +131,6 @@ public class PlayerCombatantController : Damageable
             comboEffect = Instantiate(CombatManager.Instance.comboEffectDict[comboEffectType]).GetComponent<BaseComboEffect>(); 
             comboEffect.owner = this;
             comboEffect.shouldUpgradeCombo = upgradeCombo;
-            comboEffect.waitTime = 2f;
             UIManager.Instance.quipBannerController.StartBannerQuip(comboEffect.comboEffectDescription, comboEffect.displayName, 1f, quipBannerLingearTime, 1f);
         }
         switch(comboEffectType){
@@ -154,14 +158,17 @@ public class PlayerCombatantController : Damageable
     }
 
 
-    float CalculateDamage()
+    float CalculateDamage(Damageable other)
     {
+        
         foreach (var card in cardCombo)
         {
             stats.atk += card.damage;
         }
 
-        return stats.atk;
+        float dmg = stats.atk - (other.stats.def + other.defenseBuff);
+        dmg = Mathf.Clamp(dmg,0, 100);
+        return dmg;
     }
 
     public override void OnEnterCombat()

@@ -6,24 +6,17 @@ public class SteelComboEffect : BaseComboEffect
 {
     public override void ApplyStatsModEffect(Damageable other, float amount)
     {
-        var enemyHP = other.baseHealthPoints;
+        
         if (shouldUpgradeCombo)
         {
-            if (!other.isDead)
-            {
-                other.UpdateHealth(-enemyHP);
-            }
 
-            owner.UpdateHealth(enemyHP);
+            owner.UpdateHealth(owner.dealtDmg);
 
         }
         else
         {
-            if (!other.isDead)
-            {
-                other.UpdateHealth(-enemyHP/2);
-            }
-            owner.UpdateHealth(enemyHP/2);
+
+            owner.UpdateHealth(owner.dealtDmg / 2);
         }
         base.ApplyStatsModEffect(other, amount);
     }

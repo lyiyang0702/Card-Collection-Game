@@ -19,6 +19,7 @@ public struct Stats
 public class Damageable : MonoBehaviour
 {
     public FlashEffect flashEffect;
+    public float dealtDmg = 0;
     public string displayName = "Pyoro";
     public float baseHealthPoints;
     public float healthPoints;
@@ -63,10 +64,8 @@ public class Damageable : MonoBehaviour
         stats.def = def;
     }
 
-    public void ApplyDamage(float atk)
+    public void ApplyDamage(float dmg)
     {
-        float dmg = atk * (100 / (100 + stats.def + defenseBuff));
-
         UpdateHealth(-dmg);
         OnDamageEvent?.Invoke(dmg);
         Debug.Log("Cause dmg:" + dmg);

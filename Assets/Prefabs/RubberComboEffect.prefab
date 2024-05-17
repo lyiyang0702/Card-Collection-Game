@@ -47,12 +47,12 @@ MonoBehaviour:
   displayName: Rubber Combo
   comboEffectDescription: Deal extra damage by clicking for 2 (combo 3) / 4 (combo
     5) seconds
+  applyToDeadEnemy: 0
   effectType: 0
   elementalType: 2
-  shouldUpgradeCombo: 0
-  effecTimer: 0
+  shouldUpgradeCombo: 1
   modEffectType: 0
-  waitTime: 4
+  waitTime: 2
   owner: {fileID: 0}
   countDownEndEvent:
     m_PersistentCalls:

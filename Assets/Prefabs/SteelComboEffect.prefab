@@ -51,9 +51,8 @@ MonoBehaviour:
   effectType: 1
   elementalType: 0
   shouldUpgradeCombo: 0
-  effecTimer: 0
   modEffectType: 2
-  waitTime: 4
+  waitTime: 2
   owner: {fileID: 0}
   countDownEndEvent:
     m_PersistentCalls:

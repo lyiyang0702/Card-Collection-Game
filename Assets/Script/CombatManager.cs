@@ -56,9 +56,9 @@ public class CombatManager : UnitySingleton<CombatManager>
             if (GameManager.Instance.currentArea == 0)
             {
                 UIManager.Instance.ShowBattleIntroText("Welcome to the COMBAT!");
-                Debug.Log("mak here");
+         
                 StartCoroutine(WaitForKeyPress(KeyCode.Space));
-                Debug.Log("mak here");
+               
             }
             
             DecideTurn();
@@ -179,6 +179,7 @@ public class CombatManager : UnitySingleton<CombatManager>
         //yield return new WaitForSeconds(10);
         if (battleState == BattleState.EnemyTurn)
         {
+            enemyCombatant.defenseBuff = 0;
             enemyCombatant.Attack();
         }
     }

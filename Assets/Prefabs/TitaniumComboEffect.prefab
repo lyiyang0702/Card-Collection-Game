@@ -46,12 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Titanium Combo
   comboEffectDescription: Armor penetration 50% (combo 3)/ 100% (combo 5)
+  applyToDeadEnemy: 0
   effectType: 1
   elementalType: 1
   shouldUpgradeCombo: 0
   effecTimer: 0
   modEffectType: 1
-  waitTime: 4
+  waitTime: 0
   owner: {fileID: 0}
   countDownEndEvent:
     m_PersistentCalls:

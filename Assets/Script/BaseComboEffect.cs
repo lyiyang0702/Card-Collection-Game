@@ -8,16 +8,17 @@ public class BaseComboEffect : MonoBehaviour
     public string displayName;
     public string comboEffectDescription;
     public bool applyToDeadEnemy = false;
+    
     public enum EffectType { Timed, StatsMod, Other};
     public enum ModEffectType { Atk, Def, Health};
     public EffectType effectType;
     public ElementalType elementalType;
     public bool shouldUpgradeCombo = false;
-    [SerializeField] float effecTimer = 0f;
+    float effecTimer = 0f;
     [SerializeField] ModEffectType modEffectType;
     protected float effectTime = 0f;
     protected bool shouldCountDown = false;
-    public float waitTime = 4f;
+    [SerializeField] float waitTime;
     public Damageable owner;
     public UnityEvent countDownEndEvent;
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class BaseComboEffect : MonoBehaviour
 
     virtual public void ApplyStatsModEffect(Damageable other,float amount = 0)
     {
-        
+
     }
 
     virtual public void ApplyOtherEffect(Damageable other)
@@ -49,6 +50,7 @@ public class BaseComboEffect : MonoBehaviour
     }
     virtual public void ApplyComboEffect(Damageable other, float amount = 0)
     {
+        Debug.Log("Wait time: " + waitTime);
         StartCoroutine(ComboEffectRoutine(waitTime,other,amount));
 
     }
@@ -56,8 +58,7 @@ public class BaseComboEffect : MonoBehaviour
     IEnumerator ComboEffectRoutine(float waitTime,Damageable other, float amount = 0)
     {
         CombatManager.Instance.canSwitchTurn = false;
-        
-        yield return new WaitForSecondsRealtime(waitTime);
+        yield return new WaitForSeconds(waitTime);
         Debug.Log("Apply Combo Effect");
         switch (effectType)
         {
@@ -65,9 +66,8 @@ public class BaseComboEffect : MonoBehaviour
                 ApplyTimedModEffect(other);
                 break;
             case EffectType.StatsMod:
-                ApplyStatsModEffect(other, amount);
-                CombatManager.Instance.canSwitchTurn = true;
-                Destroy(gameObject);
+                //ApplyStatsModEffect(other, amount);
+ 
                 break;
             case EffectType.Other:
                 ApplyOtherEffect(other);

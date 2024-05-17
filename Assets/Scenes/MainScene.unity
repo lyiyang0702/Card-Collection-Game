@@ -326,6 +326,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bc19dda7f9d50148bf20146121fec60, type: 3}
+--- !u!114 &860907623 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2023768946269707828, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+  m_PrefabInstance: {fileID: 2141659735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &998133316 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3849680774219180549, guid: 1eb51dd6ba9773a48ac3a0c0419278c9, type: 3}
@@ -670,6 +681,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1138660293880707929, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: scrollbar
+      value: 
+      objectReference: {fileID: 860907623}
     - target: {fileID: 2603329388065065139, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -766,6 +781,10 @@ PrefabInstance:
     - target: {fileID: 7993297342775495549, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496825403360337941, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_ScrollSensitivity
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8702208392929201343, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: soundtrack

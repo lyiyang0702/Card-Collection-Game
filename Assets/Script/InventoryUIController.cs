@@ -10,8 +10,9 @@ public class InventoryUIController : MonoBehaviour
     public GameObject inventoryGrid;
     public Button ConfirmButton;
     public TextMeshProUGUI sortTip;
+    public Scrollbar scrollbar;
     bool isDeafultSort = false;
-    [SerializeField]bool isConfirmed = false;
+    bool isConfirmed = false;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class InventoryUIController : MonoBehaviour
         {
             comboTutorialPanel.SetActive(true);
         }
+        scrollbar.value = 1;
     }
     private void OnEnable()
     {
