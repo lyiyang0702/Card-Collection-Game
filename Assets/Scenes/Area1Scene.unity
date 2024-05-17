@@ -1627,6 +1627,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AreaOneMap
       objectReference: {fileID: 0}
+    - target: {fileID: 9052956122068472349, guid: 5daf3e3f43bfa6f41a8e5436e1d64096, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052956122068472349, guid: 5daf3e3f43bfa6f41a8e5436e1d64096, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1722737
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
