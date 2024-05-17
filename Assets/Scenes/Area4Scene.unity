@@ -175,6 +175,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AreaFourMap
       objectReference: {fileID: 0}
+    - target: {fileID: 9052956122068472349, guid: 00f34a8038fc1594eb224de59840a4d9, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052956122068472349, guid: 00f34a8038fc1594eb224de59840a4d9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052956122068472349, guid: 00f34a8038fc1594eb224de59840a4d9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1722737
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
