@@ -714,6 +714,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4996146304997612014, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_text
+      value: 'Welcome to the Deck-fective
+
+
+        WASD for moving
+
+
+        Feel
+        free to move around and discover the world
+
+
+        [Start your Journey
+        by pressing SPACE]
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996146304997612014, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5550563205317298684, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: player
       value: 
@@ -726,6 +747,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1394872610}
+    - target: {fileID: 7591541752281571482, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 7591541752281571482, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993297342775495549, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 7993297342775495549, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2625766151113065112, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 7993297342775495549, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8702208392929201343, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: soundtrack
       value: 
