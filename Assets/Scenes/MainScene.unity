@@ -754,7 +754,7 @@ MonoBehaviour:
     Rubber:
     Deal extra damage by clicking on enemy'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e7d01f92277e5ae40b2fe2025b7b7721, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
   m_sharedMaterial: {fileID: 3902004703800649499, guid: e7d01f92277e5ae40b2fe2025b7b7721, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &760236348
@@ -1962,6 +1962,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4996146304997612014, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_text
+      value: 'Welcome to the Deck-fective.
+
+
+        WASD for moving
+
+
+        Feel
+        free to move around and discover the world
+
+
+        [Start your Journey
+        by pressing esc]
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996146304997612014, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontSize
+      value: 55.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996146304997612014, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 4996146304997612014, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2625766151113065112, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 4996146304997612014, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5550563205317298684, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: player
       value: 
@@ -1980,6 +2013,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7883197130453777762, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993297342775495549, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 7993297342775495549, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2625766151113065112, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 7993297342775495549, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8178721960963178795, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontSize
+      value: 54.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8178721960963178795, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 8178721960963178795, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2625766151113065112, guid: dd6bffd92f0fc684ca45f20820363410, type: 2}
+    - target: {fileID: 8178721960963178795, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8264512388083280573, guid: 0457cdb71322b1a4297ab6841fbee601, type: 3}
