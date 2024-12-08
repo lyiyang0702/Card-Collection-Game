@@ -3,16 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - UI
+  - Map
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - Interactable
+  - Wall
   - 
   - 
   - 
@@ -38,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1722737
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
